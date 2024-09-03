@@ -1,6 +1,9 @@
 package org.example.pokemon.net;
+
 import java.io.*;
 import java.net.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PokemonBattleServer {
     private static final int PORT = 12345;  // 服务器端口号
@@ -11,8 +14,10 @@ public class PokemonBattleServer {
     private static BufferedReader inA;      // 从客户端A接收数据的BufferedReader
     private static BufferedReader inB;      // 从客户端B接收数据的BufferedReader
 
+    private static Pet petA;
+    private static Pet petB;
+
     public static void main(String[] args) throws IOException {
-        // 创建一个ServerSocket来监听客户端的连接
         ServerSocket serverSocket = new ServerSocket(PORT);
         System.out.println("服务器启动，监听端口 " + PORT);
 
@@ -51,14 +56,14 @@ public class PokemonBattleServer {
 
         // 根据B的反馈通知A和B
         if ("accept".equalsIgnoreCase(responseB)) {
-            outA.println("战斗接受，开始设置战斗。");
-            outB.println("战斗接受，开始设置战斗。");
+            outA.println("战斗接受，开始准备战斗。");
+            outB.println("战斗接受，开始准备战斗。");
 
             // 设置战斗
             setupBattle();
         } else {
-            outA.println("客户端B拒绝了战斗。");
-            outB.println("客户端B拒绝了战斗。");
+            outA.println("拒绝战斗。");
+            outB.println("拒绝战斗。");
         }
     }
 
@@ -89,6 +94,19 @@ public class PokemonBattleServer {
                 processAction("B", actionB);
                 // 将当前状态反馈给A和B
                 updatePlayers();
+            } else {
+                outB.println("轮到你行动。");
+                String actionB = getAction("B");
+                // 处理B的操作
+                processAction("B", actionB);
+                // 将当前状态反馈给A和B
+                updatePlayers();
+                outA.println("轮到你行动。");
+                String actionA = getAction("A");
+                // 处理A的操作
+                processAction("A", actionA);
+                // 将当前状态反馈给A和B
+                updatePlayers();
             }
 
             // 检查是否结束战斗
@@ -100,42 +118,91 @@ public class PokemonBattleServer {
         }
     }
 
-    // 占位函数，根据宠物名字创建宠物
+    // 根据宠物名字创建宠物
     private static void createPets(String petNameA, String petNameB) {
-        // 实际实现中这里需要根据宠物名字创建宠物对象
+        // 从本地文件读取宠物数据
+        petA = new Pet(petNameA);
+        petB = new Pet(petNameB);
     }
 
-    // 占位函数，确定当前轮到哪个玩家
+    // 确定当前轮到哪个玩家
     private static String determineTurn() {
-        // 实际实现中这里需要根据速度等逻辑确定当前玩家
-        return "A"; // 示例返回值
+        // 比较宠物速度，实际实现中可以更复杂
+        return petA.getSpeed() > petB.getSpeed() ? "A" : "B";
     }
 
-    // 占位函数，处理玩家的行动
+    // 处理玩家的行动
     private static void processAction(String player, String action) {
         // 实际实现中这里需要处理玩家的行动并更新状态
+        Pet currentPet = "A".equals(player) ? petA : petB;
+        // 处理行动...
+        currentPet.performAction(action);
     }
 
-    // 占位函数，更新A和B的状态
+    // 更新A和B的状态
     private static void updatePlayers() {
         // 实际实现中这里需要将当前战斗状态反馈给A和B
+        outA.println(petA.getStatus());
+        outB.println(petB.getStatus());
     }
 
-    // 占位函数，检查战斗是否结束
+    // 检查战斗是否结束
     private static boolean checkEndBattle() {
         // 实际实现中这里需要检查是否有宠物死亡等结束条件
-        return false; // 示例返回值
+        return petA.isDead() || petB.isDead();
     }
 
-    // 占位函数，获取指定玩家的宠物名字
+    // 获取指定玩家的宠物名字
     private static String getPetName(String player) throws IOException {
         // 实际实现中这里需要从指定玩家处获取宠物名字
-        return "默认宠物"; // 示例返回值
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        return reader.readLine(); // 这里可以用合适的方式获取宠物名字
     }
 
-    // 占位函数，获取指定玩家的行动
+    // 获取指定玩家的行动
     private static String getAction(String player) throws IOException {
-        // 实际实现中这里需要从指定玩家处获取行动指令
-        return "默认行动"; // 示例返回值
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        return reader.readLine(); // 这里可以用合适的方式获取行动
+    }
+}
+
+// 宠物类
+class Pet {
+    private String name;
+    private int speed;
+    private int health;
+
+    public Pet(String name) {
+        // 从本地文件或数据库加载宠物数据
+        this.name = name;
+        this.speed = loadSpeed(name);
+        this.health = loadHealth(name);
+    }
+
+    public void performAction(String action) {
+        // 执行行动的逻辑
+    }
+
+    public String getStatus() {
+        // 返回宠物的状态
+        return name + " - 生命值: " + health;
+    }
+
+    public boolean isDead() {
+        return health <= 0;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    private int loadSpeed(String name) {
+        // 从文件或数据库加载宠物速度
+        return 10; // 示例值
+    }
+
+    private int loadHealth(String name) {
+        // 从文件或数据库加载宠物生命值
+        return 100; // 示例值
     }
 }
