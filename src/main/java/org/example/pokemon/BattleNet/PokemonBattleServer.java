@@ -37,15 +37,19 @@ public class PokemonBattleServer {
         outB = new PrintWriter(socketB.getOutputStream(), true);
 
         // 启动战斗过程
-        startBattle();
-
-        // 关闭ServerSocket
-        serverSocket.close();
+        try {
+            startBattle();
+        } finally {
+            // 关闭连接
+            socketA.close();
+            socketB.close();
+            serverSocket.close();
+        }
     }
 
     private static void startBattle() throws IOException {
         // 向A请求开始战斗
-        outA.println("请求开始战斗...");
+        outA.println("请求开始战斗");
         String responseA = inA.readLine();
 
         // 将A的请求转发给B
@@ -54,65 +58,68 @@ public class PokemonBattleServer {
 
         // 根据B的反馈通知A和B
         if ("accept".equalsIgnoreCase(responseB)) {
-            outA.println("战斗接受，开始准备战斗。");
-            outB.println("战斗接受，开始准备战斗。");
+            outA.println("战斗接受，开始准备战斗");
+            outB.println("战斗接受，开始准备战斗");
 
-            // 设置战斗
+            // 请求宠物名字并设置战斗
             setupBattle();
         } else {
-            outA.println("拒绝战斗。");
-            outB.println("拒绝战斗。");
+            outA.println("拒绝战斗");
+            outB.println("拒绝战斗");
         }
     }
 
     private static void setupBattle() throws IOException {
         // 请求A和B提供宠物名字
-        outA.println("请求宠物名字。");
-        String petNameA = getPetName("A");
-        outB.println("请求宠物名字。");
-        String petNameB = getPetName("B");
+        outA.println("请求宠物名字");
+        String petNameA = inA.readLine();
+        outB.println("请求宠物名字");
+        String petNameB = inB.readLine();
 
         // 根据宠物名字创建宠物（这里是简化版）
         createPets(petNameA, petNameB);
+
+        // 发送对方宠物名字给每个客户端
+        outA.println("对方宠物: " + petNameB);
+        outB.println("对方宠物: " + petNameA);
 
         // 开始战斗回合
         while (true) {
             // 根据宠物速度确定轮到谁
             String currentPlayer = determineTurn();
             if ("A".equals(currentPlayer)) {
-                outA.println("轮到你行动。");
-                String actionA = getAction("A");
-                // 处理A的操作
-                processAction("A", actionA);
-                // 将当前状态反馈给A和B
-                updatePlayers();
-                outB.println("轮到你行动。");
-                String actionB = getAction("B");
-                // 处理B的操作
-                processAction("B", actionB);
-                // 将当前状态反馈给A和B
-                updatePlayers();
+                handleTurn("A", "B");
             } else {
-                outB.println("轮到你行动。");
-                String actionB = getAction("B");
-                // 处理B的操作
-                processAction("B", actionB);
-                // 将当前状态反馈给A和B
-                updatePlayers();
-                outA.println("轮到你行动。");
-                String actionA = getAction("A");
-                // 处理A的操作
-                processAction("A", actionA);
-                // 将当前状态反馈给A和B
-                updatePlayers();
+                handleTurn("B", "A");
             }
 
             // 检查是否结束战斗
             if (checkEndBattle()) {
-                outA.println("战斗结束。");
-                outB.println("战斗结束。");
+                outA.println("战斗结束");
+                outB.println("战斗结束");
                 break;
             }
+        }
+    }
+
+    private static void handleTurn(String currentPlayer, String opponentPlayer) throws IOException {
+        // 告知当前玩家轮到他们行动
+        if ("A".equals(currentPlayer)) {
+            outA.println("轮到你行动");
+            String actionA = inA.readLine();
+            processAction("A", actionA);
+            updatePlayers();
+            outB.println("轮到你行动");
+            String actionB = inB.readLine();
+            processAction("B", actionB);
+        } else {
+            outB.println("轮到你行动");
+            String actionB = inB.readLine();
+            processAction("B", actionB);
+            updatePlayers();
+            outA.println("轮到你行动");
+            String actionA = inA.readLine();
+            processAction("A", actionA);
         }
     }
 
@@ -140,27 +147,14 @@ public class PokemonBattleServer {
     // 更新A和B的状态
     private static void updatePlayers() {
         // 实际实现中这里需要将当前战斗状态反馈给A和B
-        outA.println(petA.getStatus());
-        outB.println(petB.getStatus());
+        outA.println("更新血量: " + petA.getStatus() + ", " + petB.getStatus());
+        outB.println("更新血量: " + petA.getStatus() + ", " + petB.getStatus());
     }
 
     // 检查战斗是否结束
     private static boolean checkEndBattle() {
         // 实际实现中这里需要检查是否有宠物死亡等结束条件
         return petA.isDead() || petB.isDead();
-    }
-
-    // 获取指定玩家的宠物名字
-    private static String getPetName(String player) throws IOException {
-        // 实际实现中这里需要从指定玩家处获取宠物名字
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        return reader.readLine(); // 这里可以用合适的方式获取宠物名字
-    }
-
-    // 获取指定玩家的行动
-    private static String getAction(String player) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        return reader.readLine(); // 这里可以用合适的方式获取行动
     }
 }
 
