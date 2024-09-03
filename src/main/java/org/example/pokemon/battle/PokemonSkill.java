@@ -1,8 +1,10 @@
 package org.example.pokemon.battle;
 
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
+
 
 public class PokemonSkill {
     //技能参数
@@ -94,11 +96,15 @@ public class PokemonSkill {
     }
 
     //读取技能文件
-    public void getPokeSkillInfoFromDb(String skillName) throws IOException{
-        File pokeSkillDb = new File("src/main/java/org/example/pokemon/battle/PokeSkillDatabase.txt");
-        Scanner input = new Scanner(pokeSkillDb);
-        while(input.hasNext()){
-            if(input.next().equals(skillName)){
+    public void getPokeSkillInfoFromDb(String skillName) throws IOException {
+        // 使用类路径访问文件
+        InputStream inputStream = getClass().getResourceAsStream("/PokeSkillDatabase.txt");
+        if (inputStream == null) {
+            throw new FileNotFoundException("Resource not found: /PokeSkillDatabase.txt");
+        }
+        Scanner input = new Scanner(inputStream);
+        while (input.hasNext()) {
+            if (input.next().equals(skillName)) {
                 this.skillName = skillName;
                 this.skillType = input.nextInt();
                 this.skillAttribute = input.nextInt();
@@ -108,10 +114,11 @@ public class PokemonSkill {
                 break;
             }
         }
+        input.close();
     }
 
     //显示技能信息
-    public void showPokeSkillInfo(){
+    public void showPokeSkillInfo() {
         System.out.println(this.toString());
     }
 
@@ -130,14 +137,14 @@ public class PokemonSkill {
     }
 
     //技能是否命中
-    public boolean isHit(){
+    public boolean isHit() {
         double tempNum = this.skillHitRate * 0.01;
         double randomNum = Math.random();
         return randomNum < tempNum;
     }
 
     //技能次数减少
-    public void skillTimesMinus(){
+    public void skillTimesMinus() {
         this.skillTimes -= 1;
     }
 }
