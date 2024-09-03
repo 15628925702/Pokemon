@@ -14,16 +14,6 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        PokemonData pokemon1 = new PokemonData();
-        pokemon1.getPokeDataFromDb("皮卡丘");
-        pokemon1.setPokeSkill("冲撞",0);
-        pokemon1.setPokeSkill("十万伏特",1);
-        PokemonData pokemon2 = new PokemonData();
-        pokemon2.getPokeDataFromDb("小火龙");
-        pokemon2.setPokeSkill("冲撞",0);
-        pokemon2.setPokeSkill("喷火",1);
-        Battle battle = new Battle();
-        battle.battleStart(pokemon1,pokemon2);
 
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");

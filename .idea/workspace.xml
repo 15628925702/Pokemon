@@ -5,17 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleTool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokeDatabase.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokeSkillDatabase.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/ToolDatabase.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/hello-view.fxml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
+>>>>>>> 82b20ffd8e3e840e45690b9b000d0ed3d5e0e488
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +51,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
 
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
@@ -69,6 +72,52 @@
   }
 }</component>
   <component name="RunManager" selected="应用程序.HelloApplication">
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.Pokemon中的所有.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Liu1.1",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Programs/Pokemon_Liu1.1/Pokemon/src/main/resources/org/example/pokemon/battle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.BattleApplication.executor": "Run",
+    "应用程序.HelloApplication.executor": "Run",
+    "应用程序.PokemonBattleClient.executor": "Run"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\org\example\pokemon\battle" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\org\example\pokemon" />
+      <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\org\example\pokemon\battle" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.PokemonBattleClient">
+    <configuration name="BattleApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.battle.BattleApplication" />
+      <module name="Pokemon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.pokemon.battle.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+>>>>>>> 82b20ffd8e3e840e45690b9b000d0ed3d5e0e488
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.pokemon.HelloApplication" />
       <module name="Pokemon" />
@@ -82,7 +131,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
 
+=======
+    <configuration name="PokemonBattleClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.net.PokemonBattleClient" />
+      <module name="Pokemon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.pokemon.net.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+>>>>>>> 82b20ffd8e3e840e45690b9b000d0ed3d5e0e488
     <configuration name="Pokemon中的所有" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Pokemon" />
       <option name="PACKAGE_NAME" value="" />
@@ -93,6 +158,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.PokemonBattleClient" />
+        <item itemvalue="应用程序.BattleApplication" />
         <item itemvalue="应用程序.HelloApplication" />
         <item itemvalue="JUnit.Pokemon中的所有" />
       </list>
