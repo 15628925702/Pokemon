@@ -18,6 +18,15 @@ public class Battle {
         return round;
     }
 
+    //初始化对战
+    public void initBattle() {
+        //建立两个线程
+        Thread accept = new Thread() {};
+        accept.start();
+        Thread action = new Thread() {};
+        action.start();
+    }
+
     //开始游戏
     public void battleStart(PokemonData oriPoke1, PokemonData oriPoke2) throws IOException {
         //创建对战对象

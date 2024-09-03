@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.battle.BattleController">
+   <children>
+      <Pane layoutY="6.0" prefHeight="600.0" prefWidth="900.0">
+         <children>
+            <Button fx:id="buttonSkill1" layoutX="56.0" layoutY="437.0" mnemonicParsing="false" onAction="#skill1Click" text="技能一" />
+            <Button fx:id="buttonSkill2" layoutX="161.0" layoutY="437.0" mnemonicParsing="false" onAction="#skill2Click" text="技能二" />
+            <Button fx:id="buttonSkill4" layoutX="161.0" layoutY="503.0" mnemonicParsing="false" onAction="#skill4Click" text="技能四" />
+            <Button fx:id="buttonSkill3" layoutX="56.0" layoutY="503.0" mnemonicParsing="false" onAction="#skill3Click" text="技能三" />
+            <Button layoutX="641.0" layoutY="439.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="746.0" layoutY="439.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="746.0" layoutY="503.0" mnemonicParsing="false" text="Button" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
