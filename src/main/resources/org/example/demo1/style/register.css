@@ -1,0 +1,23 @@
+.root {
+    -fx-background-color: #F9CA18;
+}
+
+.button {
+    -fx-background-color: red;
+    -fx-background-radius: 10px;
+}
+
+.button:hover {
+    -fx-background-color: lightblue;
+}
+/*.signInBtn {*/
+/*    */
+/*}*/
+
+/*.cancelBtn {*/
+
+/*}*/
+
+/*.sendVerificationCodeBtn {*/
+
+/*}*/

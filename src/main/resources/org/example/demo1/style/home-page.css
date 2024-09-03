@@ -1,0 +1,34 @@
+.root {
+    -fx-background-image: url("../img/pokemon-bg.jpg");
+    -fx-background-size: cover;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-background-size: 160px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.play-button {
+    -fx-background-image: url("../img/play-now-removebg-preview.png");
+}
+
+.settings-button {
+    -fx-background-image: url("../img/settings-removebg-preview.png");
+}
+
+.exit-button {
+    -fx-background-image: url("../img/exit-removebg-preview.png");
+}
+
+.play-button:hover {
+    -fx-background-image: url("../img/play-now-yellow-black-removebg-preview.png");
+}
+
+.settings-button:hover {
+    -fx-background-image: url("../img/settings-yellow-black-removebg-preview.png");
+}
+
+.exit-button:hover {
+    -fx-background-image: url("../img/exit-yellow-black-removebg-preview.png");
+}
