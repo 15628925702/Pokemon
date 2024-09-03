@@ -1,4 +1,4 @@
-package org.example.pokemon.net;
+package org.example.pokemon.BattleNet;
 
 import java.io.*;
 import java.net.*;

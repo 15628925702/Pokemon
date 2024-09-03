@@ -1,9 +1,7 @@
-package org.example.pokemon.net;
+package org.example.pokemon.BattleNet;
 
 import java.io.*;
 import java.net.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public class PokemonBattleServer {
     private static final int PORT = 12345;  // 服务器端口号
