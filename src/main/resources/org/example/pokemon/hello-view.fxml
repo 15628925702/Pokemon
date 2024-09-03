@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.pokemon.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox alignment="CENTER" maxHeight="1065.0" maxWidth="1445.0" minHeight="1065.0" minWidth="1445.0" prefHeight="1065.0" prefWidth="1445.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.HelloController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+   <children>
+   
+     <Label fx:id="welcomeText" />
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="970.0" prefWidth="1266.0" VBox.vgrow="SOMETIMES">
+         <children>
+            <Button fx:id="battleSkill1" layoutX="69.0" layoutY="652.0" mnemonicParsing="false" onAction="#skill1Clicked" prefHeight="117.0" prefWidth="211.0" text="技能一" />
+            <Button fx:id="battleSkill2" layoutX="330.0" layoutY="652.0" mnemonicParsing="false" onAction="#skill2Clicked" prefHeight="117.0" prefWidth="211.0" text="技能二" />
+            <Button fx:id="battleSkill3" layoutX="69.0" layoutY="792.0" mnemonicParsing="false" onAction="#skill3Clicked" prefHeight="117.0" prefWidth="211.0" text="技能三" />
+            <Button fx:id="battleSkill4" layoutX="330.0" layoutY="792.0" mnemonicParsing="false" onAction="#skill4Clicked" prefHeight="117.0" prefWidth="211.0" text="技能四" />
+            <Button layoutX="730.0" layoutY="663.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="211.0" text="对战" />
+            <Button layoutX="993.0" layoutY="663.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="211.0" text="道具" />
+            <Button layoutX="993.0" layoutY="803.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="211.0" text="逃跑" />
+         </children>
+      </Pane>
+   </children>
 </VBox>
