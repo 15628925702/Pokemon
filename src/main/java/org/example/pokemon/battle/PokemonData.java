@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.io.InputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 
 //定义宝可梦的基本属性
 public class PokemonData{
@@ -136,22 +140,28 @@ public class PokemonData{
 
     //读取宝可梦信息
     public void getPokeDataFromDb(String pokemonName) throws IOException {
-        File pokeDb = new File("src/main/java/org/example/pokemon/battle/PokeDatabase.txt");
-        Scanner input = new Scanner(pokeDb);
-        while(input.hasNext()){
-            if(input.next().equals(pokemonName)){
+        // 使用类路径访问文件
+        InputStream inputStream = getClass().getResourceAsStream("/PokeDatabase.txt");
+        if (inputStream == null) {
+            throw new FileNotFoundException("Resource not found: /PokeDatabase.txt");
+        }
+        Scanner input = new Scanner(inputStream);
+        while (input.hasNext()) {
+            if (input.next().equals(pokemonName)) {
                 this.pokemonName = pokemonName;
                 this.pokemonType = input.nextInt();
                 this.hp = input.nextInt();
                 this.speed = input.nextInt();
-                this.physical_attack=input.nextInt();
-                this.physical_defense=input.nextInt();
-                this.special_attack=input.nextInt();
-                this.special_defense=input.nextInt();
+                this.physical_attack = input.nextInt();
+                this.physical_defense = input.nextInt();
+                this.special_attack = input.nextInt();
+                this.special_defense = input.nextInt();
                 break;
             }
         }
+        input.close();
     }
+
 
     //显示宝可梦信息
     public void showPokeInfo(){

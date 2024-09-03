@@ -4,6 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="Changes">
       <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleTool.java" afterDir="false" />
@@ -16,6 +20,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/hello-view.fxml" afterDir="false" />
+>>>>>>> origin/Liu
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +54,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "GUO",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/0 javatrain/Pokemon",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Pokemon" />
+=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;JUnit.Pokemon中的所有.executor&quot;: &quot;Run&quot;,
@@ -77,18 +99,27 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+>>>>>>> origin/Liu
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Pokemon" />
+      <option name="filePath" />
+=======
     <configuration name="Pokemon中的所有" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Pokemon" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+>>>>>>> origin/Liu
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
+=======
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.HelloApplication" />
@@ -103,6 +134,7 @@
         <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
+>>>>>>> origin/Liu
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -113,12 +145,20 @@
       <option name="presentableId" value="Default" />
       <updated>1725257460830</updated>
       <workItem from="1725257461860" duration="166000" />
+<<<<<<< HEAD
+      <workItem from="1725263186096" duration="21000" />
+      <workItem from="1725263213304" duration="40000" />
+      <workItem from="1725263292562" duration="60000" />
+      <workItem from="1725263361214" duration="3000" />
+      <workItem from="1725263376477" duration="43000" />
+=======
       <workItem from="1725259094757" duration="6990000" />
       <workItem from="1725267769444" duration="640000" />
       <workItem from="1725270409737" duration="12593000" />
       <workItem from="1725283290785" duration="2335000" />
       <workItem from="1725288493768" duration="241000" />
       <workItem from="1725323258380" duration="1096000" />
+>>>>>>> origin/Liu
     </task>
     <servers />
   </component>
