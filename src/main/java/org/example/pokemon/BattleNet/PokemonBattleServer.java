@@ -2,6 +2,7 @@ package org.example.pokemon.BattleNet;
 
 import org.example.pokemon.battle.Battle;
 import org.example.pokemon.battle.PokemonData;
+import org.example.pokemon.battle.PokemonSkill;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -43,8 +44,8 @@ public class PokemonBattleServer {
         outB = new PrintWriter(clientB.getOutputStream(), true);
 
         // 从文件中加载宝可梦数据
-        /*poke1 = loadPokemonData("pokemonA.txt");
-        poke2 = loadPokemonData("pokemonB.txt");*/
+        poke1 = loadPokemonData("pokemonA.txt");
+        poke2 = loadPokemonData("pokemonB.txt");
         System.out.println("宝可梦数据加载完成。");
 
         // 初始化战斗逻辑
@@ -53,21 +54,38 @@ public class PokemonBattleServer {
         new Thread(this::runBattle).start();
     }
 
-    // 从文件中加载宝可梦数据
     private PokemonData loadPokemonData(String fileName) {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String name = reader.readLine();  // 读取宝可梦名字
-            String image = reader.readLine();  // 读取宝可梦图片
-            String skill1 = reader.readLine();  // 读取宝可梦技能1
-            String skill2 = reader.readLine();  // 读取宝可梦技能2
-            String skill3 = reader.readLine();  // 读取宝可梦技能3
-            String skill4 = reader.readLine();  // 读取宝可梦技能4
+            int pokemonType = Integer.parseInt(reader.readLine());  // 读取宝可梦类型
+            int hp = Integer.parseInt(reader.readLine());  // 读取HP
+            int speed = Integer.parseInt(reader.readLine());  // 读取速度
+            int physical_attack = Integer.parseInt(reader.readLine());  // 读取物理攻击
+            int physical_defense = Integer.parseInt(reader.readLine());  // 读取物理防御
+            int special_attack = Integer.parseInt(reader.readLine());  // 读取特殊攻击
+            int special_defense = Integer.parseInt(reader.readLine());  // 读取特殊防御
+
+            // 读取技能
+            PokemonSkill[] skillsOfPokes = new PokemonSkill[4];
+            for (int i = 0; i < 4; i++) {
+                String skill = reader.readLine();
+                // 假设有一个方法可以将技能名转换为 PokemonSkill 对象
+                skillsOfPokes[i] = convertToPokemonSkill(skill);
+            }
+
             System.out.println("成功加载宝可梦数据: " + name);  // 打印加载成功的信息
-            return new PokemonData();  // 创建并返回宝可梦对象
+            return new PokemonData(name, pokemonType, hp, speed, physical_attack, physical_defense, special_attack, special_defense, skillsOfPokes);
         } catch (IOException e) {
             System.err.println("加载宝可梦数据时发生错误: " + e.getMessage());  // 打印异常信息
             return null;  // 处理错误的情况
         }
+    }
+
+    // 假设有这样的方法
+    private PokemonSkill convertToPokemonSkill(String skillName) {
+        // 实现将技能名转换为 PokemonSkill 对象的逻辑
+        // 这里是一个示例，具体实现取决于 PokemonSkill 类
+        return new PokemonSkill();
     }
 
     // 运行战斗逻辑
