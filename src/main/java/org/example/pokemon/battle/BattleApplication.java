@@ -3,6 +3,7 @@ package org.example.pokemon.battle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.example.pokemon.HelloApplication;
 
@@ -27,7 +28,7 @@ public class BattleApplication extends Application {
         pokemon2.setPokeSkill("冲撞",0);
         pokemon2.setPokeSkill("喷火",1);
         Battle battle = new Battle();
-        battle.battleStart(pokemon1,pokemon2);
+        battle.initBattle(pokemon1,pokemon2,this);
 
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
         primaryStage.setTitle("Battle");
