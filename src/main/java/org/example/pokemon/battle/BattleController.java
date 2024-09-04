@@ -1,6 +1,8 @@
 package org.example.pokemon.battle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -52,5 +54,6 @@ public class BattleController {
 
         output.print(i);
         output.close();
+
     }
 }
