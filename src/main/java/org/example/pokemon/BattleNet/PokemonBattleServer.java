@@ -23,15 +23,17 @@ public class PokemonBattleServer {
     // 构造函数：初始化服务器套接字
     public PokemonBattleServer() throws IOException {
         serverSocket = new ServerSocket(PORT);
-        System.out.println("Server started...");  // 打印服务器启动信息
+        System.out.println("服务器已启动，端口号: " + PORT);  // 打印服务器启动信息
     }
 
     // 启动服务器并开始战斗
     public void start() throws IOException {
+        System.out.println("等待客户端连接...");
+
         // 接受两个客户端的连接
         clientA = serverSocket.accept();
         clientB = serverSocket.accept();
-        System.out.println("Clients connected.");  // 打印客户端连接信息
+        System.out.println("两个客户端已连接。");
 
         // 创建输入输出流
         inA = new BufferedReader(new InputStreamReader(clientA.getInputStream()));
@@ -41,8 +43,9 @@ public class PokemonBattleServer {
         outB = new PrintWriter(clientB.getOutputStream(), true);
 
         // 从文件中加载宝可梦数据
-        poke1 = loadPokemonData("pokemonA.txt");
-        poke2 = loadPokemonData("pokemonB.txt");
+        /*poke1 = loadPokemonData("pokemonA.txt");
+        poke2 = loadPokemonData("pokemonB.txt");*/
+        System.out.println("宝可梦数据加载完成。");
 
         // 初始化战斗逻辑
         battle = new ServerBattle();
@@ -59,9 +62,10 @@ public class PokemonBattleServer {
             String skill2 = reader.readLine();  // 读取宝可梦技能2
             String skill3 = reader.readLine();  // 读取宝可梦技能3
             String skill4 = reader.readLine();  // 读取宝可梦技能4
+            System.out.println("成功加载宝可梦数据: " + name);  // 打印加载成功的信息
             return new PokemonData();  // 创建并返回宝可梦对象
         } catch (IOException e) {
-            e.printStackTrace();  // 打印异常信息
+            System.err.println("加载宝可梦数据时发生错误: " + e.getMessage());  // 打印异常信息
             return null;  // 处理错误的情况
         }
     }
@@ -71,21 +75,22 @@ public class PokemonBattleServer {
         try {
             while (true) {
                 // 处理客户端A和客户端B的轮流操作
-                if (!processTurn(poke1, poke2, outA, inA, outB, "Client A") ||
-                        !processTurn(poke2, poke1, outB, inB, outA, "Client B")) {
+                if (!processTurn(poke1, poke2, outA, inA, outB, "客户端A") ||
+                        !processTurn(poke2, poke1, outB, inB, outA, "客户端B")) {
                     break;  // 退出循环
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();  // 打印异常信息
+            System.err.println("战斗过程中发生错误: " + e.getMessage());  // 打印异常信息
         } finally {
             // 关闭客户端和服务器的套接字
             try {
                 clientA.close();
                 clientB.close();
                 serverSocket.close();
+                System.out.println("服务器和客户端连接已关闭。");
             } catch (IOException e) {
-                e.printStackTrace();  // 打印异常信息
+                System.err.println("关闭连接时发生错误: " + e.getMessage());  // 打印异常信息
             }
         }
     }
@@ -97,6 +102,7 @@ public class PokemonBattleServer {
             JSONObject message = new JSONObject();
             message.put("type", "YourTurn");
             attackerOut.println(message.toString());
+            System.out.println(attackerName + " 轮到攻击。");
 
             // 从攻击方读取操作指令
             JSONObject receivedMessage = new JSONObject(attackerIn.readLine());
@@ -104,6 +110,7 @@ public class PokemonBattleServer {
 
             // 执行攻击动作
             battle.act(attacker, action, defender);
+            System.out.println(attackerName + " 执行了动作: " + action);
 
             // 通知防守方攻击方的操作
             message = new JSONObject();
@@ -114,8 +121,7 @@ public class PokemonBattleServer {
 
         } catch (InterruptedException e) {
             // 处理 InterruptedException 异常
-            System.err.println("Operation was interrupted: " + e.getMessage());
-            // 根据需要，你还可以选择中断当前线程，或采取其他措施
+            System.err.println("操作被中断: " + e.getMessage());
             Thread.currentThread().interrupt();  // 可选: 恢复线程的中断状态
         }
 
@@ -127,6 +133,7 @@ public class PokemonBattleServer {
             escapeMessage.put("pokemon", attacker.getPokemonName());
             attackerOut.println(escapeMessage.toString());
             defenderOut.println(escapeMessage.toString());
+            System.out.println(attacker.getPokemonName() + " 逃跑了。");
             return false;  // 退出游戏
         }
 
@@ -139,6 +146,7 @@ public class PokemonBattleServer {
             endMessage.put("type", "GameOver");
             attackerOut.println(endMessage.toString());
             defenderOut.println(endMessage.toString());
+            System.out.println("游戏结束。");
             return false;  // 退出游戏
         }
 
@@ -147,12 +155,13 @@ public class PokemonBattleServer {
 
     // 更新双方宝可梦的血量
     private void updateHealth() {
-        String healthInfo = "Remaining HP - Pokemon 1: " + poke1.getHp() + ", Pokemon 2: " + poke2.getHp();
+        String healthInfo = "剩余血量 - 宝可梦1: " + poke1.getHp() + ", 宝可梦2: " + poke2.getHp();
         JSONObject healthMessage = new JSONObject();
         healthMessage.put("type", "HealthUpdate");
         healthMessage.put("healthInfo", healthInfo);
         outA.println(healthMessage.toString());  // 更新客户端A的宝可梦血量
         outB.println(healthMessage.toString());  // 更新客户端B的宝可梦血量
+        System.out.println("血量更新: " + healthInfo);
     }
 
     // 主函数：启动服务器
@@ -160,7 +169,7 @@ public class PokemonBattleServer {
         try {
             new PokemonBattleServer().start();  // 启动服务器
         } catch (IOException e) {
-            e.printStackTrace();  // 打印异常信息
+            System.err.println("启动服务器时发生错误: " + e.getMessage());  // 打印异常信息
         }
     }
 }
