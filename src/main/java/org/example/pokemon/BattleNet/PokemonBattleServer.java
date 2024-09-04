@@ -1,200 +1,143 @@
 package org.example.pokemon.BattleNet;
 
+import org.example.pokemon.battle.Battle;
+import org.example.pokemon.battle.BattleApplication;
+import org.example.pokemon.battle.PokemonData;
+
 import java.io.*;
 import java.net.*;
 
 public class PokemonBattleServer {
-    private static final int PORT = 12345;  // 服务器端口号
-    private static Socket socketA;          // 客户端A的Socket
-    private static Socket socketB;          // 客户端B的Socket
-    private static PrintWriter outA;        // 向客户端A发送数据的PrintWriter
-    private static PrintWriter outB;        // 向客户端B发送数据的PrintWriter
-    private static BufferedReader inA;      // 从客户端A接收数据的BufferedReader
-    private static BufferedReader inB;      // 从客户端B接收数据的BufferedReader
+    private static final int PORT = 12345;  // 服务器端口
+    private ServerSocket serverSocket;  // 服务器端套接字
+    private Socket clientA;  // 客户端A的套接字
+    private Socket clientB;  // 客户端B的套接字
+    private PrintWriter outA;  // 向客户端A发送数据的输出流
+    private PrintWriter outB;  // 向客户端B发送数据的输出流
+    private BufferedReader inA;  // 从客户端A接收数据的输入流
+    private BufferedReader inB;  // 从客户端B接收数据的输入流
+    private ServerBattle battle;  // 战斗逻辑对象
+    private PokemonData poke1;  // 宝可梦1数据
+    private PokemonData poke2;  // 宝可梦2数据
 
-    private static Pet petA;
-    private static Pet petB;
+    // 构造函数：初始化服务器套接字
+    public PokemonBattleServer() throws IOException {
+        serverSocket = new ServerSocket(PORT);
+        System.out.println("Server started...");  // 打印服务器启动信息
+    }
 
-    public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(PORT);
-        System.out.println("服务器启动，监听端口 " + PORT);
-
-        // 接受来自客户端A的连接
-        System.out.println("等待客户端A连接...");
-        socketA = serverSocket.accept();
-        System.out.println("客户端A已连接。");
-
-        // 接受来自客户端B的连接
-        System.out.println("等待客户端B连接...");
-        socketB = serverSocket.accept();
-        System.out.println("客户端B已连接。");
+    // 启动服务器并开始战斗
+    public void start() throws IOException {
+        // 接受两个客户端的连接
+        clientA = serverSocket.accept();
+        clientB = serverSocket.accept();
+        System.out.println("Clients connected.");  // 打印客户端连接信息
 
         // 创建输入输出流
-        inA = new BufferedReader(new InputStreamReader(socketA.getInputStream()));
-        outA = new PrintWriter(socketA.getOutputStream(), true);
+        inA = new BufferedReader(new InputStreamReader(clientA.getInputStream()));
+        outA = new PrintWriter(clientA.getOutputStream(), true);
 
-        inB = new BufferedReader(new InputStreamReader(socketB.getInputStream()));
-        outB = new PrintWriter(socketB.getOutputStream(), true);
+        inB = new BufferedReader(new InputStreamReader(clientB.getInputStream()));
+        outB = new PrintWriter(clientB.getOutputStream(), true);
 
-        // 启动战斗过程
+        // 从文件中加载宝可梦数据
+        poke1 = loadPokemonData("pokemonA.txt");
+        poke2 = loadPokemonData("pokemonB.txt");
+
+        // 初始化战斗逻辑
+        battle = new ServerBattle();
+        // 启动战斗线程
+        new Thread(this::runBattle).start();
+    }
+
+    // 从文件中加载宝可梦数据
+    private PokemonData loadPokemonData(String fileName) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String name = reader.readLine();  // 读取宝可梦名字
+            String image = reader.readLine();  // 读取宝可梦图片
+            String skill1 = reader.readLine();  // 读取宝可梦技能1
+            String skill2 = reader.readLine();  // 读取宝可梦技能2
+            String skill3 = reader.readLine();  // 读取宝可梦技能3
+            String skill4 = reader.readLine();  // 读取宝可梦技能4
+            return new PokemonData();  // 创建并返回宝可梦对象
+        } catch (IOException e) {
+            e.printStackTrace();  // 打印异常信息
+            return null;  // 处理错误的情况
+        }
+    }
+
+    // 运行战斗逻辑
+    private void runBattle() {
         try {
-            startBattle();
+            while (true) {
+                // 处理客户端A和客户端B的轮流操作
+                if (!processTurn(poke1, poke2, outA, inA, outB, "Client A") ||
+                        !processTurn(poke2, poke1, outB, inB, outA, "Client B")) {
+                    break;  // 退出循环
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();  // 打印异常信息
         } finally {
-            // 关闭连接
-            socketA.close();
-            socketB.close();
-            serverSocket.close();
-        }
-    }
-
-    private static void startBattle() throws IOException {
-        // 向A请求开始战斗
-        outA.println("请求开始战斗");
-        String responseA = inA.readLine();
-
-        // 将A的请求转发给B
-        outB.println(responseA);
-        String responseB = inB.readLine();
-
-        // 根据B的反馈通知A和B
-        if ("accept".equalsIgnoreCase(responseB)) {
-            outA.println("战斗接受，开始准备战斗");
-            outB.println("战斗接受，开始准备战斗");
-
-            // 请求宠物名字并设置战斗
-            setupBattle();
-        } else {
-            outA.println("拒绝战斗");
-            outB.println("拒绝战斗");
-        }
-    }
-
-    private static void setupBattle() throws IOException {
-        // 请求A和B提供宠物名字
-        outA.println("请求宠物名字");
-        String petNameA = inA.readLine();
-        outB.println("请求宠物名字");
-        String petNameB = inB.readLine();
-
-        // 根据宠物名字创建宠物（这里是简化版）
-        createPets(petNameA, petNameB);
-
-        // 发送对方宠物名字给每个客户端
-        outA.println("对方宠物: " + petNameB);
-        outB.println("对方宠物: " + petNameA);
-
-        // 开始战斗回合
-        while (true) {
-            // 根据宠物速度确定轮到谁
-            String currentPlayer = determineTurn();
-            if ("A".equals(currentPlayer)) {
-                handleTurn("A", "B");
-            } else {
-                handleTurn("B", "A");
-            }
-
-            // 检查是否结束战斗
-            if (checkEndBattle()) {
-                outA.println("战斗结束");
-                outB.println("战斗结束");
-                break;
+            // 关闭客户端和服务器的套接字
+            try {
+                clientA.close();
+                clientB.close();
+                serverSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();  // 打印异常信息
             }
         }
     }
 
-    private static void handleTurn(String currentPlayer, String opponentPlayer) throws IOException {
-        // 告知当前玩家轮到他们行动
-        if ("A".equals(currentPlayer)) {
-            outA.println("轮到你行动");
-            String actionA = inA.readLine();
-            processAction("A", actionA);
-            updatePlayers();
-            outB.println("轮到你行动");
-            String actionB = inB.readLine();
-            processAction("B", actionB);
-        } else {
-            outB.println("轮到你行动");
-            String actionB = inB.readLine();
-            processAction("B", actionB);
-            updatePlayers();
-            outA.println("轮到你行动");
-            String actionA = inA.readLine();
-            processAction("A", actionA);
+    // 处理每一轮的攻击操作
+    private boolean processTurn(PokemonData attacker, PokemonData defender, PrintWriter attackerOut, BufferedReader attackerIn, PrintWriter defenderOut, String attackerName) throws IOException {
+        try {
+            attackerOut.println("Your turn");  // 通知攻击方轮到他们操作
+            String actioning = attackerIn.readLine();  // 从攻击方读取操作指令
+            int action = Integer.parseInt(actioning);
+            battle.act(attacker, action, defender);  // 执行攻击动作
+            defenderOut.println(attackerName + " took action: " + action);  // 通知防守方攻击方的操作
+        } catch (InterruptedException e) {
+            // 处理 InterruptedException 异常
+            System.err.println("Operation was interrupted: " + e.getMessage());
+            // 根据需要，你还可以选择中断当前线程，或采取其他措施
+            Thread.currentThread().interrupt();  // 可选: 恢复线程的中断状态
         }
+
+
+        // 检查宝可梦是否逃跑
+        if (battle.checkIsOver(poke1, poke2) == -2) {
+            attackerOut.println(attacker.getPokemonName() + "逃跑了");  // 通知攻击方宝可梦逃跑
+            defenderOut.println(attacker.getPokemonName() + "逃跑了");  // 通知防守方宝可梦逃跑
+            return false;  // 退出游戏
+        }
+
+        updateHealth(outA, outB);  // 更新双方宝可梦的血量
+
+        // 检查战斗是否结束
+        if (battle.checkIsOver(poke1, poke2) != 0) {
+            attackerOut.println("Game over");  // 通知攻击方游戏结束
+            defenderOut.println("Game over");  // 通知防守方游戏结束
+            return false;  // 退出游戏
+        }
+
+        return true;  // 继续游戏
     }
 
-    // 根据宠物名字创建宠物
-    private static void createPets(String petNameA, String petNameB) {
-        // 从本地文件读取宠物数据
-        petA = new Pet(petNameA);
-        petB = new Pet(petNameB);
+    // 更新双方宝可梦的血量
+    private void updateHealth(PrintWriter outA, PrintWriter outB) {
+        String healthInfo = "Remaining HP - Pokemon 1: " + poke1.getHp() + ", Pokemon 2: " + poke2.getHp();
+        outA.println(healthInfo);  // 更新客户端A的宝可梦血量
+        outB.println(healthInfo);  // 更新客户端B的宝可梦血量
     }
 
-    // 确定当前轮到哪个玩家
-    private static String determineTurn() {
-        // 比较宠物速度，实际实现中可以更复杂
-        return petA.getSpeed() > petB.getSpeed() ? "A" : "B";
-    }
-
-    // 处理玩家的行动
-    private static void processAction(String player, String action) {
-        // 实际实现中这里需要处理玩家的行动并更新状态
-        Pet currentPet = "A".equals(player) ? petA : petB;
-        // 处理行动...
-        currentPet.performAction(action);
-    }
-
-    // 更新A和B的状态
-    private static void updatePlayers() {
-        // 实际实现中这里需要将当前战斗状态反馈给A和B
-        outA.println("更新血量: " + petA.getStatus() + ", " + petB.getStatus());
-        outB.println("更新血量: " + petA.getStatus() + ", " + petB.getStatus());
-    }
-
-    // 检查战斗是否结束
-    private static boolean checkEndBattle() {
-        // 实际实现中这里需要检查是否有宠物死亡等结束条件
-        return petA.isDead() || petB.isDead();
-    }
-}
-
-// 宠物类
-class Pet {
-    private String name;
-    private int speed;
-    private int health;
-
-    public Pet(String name) {
-        // 从本地文件或数据库加载宠物数据
-        this.name = name;
-        this.speed = loadSpeed(name);
-        this.health = loadHealth(name);
-    }
-
-    public void performAction(String action) {
-        // 执行行动的逻辑
-    }
-
-    public String getStatus() {
-        // 返回宠物的状态
-        return name + " - 生命值: " + health;
-    }
-
-    public boolean isDead() {
-        return health <= 0;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    private int loadSpeed(String name) {
-        // 从文件或数据库加载宠物速度
-        return 10; // 示例值
-    }
-
-    private int loadHealth(String name) {
-        // 从文件或数据库加载宠物生命值
-        return 100; // 示例值
+    // 主函数：启动服务器
+    public static void main(String[] args) {
+        try {
+            new PokemonBattleServer().start();  // 启动服务器
+        } catch (IOException e) {
+            e.printStackTrace();  // 打印异常信息
+        }
     }
 }
