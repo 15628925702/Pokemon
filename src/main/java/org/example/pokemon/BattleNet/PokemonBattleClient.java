@@ -2,6 +2,7 @@ package org.example.pokemon.BattleNet;
 
 import java.io.*;
 import java.net.*;
+import org.json.JSONObject;
 
 // 用于与服务器进行通信的客户端类
 public class PokemonBattleClient {
@@ -47,27 +48,36 @@ public class PokemonBattleClient {
 
     // 处理来自服务器的消息
     private void handleServerMessage(String serverMessage) {
-        if (serverMessage.equals("Your turn")) {
-            isMyTurn = true; // 标记玩家可以操作
-            // 调用回调通知 UI 更新
-            if (callback != null) {
-                callback.onYourTurn();
+        try {
+            JSONObject json = new JSONObject(serverMessage);
+            String type = json.getString("type");
+
+            if (type.equals("YourTurn")) {
+                isMyTurn = true; // 标记玩家可以操作
+                // 调用回调通知 UI 更新
+                if (callback != null) {
+                    callback.onYourTurn();
+                }
+            } else if (type.equals("GameOver")) {
+                System.out.println("Game over! Exiting...");
+                // 调用回调通知游戏结束
+                if (callback != null) {
+                    callback.onGameOver();
+                }
+            } else {
+                System.out.println(serverMessage); // 打印服务器的其他消息
             }
-        } else if (serverMessage.equals("Game over")) {
-            System.out.println("Game over! Exiting...");
-            // 调用回调通知游戏结束
-            if (callback != null) {
-                callback.onGameOver();
-            }
-        } else {
-            System.out.println(serverMessage); // 打印服务器的其他消息
+        } catch (Exception e) {
+            e.printStackTrace(); // 打印异常信息
         }
     }
 
     // 向服务器发送动作指令
     public void sendAction(String action) {
         if (isMyTurn) { // 只有在轮到玩家时才发送动作
-            out.println(action); // 发送指令
+            JSONObject json = new JSONObject();
+            json.put("action", action); // 将动作封装为 JSON 对象
+            out.println(json.toString()); // 发送 JSON 字符串
             isMyTurn = false; // 发送后重置标记
         }
     }

@@ -1,8 +1,8 @@
 package org.example.pokemon.BattleNet;
 
 import org.example.pokemon.battle.Battle;
-import org.example.pokemon.battle.BattleApplication;
 import org.example.pokemon.battle.PokemonData;
+import org.json.JSONObject;
 
 import java.io.*;
 import java.net.*;
@@ -93,11 +93,25 @@ public class PokemonBattleServer {
     // 处理每一轮的攻击操作
     private boolean processTurn(PokemonData attacker, PokemonData defender, PrintWriter attackerOut, BufferedReader attackerIn, PrintWriter defenderOut, String attackerName) throws IOException {
         try {
-            attackerOut.println("Your turn");  // 通知攻击方轮到他们操作
-            String actioning = attackerIn.readLine();  // 从攻击方读取操作指令
-            int action = Integer.parseInt(actioning);
-            battle.act(attacker, action, defender);  // 执行攻击动作
-            defenderOut.println(attackerName + " took action: " + action);  // 通知防守方攻击方的操作
+            // 通知攻击方轮到他们操作
+            JSONObject message = new JSONObject();
+            message.put("type", "YourTurn");
+            attackerOut.println(message.toString());
+
+            // 从攻击方读取操作指令
+            JSONObject receivedMessage = new JSONObject(attackerIn.readLine());
+            int action = receivedMessage.getInt("action");
+
+            // 执行攻击动作
+            battle.act(attacker, action, defender);
+
+            // 通知防守方攻击方的操作
+            message = new JSONObject();
+            message.put("type", "Action");
+            message.put("attacker", attackerName);
+            message.put("action", action);
+            defenderOut.println(message.toString());
+
         } catch (InterruptedException e) {
             // 处理 InterruptedException 异常
             System.err.println("Operation was interrupted: " + e.getMessage());
@@ -105,20 +119,26 @@ public class PokemonBattleServer {
             Thread.currentThread().interrupt();  // 可选: 恢复线程的中断状态
         }
 
-
         // 检查宝可梦是否逃跑
         if (battle.checkIsOver(poke1, poke2) == -2) {
-            attackerOut.println(attacker.getPokemonName() + "逃跑了");  // 通知攻击方宝可梦逃跑
-            defenderOut.println(attacker.getPokemonName() + "逃跑了");  // 通知防守方宝可梦逃跑
+            // 通知攻击方和防守方宝可梦逃跑
+            JSONObject escapeMessage = new JSONObject();
+            escapeMessage.put("type", "Escape");
+            escapeMessage.put("pokemon", attacker.getPokemonName());
+            attackerOut.println(escapeMessage.toString());
+            defenderOut.println(escapeMessage.toString());
             return false;  // 退出游戏
         }
 
-        updateHealth(outA, outB);  // 更新双方宝可梦的血量
+        updateHealth();  // 更新双方宝可梦的血量
 
         // 检查战斗是否结束
         if (battle.checkIsOver(poke1, poke2) != 0) {
-            attackerOut.println("Game over");  // 通知攻击方游戏结束
-            defenderOut.println("Game over");  // 通知防守方游戏结束
+            // 通知双方游戏结束
+            JSONObject endMessage = new JSONObject();
+            endMessage.put("type", "GameOver");
+            attackerOut.println(endMessage.toString());
+            defenderOut.println(endMessage.toString());
             return false;  // 退出游戏
         }
 
@@ -126,10 +146,13 @@ public class PokemonBattleServer {
     }
 
     // 更新双方宝可梦的血量
-    private void updateHealth(PrintWriter outA, PrintWriter outB) {
+    private void updateHealth() {
         String healthInfo = "Remaining HP - Pokemon 1: " + poke1.getHp() + ", Pokemon 2: " + poke2.getHp();
-        outA.println(healthInfo);  // 更新客户端A的宝可梦血量
-        outB.println(healthInfo);  // 更新客户端B的宝可梦血量
+        JSONObject healthMessage = new JSONObject();
+        healthMessage.put("type", "HealthUpdate");
+        healthMessage.put("healthInfo", healthInfo);
+        outA.println(healthMessage.toString());  // 更新客户端A的宝可梦血量
+        outB.println(healthMessage.toString());  // 更新客户端B的宝可梦血量
     }
 
     // 主函数：启动服务器
