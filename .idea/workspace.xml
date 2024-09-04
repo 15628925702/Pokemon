@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/BattleInfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,6 +155,7 @@
       <workItem from="1725323258380" duration="1096000" />
       <workItem from="1725359690052" duration="7223000" />
       <workItem from="1725409140332" duration="116000" />
+      <workItem from="1725409349107" duration="4826000" />
     </task>
     <servers />
   </component>

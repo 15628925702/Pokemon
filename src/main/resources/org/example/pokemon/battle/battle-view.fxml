@@ -16,7 +16,8 @@
             <Button fx:id="buttonSkill3" layoutX="56.0" layoutY="503.0" mnemonicParsing="false" onAction="#skill3Click" text="技能三" />
             <Button fx:id="toolButton" layoutX="641.0" layoutY="439.0" mnemonicParsing="false" onAction="#toolClick" text="道具" />
             <Button fx:id="runButton" layoutX="746.0" layoutY="439.0" mnemonicParsing="false" onAction="#runClick" text="逃跑" />
-            <Label fx:id="statusLabel" layoutX="56.0" layoutY="39.0" prefHeight="287.0" prefWidth="792.0" />
+            <Label fx:id="statusLabel" layoutX="56.0" layoutY="39.0" prefHeight="176.0" prefWidth="792.0" />
+            <Label fx:id="effectLabel" layoutX="54.0" layoutY="193.0" prefHeight="176.0" prefWidth="792.0" />
          </children>
       </Pane>
    </children>

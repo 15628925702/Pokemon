@@ -18,6 +18,7 @@ public class BattleController {
     public Button toolButton;
     public Button runButton;
     public Label statusLabel;
+    public Label effectLabel;
 
     public void skill1Click(ActionEvent actionEvent) throws FileNotFoundException {
         System.out.println("skill1Clicked");
@@ -52,5 +53,23 @@ public class BattleController {
 
         output.print(i);
         output.close();
+    }
+
+    //设置标签
+    public void setStatusLabel(Label label) {
+        //this.statusLabel = label;
+    }
+
+    //改写Label内容
+    public void setStatusLabelText(String status) {
+        statusLabel.setText(status);
+    }
+    public void setEffectLabelText(String effect) {
+        effectLabel.setText(effect);
+    }
+    //增加Label内容
+    public void addStatusLabelText(String status) {
+        String ori = statusLabel.getText();
+        statusLabel.setText(ori + "\n" + status);
     }
 }
