@@ -1,5 +1,8 @@
 package org.example.pokemon.battle;
 
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -248,13 +251,31 @@ public class Battle {
     }
 
     //显示宝可梦信息
-    public void showPokeStatus(PokemonData actor,PokemonData viewer,BattleApplication ui){
+    public void showPokeStatus(PokemonData actor,PokemonData viewer,BattleApplication ui) throws IOException {
+        //FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));
+        //fxmlLoader.load();
+        //BattleController controller = fxmlLoader.<BattleController>getController();
+        Platform.runLater(()->{
+            try {
+                showHp(actor,viewer,ui);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ui.setStatusLabelText(actor.getPokemonName()+"的hp为"+actor.getHp()+'\n'
+            +viewer.getPokemonName()+"的hp为"+viewer.getHp()+'\n'
+            +"目前是"+actor.getPokemonName()+"的回合"+'\n'
+            +"请执行操作 0~3使用技能 4使用道具 5逃跑");
+            showSkills(actor,ui);
+        });
 
+        /*
+        ui.setStatusLabel(actor.getPokemonName()+"的hp为"+actor.getHp());
         System.out.println(actor.getPokemonName()+"的hp为"+actor.getHp());
         System.out.println(viewer.getPokemonName()+"的hp为"+viewer.getHp());
         System.out.println("目前是"+actor.getPokemonName()+"的回合");
         System.out.println("请执行操作 0~3使用技能 4使用道具 5逃跑");
-        showSkills(actor);
+         */
+
     }
 
     //检测游戏是否结束
@@ -271,13 +292,14 @@ public class Battle {
     }
 
     //显示技能信息
-    public void showSkills(PokemonData actor){
+    public void showSkills(PokemonData actor,BattleApplication ui){
         PokemonSkill[] skills = actor.getSkillsOfPokes();
         for(int i=0;i<4;i++) {
             if (skills[i] == null) {
                 break;
             }
-            System.out.println(i + ":" + skills[i].getSkillName() + " 剩余次数:" + skills[i].getSkillTimes());
+            ui.addStatusLabelText(i + ":" + skills[i].getSkillName() + " 剩余次数:" + skills[i].getSkillTimes());
+            //System.out.println(i + ":" + skills[i].getSkillName() + " 剩余次数:" + skills[i].getSkillTimes());
         }
     }
 
@@ -329,5 +351,24 @@ public class Battle {
         }
         //output.print(" ");
         //output.print(-1);
+    }
+
+    //设置血量显示
+    public void showHp(PokemonData actor,PokemonData viewer,BattleApplication ui) throws IOException {
+        //获得actor的目前血量以及血量上限
+        int actor_cur_hp = actor.getHp();
+        PokemonData temp_actor = new PokemonData();
+        temp_actor.getPokeDataFromDb(actor.getPokemonName());
+        int actor_hpLimit = temp_actor.getHp();
+
+        //获得viewer的目前血量以及血量上限
+        int viewer_cur_hp = viewer.getHp();
+        PokemonData temp_viewer = new PokemonData();
+        temp_viewer.getPokeDataFromDb(viewer.getPokemonName());
+        System.out.println(temp_viewer.toString());
+        int viewer_hpLimit = temp_viewer.getHp();
+        System.out.println("viewHpLimit: "+viewer_hpLimit);
+
+        ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,actor_hpLimit,viewer_hpLimit);
     }
 }
