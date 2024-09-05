@@ -75,7 +75,7 @@ public class BackpackViewController implements Initializable {
       try {
          for (Item item : items) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(HelloApplication.class.getResource("item.fxml"));
+            fxmlLoader.setLocation(HelloApplication.class.getClassLoader().getResource("item.fxml"));
 
             Pane pane = fxmlLoader.load();
 

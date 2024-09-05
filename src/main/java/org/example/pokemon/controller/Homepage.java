@@ -8,9 +8,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.example.pokemon.HelloApplication;
+import org.example.pokemon.map.GameApp;
 
 import javax.imageio.IIOException;
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 public class Homepage {
 
@@ -35,11 +37,11 @@ public class Homepage {
 
     @FXML
     private void onPlayClicked() {
-
+       //todo: go to GameApp
     }
 
     public void onBackpackClicked(MouseEvent event) {
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("backpack-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getClassLoader().getResource("backpack-view.fxml"));
         try {
             Scene scene = new Scene(loader.load());
             Stage stage = new Stage();

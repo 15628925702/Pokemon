@@ -84,7 +84,7 @@ public class Register {
             //切换窗口
             if(inserted) {
                 Stage stage = (Stage) phoneNumber.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 stage.setTitle("Welcome to Pokemon World!\uD83D\uDE09");
                 stage.setScene(scene);
@@ -102,7 +102,7 @@ public class Register {
     @FXML
     private void onCancelClicked(MouseEvent event) throws IOException {
         Stage stage = (Stage) phoneNumber.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("LOGIN");
         stage.setScene(scene);
