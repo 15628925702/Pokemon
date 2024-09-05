@@ -21,7 +21,7 @@ public class HelloApplication extends Application {
         // FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("backpack-view.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load());
-
+/*
         // 指定音乐文件的路径
         String musicFile = "org/example/pokemon/music/spooky.mp3"; // 请替换为实际的音乐文件路径
 
@@ -36,7 +36,7 @@ public class HelloApplication extends Application {
 
         // 播放音乐
         mediaPlayer.play();
-
+*/
         // 设置舞台标题并显示
         stage.setTitle("login...");
         stage.setScene(scene);
