@@ -22,7 +22,7 @@ public class GameApp extends GameApplication {
     protected void initSettings(GameSettings gameSettings) {
         gameSettings.setTitle("Pokemon");
         gameSettings.setVersion("0.1");
-        gameSettings.setWidth(1024+128);
+        gameSettings.setWidth(1024);
         gameSettings.setHeight(800);
 //        GameView view = new GameView(new InfoPane(),Integer.MAX_VALUE);
 //        getGameScene().addGameView(view);
@@ -33,7 +33,7 @@ public class GameApp extends GameApplication {
         //指定创建游戏实体的工厂类
         getGameWorld().addEntityFactory(new MyEntityFactory());
 
-        setLevelFromMap("level1.tmx");
+        setLevelFromMap("level2gi.tmx");
 
         player = spawn("player",480,700);
         playerComponent = player.getComponent(PlayerComponent.class);

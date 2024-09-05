@@ -24,7 +24,7 @@ public class MyEntityFactory implements EntityFactory {
                 //不支持使用物理的实体
                 .with(new KeepOnScreenComponent())
                 .with(new PlayerComponent())
-                .bbox(BoundingShape.box(32,50))
+                .bbox(BoundingShape.box(32,44))
                 .zIndex(1)
                 .build();
     }
@@ -54,7 +54,7 @@ public class MyEntityFactory implements EntityFactory {
 
     @Spawns("sea")
     public Entity createSea(SpawnData data) {
-        AnimationChannel ac = new AnimationChannel(FXGL.image("sea_anim2.png"), Duration.seconds(1),2);
+        AnimationChannel ac = new AnimationChannel(FXGL.image("ssea.png"), Duration.seconds(1),2);
         AnimatedTexture at = new AnimatedTexture(ac);
         return FXGL.entityBuilder(data)
                 .type(GameType.SEA)

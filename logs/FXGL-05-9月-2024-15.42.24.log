@@ -1,0 +1,112 @@
+15:42:20.940 [main                     ] DEBUG Logger               - Configured Logger
+15:42:20.956 [main                     ] DEBUG GameApplication      - Logging settings
+Title: Pokemon
+Version: 0.1
+Width: 1024
+Height: 800
+Fullscreen: false
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class com.almasb.fxgl.app.scene.SceneFactory
+
+15:42:21.375 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+15:42:21.378 [JavaFX Application Thread] INFO  Engine               - FXGL-21 (28.12.2023 13.35) on WINDOWS (J:21.0.4 FX:21)
+15:42:21.378 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+15:42:21.378 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 11 version 10.0
+15:42:21.378 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+15:42:21.378 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+15:42:21.378 [JavaFX Application Thread] INFO  Engine               -       Ask questions and discuss at: https://github.com/AlmasB/FXGL/discussions
+15:42:21.379 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+15:42:21.456 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Creating a JavaFX scene
+15:42:21.530 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Target settings size: 1024.0 x 800.0
+15:42:21.530 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled scene size:    1024.0 x 800.0
+15:42:21.530 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+15:42:21.532 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Set initial scene to FXGLStartupScene
+15:42:21.533 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Opening main window
+15:42:21.618 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Window border size: (13.7142333984375, 36.5714111328125)
+15:42:21.618 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled size: 1024.0 x 800.0
+15:42:21.618 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+15:42:21.618 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scene size: 1024.0 x 800.0
+15:42:21.618 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Stage size: 1037.7142333984375 x 836.5714111328125
+15:42:21.623 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+15:42:21.654 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - User app class for loading assets: class org.example.pokemon.map.GameApp
+15:42:21.654 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+15:42:21.655 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/ui/css/fxgl_dark.css
+15:42:21.687 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+15:42:21.746 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+15:42:21.783 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=800, physics.ppm=50.0
+15:42:21.783 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Using strategy: BRUTE_FORCE
+15:42:21.786 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1024x800
+15:42:21.795 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createMenuBodyGameMenu()
+15:42:21.805 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createOptionsMenu()
+15:42:21.812 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/textures/particles/smoke.png
+15:42:21.883 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/textures/particles/trace_horizontal.png
+15:42:21.900 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+15:42:21.917 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+15:42:21.919 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Users\Kilig\Desktop\Pokemon\system\fxgl.bundle
+15:42:21.923 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+15:42:21.923 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+15:42:21.925 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+15:42:21.925 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+15:42:21.925 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/ui/fonts/VarelaRound-Regular.ttf
+15:42:21.925 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/languages/english.lang
+15:42:21.936 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/ui/fonts/Abel-Regular.ttf
+15:42:21.942 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0.319 sec
+15:42:21.945 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/ui/fonts/TerminalLandMono-Regular.otf
+15:42:21.949 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action0 - W
+15:42:21.949 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action1 - A
+15:42:21.949 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action2 - S
+15:42:21.950 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action3 - D
+15:42:21.950 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action4 - Up
+15:42:21.950 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action5 - Left
+15:42:21.950 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action6 - Down
+15:42:21.952 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action7 - Right
+15:42:21.952 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Kilig/Desktop/Pokemon/target/classes/assets/music/BGM.mp3
+15:42:21.954 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/ui/fonts/Courier-Prime.ttf
+15:42:22.115 [JavaFX Application Thread] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@6b3ae79e
+15:42:22.115 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/textures/fxgl_icon.png
+15:42:22.132 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:///C:/Users/Kilig/.m2/repository/com/github/almasb/fxgl/21/fxgl-21.jar!/fxglassets/textures/fxgl_default_cursor.png
+15:42:22.134 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - CTRL+8
+15:42:22.135 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+15:42:22.135 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+15:42:22.136 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+7
+15:42:22.137 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+15:42:22.137 [JavaFX Application Thread] DEBUG LoopRunner           - Initializing JavaFX AnimationTimerLoop
+15:42:22.138 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+15:42:22.139 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+15:42:22.151 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLStartupScene and adding to FXGLLoadingScene
+15:42:22.151 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLStartupScene -> FXGLLoadingScene
+15:42:22.151 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+15:42:22.151 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+15:42:22.151 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+15:42:22.151 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+15:42:22.153 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Initializing game
+15:42:22.155 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+15:42:22.194 [FXGL Background Thread 4 ] WARN  TMXLevelLoader       - TiledMap generated from 1.8.4. Supported version: 1.9.0. Some features may not be parsed fully.
+15:42:22.222 [FXGL Background Thread 4 ] DEBUG TMXLevelLoader       - Parsed TiledMap: file:/C:/Users/Kilig/Desktop/Pokemon/target/classes/assets/levels/level2.tmx
+15:42:22.225 [FXGL Background Thread 4 ] DEBUG TMXLevelLoader       - Creating tile layer entities
+15:42:22.229 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Loading view for layer 图块层 1
+15:42:22.230 [FXGL Background Thread 4 ] DEBUG TilesetLoader        - Created buffer with size 1024.0x800.0
+15:42:22.237 [FXGL Background Thread 4 ] DEBUG TMXLevelLoader       - Creating object layer entities
+15:42:22.241 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Kilig/Desktop/Pokemon/target/classes/assets/textures/ssea.png
+15:42:22.420 [FXGL Background Thread 4 ] DEBUG GameWorld            - Clearing removable entities
+15:42:22.421 [FXGL Background Thread 4 ] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@318a2657
+15:42:22.430 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Kilig/Desktop/Pokemon/target/classes/assets/textures/buLunDan2.png
+15:42:22.436 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/Kilig/Desktop/Pokemon/target/classes/assets/textures/RacketTeam.png
+15:42:22.440 [FXGL Background Thread 4 ] INFO  FXGLApplication      - Game initialization took: 0.287 sec
+15:42:22.444 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+15:42:22.460 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
+15:42:22.461 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLLoadingScene -> GameScene
+15:42:22.992 [FXGL Background Thread 2 ] INFO  UpdaterService       - Your current version:  21
+15:42:22.993 [FXGL Background Thread 2 ] INFO  UpdaterService       - Latest stable version: 21.1
+15:42:24.553 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+15:42:24.553 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+15:42:24.553 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+15:42:24.555 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Users\Kilig\Desktop\Pokemon\system\fxgl.bundle
+15:42:24.556 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+15:42:24.557 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Closing main window
+15:42:24.571 [JavaFX Application Thread] DEBUG Logger               - Closing Logger

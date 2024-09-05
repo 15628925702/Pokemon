@@ -23,7 +23,7 @@ public class PlayerComponent extends Component {
     private AnimatedTexture at;
     private Dir dir;
     private boolean isStopped;
-    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK,GameType.ENEMY));
+    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK,GameType.ENEMY,GameType.SEA));
 
 
     public PlayerComponent() {
@@ -37,7 +37,7 @@ public class PlayerComponent extends Component {
     }
 
     private AnimationChannel createAc(int i,int j){
-        return new AnimationChannel(FXGL.image("BuLunDan.png"),4,128/4,200/4, Duration.seconds(0.75),i,j);
+        return new AnimationChannel(FXGL.image("buLunDan2.png"),4,128/4,176/4, Duration.seconds(0.75),i,j);
     }
 
     @Override
