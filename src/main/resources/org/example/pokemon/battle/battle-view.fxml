@@ -49,6 +49,30 @@
                      <font>
                         <Font name="Microsoft YaHei Bold" size="18.0" />
                      </font></Button>
+                  <Label fx:id="PPText" alignment="CENTER" layoutX="515.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="PP:">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="20.0" />
+                     </font></Label>
+                  <Label fx:id="PPContent1" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="PPContent2" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="PPContent3" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="PPContent4" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane fx:id="opStatusPane" layoutX="41.0" layoutY="14.0" prefHeight="75.0" prefWidth="325.0" style="-fx-background-color: ffffcc; -fx-border-color: black; -fx-border-width: 3px; -fx-border-radius: 3px;">
