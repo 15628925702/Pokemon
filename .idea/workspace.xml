@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/BattleInfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" afterDir="false" />
+=======
+>>>>>>> f29d450c9ec317e00e364d96fa7126c935d5b8d2
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
@@ -70,12 +72,16 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Liu1.1&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+<<<<<<< HEAD
     &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.1/Pokemon/src/main/resources/org/example/pokemon/battle&quot;,
 =======
     &quot;git-widget-placeholder&quot;: &quot;Liu&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon/Pokemon&quot;,
 >>>>>>> GUO-2
+=======
+    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.1/Pokemon/src/main/resources/img/battle&quot;,
+>>>>>>> f29d450c9ec317e00e364d96fa7126c935d5b8d2
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -117,6 +123,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\img\battle" />
       <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\org\example\pokemon\battle" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -211,6 +218,9 @@
       <workItem from="1725323258380" duration="1096000" />
       <workItem from="1725359690052" duration="7223000" />
       <workItem from="1725409140332" duration="116000" />
+      <workItem from="1725409349107" duration="10170000" />
+      <workItem from="1725427824263" duration="5335000" />
+      <workItem from="1725496458968" duration="670000" />
     </task>
     <servers />
   </component>
