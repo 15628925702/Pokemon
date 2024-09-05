@@ -1,0 +1,54 @@
+.root {
+    -fx-background-image: url("../img/pokemon-bg.jpg");
+    -fx-background-size: cover;
+}
+
+.left {
+    -fx-background-color: linear-gradient(to left top, #efea0f, #faaf26, #e77c43, #bc5653, #833e52);
+    -fx-background-radius: 0 50 50 50;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-background-size: 160px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.play-button {
+    -fx-background-image: url("../img/play-now-removebg-preview.png");
+}
+
+.settings-button {
+    -fx-background-image: url("../img/settings-removebg-preview.png");
+}
+
+.exit-button {
+    -fx-background-image: url("../img/exit-removebg-preview.png");
+}
+
+.play-button:hover {
+    -fx-background-image: url("../img/play-now-yellow-black-removebg-preview.png");
+}
+
+.settings-button:hover {
+    -fx-background-image: url("../img/settings-yellow-black-removebg-preview.png");
+}
+
+.exit-button:hover {
+    -fx-background-image: url("../img/exit-yellow-black-removebg-preview.png");
+}
+
+.bar {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 0);
+    -fx-transition: scale 0.5s ease-in-out;
+}
+
+.bar:hover {
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+.decorate-dot {
+    -fx-background-radius: 0 50 0 50;
+    -fx-background-color: linear-gradient(to left top, #efea0f, #faaf26, #e77c43, #bc5653, #833e52);;
+}

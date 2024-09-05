@@ -56,47 +56,6 @@ public class PokemonBattleServer {
         new Thread(this::runBattle).start();
     }
 
-    private PokemonData loadPokemonData(String fileName) {
-        System.out.println("尝试加载文件: " + fileName);
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            System.out.println("文件打开成功。开始读取数据...");
-
-            // 读取宝可梦名字
-            String name = reader.readLine();
-            System.out.println("宝可梦名字: " + name);
-            int pokemonType = Integer.parseInt(reader.readLine());
-            int hp = Integer.parseInt(reader.readLine());
-            int speed = Integer.parseInt(reader.readLine());
-            int physical_attack = Integer.parseInt(reader.readLine());
-            int physical_defense = Integer.parseInt(reader.readLine());
-            int special_attack = Integer.parseInt(reader.readLine());
-            int special_defense = Integer.parseInt(reader.readLine());
-            PokemonSkill[] skillsOfPokes = new PokemonSkill[4];
-            for (int i = 0; i < 4; i++) {
-                String skill = reader.readLine();
-                System.out.println("技能 " + (i + 1) + ": " + skill);
-                skillsOfPokes[i] = convertToPokemonSkill(skill);
-            }
-
-            System.out.println("成功加载宝可梦数据: " + name);  // 打印加载成功的信息
-            return new PokemonData(name, pokemonType, hp, speed, physical_attack, physical_defense, special_attack, special_defense, skillsOfPokes);
-        } catch (IOException e) {
-            System.err.println("加载宝可梦数据时发生错误: " + e.getMessage());  // 打印异常信息
-            return null;  // 处理错误的情况
-        } catch (NumberFormatException e) {
-            System.err.println("数据格式错误: " + e.getMessage());  // 捕捉数据格式异常
-            return null;  // 处理格式错误
-        }
-    }
-
-
-    // 假设有这样的方法
-    private PokemonSkill convertToPokemonSkill(String skillName) {
-        // 实现将技能名转换为 PokemonSkill 对象的逻辑
-        // 这里是一个示例，具体实现取决于 PokemonSkill 类
-        return new PokemonSkill();
-    }
-
     // 运行战斗逻辑
     private void runBattle() {
         try {
