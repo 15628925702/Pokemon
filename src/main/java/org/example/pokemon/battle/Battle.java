@@ -1,12 +1,17 @@
 package org.example.pokemon.battle;
 
-import java.io.IOException;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+
+import java.io.*;
 import java.util.Scanner;
 
 //战斗系统
 public class Battle {
     //属性
     private int round;  //轮数
+    private int command;    //指令
+    private Object lock = new Object();    //线程锁
 
     //构造方法
     public Battle() {
@@ -19,16 +24,34 @@ public class Battle {
     }
 
     //初始化对战
-    public void initBattle() {
+    public void initBattle(PokemonData poke1, PokemonData poke2, BattleApplication ui) throws IOException {
         //建立两个线程
-        Thread accept = new Thread() {};
+        //接收线程
+        Thread accept = new Thread() {
+            public void run() {
+                try {
+                    getInfoFromSever();
+                } catch (FileNotFoundException e) {
+                    System.out.println("File not found");
+                    throw new RuntimeException(e);
+                }
+            }
+        };
         accept.start();
-        Thread action = new Thread() {};
+
+        //操作线程
+        Thread action = new Thread(() -> {
+            try {
+                battleStart(poke1, poke2, ui);
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace(); // 适当地处理异常
+            }
+        });
         action.start();
     }
 
     //开始游戏
-    public void battleStart(PokemonData oriPoke1, PokemonData oriPoke2) throws IOException {
+    public void battleStart(PokemonData oriPoke1, PokemonData oriPoke2, BattleApplication ui) throws IOException, InterruptedException {
         //创建对战对象
         PokemonData poke1 = new PokemonData();
         PokemonData poke2 = new PokemonData();
@@ -42,7 +65,7 @@ public class Battle {
         while (isOn){
             System.out.println("轮数"+round);
             if(compareSpeed(poke1, poke2)){
-                status = act(poke1, poke2); //操作
+                status = act(poke1, poke2, ui); //操作
 
                 //判断游戏是否结束
                 if(status == -2){
@@ -55,7 +78,7 @@ public class Battle {
                     break;
                 }
 
-                status = act(poke2, poke1); //操作
+                status = act(poke2, poke1, ui); //操作
 
                 //判断游戏是否结束
                 if(status == -2){
@@ -69,7 +92,7 @@ public class Battle {
                 }
             }
             else{
-                status = act(poke2, poke1); //操作
+                status = act(poke2, poke1, ui); //操作
 
                 //判断游戏是否结束
                 if(status == -2){
@@ -82,7 +105,7 @@ public class Battle {
                     break;
                 }
 
-                status = act(poke1, poke2); //操作
+                status = act(poke1, poke2, ui); //操作
 
                 //判断游戏是否结束
                 if(status == -2){
@@ -114,14 +137,14 @@ public class Battle {
     }
 
     //进行操作 参数前为操作的对象 后为不操作的对象
-    public int act(PokemonData actor, PokemonData viewer) throws IOException {
-        showPokeStatus(actor,viewer);   //显示宝可梦状态
-        System.out.println("目前是"+actor.getPokemonName()+"的回合");
-        System.out.println("请执行操作 0~3使用技能 4使用道具 5逃跑");
-        showSkills(actor);
+    public int act(PokemonData actor, PokemonData viewer, BattleApplication ui) throws IOException, InterruptedException {
+        showPokeStatus(actor,viewer,ui);   //显示宝可梦状态
+
         //获得执行命令
-        Scanner input = new Scanner(System.in);
-        int action = input.nextInt();
+        synchronized(lock){
+            lock.wait();
+        }
+        int action = command;
 
         //对命令进行分类
         switch (action){
@@ -228,9 +251,31 @@ public class Battle {
     }
 
     //显示宝可梦信息
-    public void showPokeStatus(PokemonData actor,PokemonData viewer){
+    public void showPokeStatus(PokemonData actor,PokemonData viewer,BattleApplication ui) throws IOException {
+        //FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));
+        //fxmlLoader.load();
+        //BattleController controller = fxmlLoader.<BattleController>getController();
+        Platform.runLater(()->{
+            try {
+                showHp(actor,viewer,ui);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ui.setStatusLabelText(actor.getPokemonName()+"的hp为"+actor.getHp()+'\n'
+                    +viewer.getPokemonName()+"的hp为"+viewer.getHp()+'\n'
+                    +"目前是"+actor.getPokemonName()+"的回合"+'\n'
+                    +"请执行操作 0~3使用技能 4使用道具 5逃跑");
+            showSkills(actor,ui);
+        });
+
+        /*
+        ui.setStatusLabel(actor.getPokemonName()+"的hp为"+actor.getHp());
         System.out.println(actor.getPokemonName()+"的hp为"+actor.getHp());
         System.out.println(viewer.getPokemonName()+"的hp为"+viewer.getHp());
+        System.out.println("目前是"+actor.getPokemonName()+"的回合");
+        System.out.println("请执行操作 0~3使用技能 4使用道具 5逃跑");
+         */
+
     }
 
     //检测游戏是否结束
@@ -247,18 +292,83 @@ public class Battle {
     }
 
     //显示技能信息
-    public void showSkills(PokemonData actor){
+    public void showSkills(PokemonData actor,BattleApplication ui){
         PokemonSkill[] skills = actor.getSkillsOfPokes();
         for(int i=0;i<4;i++) {
             if (skills[i] == null) {
                 break;
             }
-            System.out.println(i + ":" + skills[i].getSkillName() + " 剩余次数:" + skills[i].getSkillTimes());
+            ui.addStatusLabelText(i + ":" + skills[i].getSkillName() + " 剩余次数:" + skills[i].getSkillTimes());
+            //System.out.println(i + ":" + skills[i].getSkillName() + " 剩余次数:" + skills[i].getSkillTimes());
         }
     }
 
     //响应
     public boolean isFinish(){
         return true;
+    }
+
+    //接受信息
+    public void getInfoFromSever() throws FileNotFoundException {
+        boolean getInfo = false;
+        int result = -1;
+        // 使用类路径访问文件
+        File file = new File("src/main/resources/BattleInfo");
+
+        System.out.println("接受信息线程调用成功");
+
+        //检测文件是否操作
+        while (true){
+            Scanner input = new Scanner(file);
+            while (input.hasNext()){
+                int i = input.nextInt();
+                if (i == -1){
+                    continue;
+                }else{
+                    result = i;
+                    handleResult(i);
+                }
+            }
+        }
+    }
+
+    //处理获得的信息
+    public void handleResult(int i) throws FileNotFoundException {
+        System.out.println("handle success");
+        command = i;
+
+        //标记此条消息已经处理
+        markFinish();
+    }
+
+    //标记任务已完成
+    public void markFinish() throws FileNotFoundException {
+        File file = new File("src/main/resources/BattleInfo");
+        PrintWriter output = new PrintWriter(file);
+
+        synchronized(lock){
+            lock.notifyAll();
+        }
+        //output.print(" ");
+        //output.print(-1);
+    }
+
+    //设置血量显示
+    public void showHp(PokemonData actor,PokemonData viewer,BattleApplication ui) throws IOException {
+        //获得actor的目前血量以及血量上限
+        int actor_cur_hp = actor.getHp();
+        PokemonData temp_actor = new PokemonData();
+        temp_actor.getPokeDataFromDb(actor.getPokemonName());
+        int actor_hpLimit = temp_actor.getHp();
+
+        //获得viewer的目前血量以及血量上限
+        int viewer_cur_hp = viewer.getHp();
+        PokemonData temp_viewer = new PokemonData();
+        temp_viewer.getPokeDataFromDb(viewer.getPokemonName());
+        System.out.println(temp_viewer.toString());
+        int viewer_hpLimit = temp_viewer.getHp();
+        System.out.println("viewHpLimit: "+viewer_hpLimit);
+
+        ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,actor_hpLimit,viewer_hpLimit);
     }
 }

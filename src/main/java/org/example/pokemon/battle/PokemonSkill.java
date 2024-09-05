@@ -147,4 +147,5 @@ public class PokemonSkill {
     public void skillTimesMinus() {
         this.skillTimes -= 1;
     }
+
 }

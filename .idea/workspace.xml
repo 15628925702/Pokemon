@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" afterDir="false" />
+=======
+>>>>>>> f29d450c9ec317e00e364d96fa7126c935d5b8d2
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" afterDir="false" />
 <<<<<<< HEAD
@@ -18,6 +24,7 @@
 =======
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
 >>>>>>> 82b20ffd8e3e840e45690b9b000d0ed3d5e0e488
+>>>>>>> GUO-2
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,15 +59,29 @@
     <option name="showLibraryContents" value="true" />
   </component>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
+>>>>>>> GUO-2
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;JUnit.Pokemon中的所有.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+<<<<<<< HEAD
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Liu1.1&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+<<<<<<< HEAD
+    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.1/Pokemon/src/main/resources/org/example/pokemon/battle&quot;,
+=======
     &quot;git-widget-placeholder&quot;: &quot;Liu&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon/Pokemon&quot;,
+>>>>>>> GUO-2
+=======
+    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.1/Pokemon/src/main/resources/img/battle&quot;,
+>>>>>>> f29d450c9ec317e00e364d96fa7126c935d5b8d2
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -68,6 +89,11 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+<<<<<<< HEAD
+    &quot;应用程序.BattleApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.PokemonBattleClient.executor&quot;: &quot;Run&quot;
+=======
     &quot;应用程序.HelloApplication.executor&quot;: &quot;Run&quot;
   }
 }</component>
@@ -92,10 +118,12 @@
     "应用程序.BattleApplication.executor": "Run",
     "应用程序.HelloApplication.executor": "Run",
     "应用程序.PokemonBattleClient.executor": "Run"
+>>>>>>> GUO-2
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\img\battle" />
       <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\org\example\pokemon\battle" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -103,7 +131,7 @@
       <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\org\example\pokemon\battle" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.PokemonBattleClient">
+  <component name="RunManager" selected="应用程序.BattleApplication">
     <configuration name="BattleApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.pokemon.battle.BattleApplication" />
       <module name="Pokemon" />
@@ -158,8 +186,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.PokemonBattleClient" />
         <item itemvalue="应用程序.BattleApplication" />
+        <item itemvalue="应用程序.PokemonBattleClient" />
         <item itemvalue="应用程序.HelloApplication" />
         <item itemvalue="JUnit.Pokemon中的所有" />
       </list>
@@ -188,6 +216,11 @@
       <workItem from="1725283290785" duration="2335000" />
       <workItem from="1725288493768" duration="241000" />
       <workItem from="1725323258380" duration="1096000" />
+      <workItem from="1725359690052" duration="7223000" />
+      <workItem from="1725409140332" duration="116000" />
+      <workItem from="1725409349107" duration="10170000" />
+      <workItem from="1725427824263" duration="5335000" />
+      <workItem from="1725496458968" duration="670000" />
     </task>
     <servers />
   </component>
