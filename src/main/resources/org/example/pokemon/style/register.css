@@ -1,0 +1,25 @@
+.root {
+    -fx-background-color: #F9CA18;
+}
+
+.button {
+    -fx-background-color: #A52A2A;
+    -fx-background-radius: 10px;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #0ebeff, #5e95e6, #af6bcc,  #ff42b3);
+}
+/*.signInBtn {*/
+/*    */
+/*}*/
+
+/*.cancelBtn {*/
+
+/*}*/
+
+/*.sendVerificationCodeBtn {*/
+
+/*}*/
