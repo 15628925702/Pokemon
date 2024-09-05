@@ -5,56 +5,156 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/hello-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/BackpackViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/Homepage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/ItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/Register.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/model/BackPack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/model/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/model/MyListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/lib/mysql-connector-j-9.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/backpack-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/homepage.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/SIGN-IN-PURPLE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/SIGN-IN-YELLOW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/SIGN-IN.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/archivo-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/clefable-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/dinosaur-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/duck-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/evil-dragon-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/exit-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/exit-yellow-black-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/pikachu-intro.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/play-now-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/play-now-yellow-black-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/pokemon-back-ground.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/pokemon-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/pokemon-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/pokemon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/settings-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/settings-yellow-black-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/three-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/img/turtle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/item.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/music/spooky.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/register.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/style/backpack-page.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/style/home-page.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/style/item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/style/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/style/register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="CSS File" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jrt://C:/Program Files/Java/jdk-21!/java.base/java/lang/IllegalStateException.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:\0 javatrain\apache\apache-maven-3.8.8" />
+        <option name="customMavenHome" value="D:\0 javatrain\apache\apache-maven-3.8.8" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
         <option name="userSettingsFile" value="D:\0 javatrain\apache\apache-maven-3.8.8\apache-maven-3.8.8\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2lVFi1kdq6dMSOJJAMkn5XONroI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MyJDBC.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;zhou&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Repo/wonderfulGame&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.27586207&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Repo\Pokemon\src\main\lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Repo\Pokemon\src\main\resources" />
+      <recent name="D:\Repo\Pokemon\src\main\resources\org\example\pokemon\style" />
+      <recent name="D:\Repo\Pokemon\src\main\resources\org\example\pokemon" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.HelloApplication" />
+      <module name="Pokemon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.pokemon.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HelloApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,10 +164,35 @@
       <option name="presentableId" value="Default" />
       <updated>1725257460830</updated>
       <workItem from="1725257461860" duration="166000" />
+      <workItem from="1725258193273" duration="1996000" />
+      <workItem from="1725361541378" duration="6380000" />
+      <workItem from="1725368734867" duration="9286000" />
+      <workItem from="1725408600289" duration="826000" />
+      <workItem from="1725410418579" duration="24625000" />
+      <workItem from="1725445263903" duration="16530000" />
+      <workItem from="1725494994689" duration="9842000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLSyntaxErrorException" package="java.sql" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
