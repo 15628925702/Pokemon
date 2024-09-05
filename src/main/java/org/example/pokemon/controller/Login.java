@@ -31,7 +31,7 @@ public class Login {
 
     @FXML
     private void onSignInClicked(MouseEvent event) throws IOException {
-
+/*
         String inputPhoneNumber = phoneNumber.getText();
         String inputPassword = password.getText();
 
@@ -62,6 +62,9 @@ public class Login {
             }
 
         }
+
+ */
+        loadHomePage(event);
     }
 
     @FXML
