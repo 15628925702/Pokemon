@@ -56,4 +56,8 @@ public class BattleApplication extends Application {
     public void addStatusLabelText(String text) {
         controller.addStatusLabelText(text);
     }
+    //更新血量状态
+    public void updateHpStatus(int role1_cur_hp, int role2_cur_hp,int role1_hp, int role2_hp) {
+        controller.setHpStatus(role1_cur_hp,role2_cur_hp,role1_hp,role2_hp);
+    }
 }

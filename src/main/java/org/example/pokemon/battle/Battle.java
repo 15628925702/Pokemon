@@ -256,6 +256,11 @@ public class Battle {
         //fxmlLoader.load();
         //BattleController controller = fxmlLoader.<BattleController>getController();
         Platform.runLater(()->{
+            try {
+                showHp(actor,viewer,ui);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             ui.setStatusLabelText(actor.getPokemonName()+"的hp为"+actor.getHp()+'\n'
             +viewer.getPokemonName()+"的hp为"+viewer.getHp()+'\n'
             +"目前是"+actor.getPokemonName()+"的回合"+'\n'
@@ -346,5 +351,24 @@ public class Battle {
         }
         //output.print(" ");
         //output.print(-1);
+    }
+
+    //设置血量显示
+    public void showHp(PokemonData actor,PokemonData viewer,BattleApplication ui) throws IOException {
+        //获得actor的目前血量以及血量上限
+        int actor_cur_hp = actor.getHp();
+        PokemonData temp_actor = new PokemonData();
+        temp_actor.getPokeDataFromDb(actor.getPokemonName());
+        int actor_hpLimit = temp_actor.getHp();
+
+        //获得viewer的目前血量以及血量上限
+        int viewer_cur_hp = viewer.getHp();
+        PokemonData temp_viewer = new PokemonData();
+        temp_viewer.getPokeDataFromDb(viewer.getPokemonName());
+        System.out.println(temp_viewer.toString());
+        int viewer_hpLimit = temp_viewer.getHp();
+        System.out.println("viewHpLimit: "+viewer_hpLimit);
+
+        ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,actor_hpLimit,viewer_hpLimit);
     }
 }
