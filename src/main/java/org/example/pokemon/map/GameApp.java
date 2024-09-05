@@ -2,6 +2,7 @@ package org.example.pokemon.map;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.GameView;
 import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -21,8 +22,10 @@ public class GameApp extends GameApplication {
     protected void initSettings(GameSettings gameSettings) {
         gameSettings.setTitle("Pokemon");
         gameSettings.setVersion("0.1");
-        gameSettings.setWidth(1024+96);
+        gameSettings.setWidth(1024+128);
         gameSettings.setHeight(800);
+//        GameView view = new GameView(new InfoPane(),Integer.MAX_VALUE);
+//        getGameScene().addGameView(view);
     }
 
     @Override
@@ -34,10 +37,7 @@ public class GameApp extends GameApplication {
 
         player = spawn("player",480,700);
         playerComponent = player.getComponent(PlayerComponent.class);
-//        spawn("block",200,200);
-
-
-        //playerComponent = player.getComponent(PlayerComponent.class);
+        spawn("enemy",300,300);
     }
 
     @Override
@@ -53,13 +53,9 @@ public class GameApp extends GameApplication {
     }
 
     @Override
-    protected void initPhysics() {
-        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(GameType.PLAYER,GameType.BLOCK){
-            @Override
-            protected void onCollisionBegin(Entity player, Entity block) {
-
-            }
-        });
+    protected void onPreInit() {
+        FXGL.getSettings().setGlobalMusicVolume(0.4);
+        FXGL.loopBGM("BGM.mp3");
     }
 
     public static void main(String[] args) {

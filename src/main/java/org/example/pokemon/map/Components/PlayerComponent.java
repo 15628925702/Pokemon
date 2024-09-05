@@ -23,7 +23,7 @@ public class PlayerComponent extends Component {
     private AnimatedTexture at;
     private Dir dir;
     private boolean isStopped;
-    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK));
+    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK,GameType.ENEMY));
 
 
     public PlayerComponent() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="243">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="301">
  <tileset firstgid="1" name="outDoor" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="outDoor.png" width="256" height="282"/>
  </tileset>
@@ -44,11 +44,10 @@
 55,1,1,1,1,1,1,1,1,1,1,1,1,1,49,50,51,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 47,1,1,1,1,1,1,1,1,1,4,1,1,1,49,50,51,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 55,1,1,1,1,1,1,1,1,1,1,1,1,1,49,50,51,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,
-63,1,1,1,1,1,1,1,1,1,1,1,1,1,49,50,51,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1
+63,48,15,16,15,16,15,16,15,16,15,16,15,16,49,50,51,15,16,15,16,15,16,15,16,15,16,15,16,15,16,15
 </data>
  </layer>
  <objectgroup id="2" name="对象层 1">
-  <object id="131" type="block" gid="64" x="32" y="800" width="32" height="32"/>
   <object id="132" type="block" gid="56" x="32" y="768" width="32" height="32"/>
   <object id="133" type="block" gid="56" x="32" y="704" width="32" height="32"/>
   <object id="134" type="block" gid="56" x="32" y="640" width="32" height="32"/>
@@ -104,5 +103,35 @@
   <object id="236" type="block" gid="22" x="864" y="64" width="32" height="32"/>
   <object id="237" type="block" gid="22" x="928" y="64" width="32" height="32"/>
   <object id="238" type="block" gid="22" x="992" y="64" width="32" height="32"/>
+  <object id="270" type="block" gid="7" x="64" y="768" width="32" height="32"/>
+  <object id="271" type="block" gid="7" x="128" y="768" width="32" height="32"/>
+  <object id="272" type="block" gid="7" x="192" y="768" width="32" height="32"/>
+  <object id="273" type="block" gid="7" x="256" y="768" width="32" height="32"/>
+  <object id="274" type="block" gid="7" x="320" y="768" width="32" height="32"/>
+  <object id="275" type="block" gid="7" x="384" y="768" width="32" height="32"/>
+  <object id="276" type="block" gid="7" x="544" y="768" width="32" height="32"/>
+  <object id="277" type="block" gid="7" x="608" y="768" width="32" height="32"/>
+  <object id="278" type="block" gid="7" x="672" y="768" width="32" height="32"/>
+  <object id="279" type="block" gid="7" x="736" y="768" width="32" height="32"/>
+  <object id="280" type="block" gid="7" x="800" y="768" width="32" height="32"/>
+  <object id="281" type="block" gid="7" x="864" y="768" width="32" height="32"/>
+  <object id="282" type="block" gid="7" x="928" y="768" width="32" height="32"/>
+  <object id="283" type="block" gid="7" x="992" y="768" width="32" height="32"/>
+  <object id="284" type="block" gid="8" x="96" y="768" width="32" height="32"/>
+  <object id="285" type="block" gid="8" x="160" y="768" width="32" height="32"/>
+  <object id="286" type="block" gid="8" x="224" y="768" width="32" height="32"/>
+  <object id="287" type="block" gid="8" x="288" y="768" width="32" height="32"/>
+  <object id="288" type="block" gid="8" x="352" y="768" width="32" height="32"/>
+  <object id="289" type="block" gid="8" x="416" y="768" width="32" height="32"/>
+  <object id="290" type="block" gid="8" x="576" y="768" width="32" height="32"/>
+  <object id="291" type="block" gid="8" x="640" y="768" width="32" height="32"/>
+  <object id="292" type="block" gid="8" x="704" y="768" width="32" height="32"/>
+  <object id="293" type="block" gid="8" x="768" y="768" width="32" height="32"/>
+  <object id="294" type="block" gid="8" x="832" y="768" width="32" height="32"/>
+  <object id="295" type="block" gid="8" x="896" y="768" width="32" height="32"/>
+  <object id="296" type="block" gid="8" x="960" y="768" width="32" height="32"/>
+  <object id="297" type="block" gid="49" x="448" y="800" width="32" height="32"/>
+  <object id="298" type="block" gid="50" x="480" y="800" width="32" height="32"/>
+  <object id="299" type="block" gid="51" x="512" y="800" width="32" height="32"/>
  </objectgroup>
 </map>

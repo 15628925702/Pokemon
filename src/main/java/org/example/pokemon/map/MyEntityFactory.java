@@ -9,11 +9,8 @@ import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
-import javafx.geometry.BoundingBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import org.example.pokemon.map.Components.EnemyCoponent;
+import org.example.pokemon.map.Components.EnemyComponent;
 import org.example.pokemon.map.Components.PlayerComponent;
 
 
@@ -28,7 +25,7 @@ public class MyEntityFactory implements EntityFactory {
                 .with(new KeepOnScreenComponent())
                 .with(new PlayerComponent())
                 .bbox(BoundingShape.box(32,50))
-                .zIndex(1000)
+                .zIndex(1)
                 .build();
     }
 
@@ -36,8 +33,10 @@ public class MyEntityFactory implements EntityFactory {
     public Entity createEnemy(SpawnData data) {
         return FXGL.entityBuilder(data)
                 .type(GameType.ENEMY)
-                .with(new PlayerComponent())
-                .with(new EnemyCoponent())
+                .collidable()
+                .with(new KeepOnScreenComponent())
+                .bbox(BoundingShape.box(32,50))
+                .with(new EnemyComponent())
                 .build();
     }
 
