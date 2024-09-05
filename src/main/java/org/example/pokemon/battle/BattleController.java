@@ -59,34 +59,47 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
 
 
     public void skill1Click(ActionEvent actionEvent) throws FileNotFoundException {
-        System.out.println("skill1Clicked");
-        setBattleInfo(0);
-        handleActionClick(0); // 发送技能指令
+        if(client.isMyTurn){
+            System.out.println("skill1Clicked");
+            setBattleInfo(0);
+            handleActionClick(0); // 发送技能指令
+        }
+
     }
     public void skill2Click(ActionEvent actionEvent) throws FileNotFoundException {
-        System.out.println("skill2Clicked");
-        setBattleInfo(1);
-        handleActionClick(1); // 发送技能指令
+        if(client.isMyTurn) {
+            System.out.println("skill2Clicked");
+            setBattleInfo(1);
+            handleActionClick(1); // 发送技能指令
+        }
     }
     public void skill3Click(ActionEvent actionEvent) throws FileNotFoundException {
-        System.out.println("skill3Clicked");
-        setBattleInfo(2);
-        handleActionClick(2); // 发送技能指令
+        if(client.isMyTurn) {
+            System.out.println("skill2Clicked");
+            setBattleInfo(2);
+            handleActionClick(2); // 发送技能指令
+        }
     }
     public void skill4Click(ActionEvent actionEvent) throws FileNotFoundException {
-        System.out.println("skill4Clicked");
-        setBattleInfo(3);
-        handleActionClick(3); // 发送技能指令
+        if(client.isMyTurn) {
+            System.out.println("skill2Clicked");
+            setBattleInfo(3);
+            handleActionClick(3); // 发送技能指令
+        }
     }
     public void toolClick(ActionEvent actionEvent) throws FileNotFoundException {
-        System.out.println("toolButtonClicked");
-        setBattleInfo(4);
-        handleActionClick(4); // 发送技能指令
+        if(client.isMyTurn) {
+            System.out.println("skill2Clicked");
+            setBattleInfo(4);
+            handleActionClick(4); // 发送技能指令
+        }
     }
     public void runClick(ActionEvent actionEvent) throws FileNotFoundException {
-        System.out.println("runButtonClicked");
-        setBattleInfo(5);
-        handleActionClick(5); // 发送技能指令
+        if(client.isMyTurn) {
+            System.out.println("skill2Clicked");
+            setBattleInfo(5);
+            handleActionClick(5); // 发送技能指令
+        }
     }
 
     //改写记录文件
@@ -200,6 +213,13 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
         });
     }
 
+    public void onHealthUpdate(String healthInfo){
+        Platform.runLater(() -> {
+            // 更新 UI 状态，提示玩家可以操作
+            statusLabel.setText("Update Health!");
+        });
+    }
+
     // 确保在应用程序退出时关闭客户端连接
     public void closeClient() {
         if (client != null) {
@@ -210,6 +230,8 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
             }
         }
     }
+
+
 
 
 }

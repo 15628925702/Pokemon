@@ -4,7 +4,6 @@ import java.io.*;
 import java.net.*;
 import org.json.JSONObject;
 
-// 用于与服务器进行通信的客户端类
 public class PokemonBattleClient {
     private static final String SERVER_ADDRESS = "localhost"; // 服务器地址
     private static final int PORT = 12345; // 服务器端口
@@ -14,6 +13,10 @@ public class PokemonBattleClient {
     public volatile boolean isMyTurn = false; // 标记是否轮到玩家操作（线程安全）
     private Thread communicationThread; // 用于运行通信的线程
     private ClientCallback callback; // 用于回调 UI 更新的接口
+
+    // 添加用于存储血量的属性
+    private int healthMe; // 宝可梦A的血量
+    private int healthEn; // 宝可梦B的血量
 
     // 构造函数：初始化客户端套接字
     public PokemonBattleClient(ClientCallback callback) throws IOException {
@@ -74,6 +77,22 @@ public class PokemonBattleClient {
                 if (callback != null) {
                     callback.onGameOver();
                 }
+            } else if (type.equals("HealthUpdate")) {
+                String healthInfo = json.getString("healthInfo");
+                System.out.println("服务器消息 - " + healthInfo); // 打印血量更新的信息
+
+                // 解析血量信息并更新属性
+                String[] healthParts = healthInfo.split(", ");
+                this.healthMe = Integer.parseInt(healthParts[0].split(": ")[1]); // 提取A的血量
+                this.healthEn = Integer.parseInt(healthParts[1].split(": ")[1]); // 提取B的血量
+
+                // 打印更新后的血量
+                System.out.println("更新后的血量 - 宝可梦A: " + healthMe+ ", 宝可梦B: " + healthEn);
+
+                // 可以在此处更新 UI 以显示血量
+                if (callback != null) {
+                    callback.onHealthUpdate(healthInfo);
+                }
             } else {
                 System.out.println("服务器消息： " + serverMessage); // 打印服务器的其他消息
             }
@@ -111,5 +130,6 @@ public class PokemonBattleClient {
     public interface ClientCallback {
         void onYourTurn();
         void onGameOver();
+        void onHealthUpdate(String healthInfo);
     }
 }
