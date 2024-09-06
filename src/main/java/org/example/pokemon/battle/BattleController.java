@@ -63,17 +63,21 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
 
     // 构造函数：初始化客户端
     public BattleController() {
+    }
+
+
+    public void initClient(){
         try {
-            client = new PokemonBattleClient(this); // 创建客户端实例并传递回调
+            System.out.println("创建客户端");
+            this.client = new PokemonBattleClient(this); // 创建客户端实例并传递回调
         } catch (IOException e) {
             e.printStackTrace(); // 打印异常信息
         }
     }
 
-
     public void skill1Click(ActionEvent actionEvent) throws FileNotFoundException {
+        System.out.println("skill1Clicked  "+client.isMyTurn);
         if(client.isMyTurn){
-            System.out.println("skill1Clicked");
             setBattleInfo(0);
             handleActionClick(0); // 发送技能指令
         }
@@ -227,6 +231,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
 
     // 处理按钮点击并发送动作到服务器
     private void handleActionClick(int action) {
+        System.out.println("action = " + action);
         if (client != null && client.isMyTurn) { // 确保客户端对象存在并且轮到玩家操作
             client.sendAction(String.valueOf(action)); // 发送指令到服务器
         } else {

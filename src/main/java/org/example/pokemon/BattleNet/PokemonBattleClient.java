@@ -14,6 +14,7 @@ public class PokemonBattleClient {
     private Thread communicationThread; // 用于运行通信的线程
     private ClientCallback callback; // 用于回调 UI 更新的接口
 
+
     // 添加用于存储血量的属性
     private int healthMe; // 宝可梦A的血量
     private int healthEn; // 宝可梦B的血量
@@ -65,11 +66,13 @@ public class PokemonBattleClient {
             String type = json.getString("type");
 
             if (type.equals("YourTurn")) {
-                isMyTurn = true; // 标记玩家可以操作
-                System.out.println("轮到你操作了。"); // 打印轮到玩家的提示
+                this.isMyTurn = true; // 标记玩家可以操作
+                System.out.println("轮到你操作了。 "+"isMyturn="+isMyTurn); // 打印轮到玩家的提示
+
                 // 调用回调通知 UI 更新
                 if (callback != null) {
                     callback.onYourTurn();
+                    System.out.println("UI显示轮到你了"+isMyTurn); // 打印轮到玩家的提示
                 }
             } else if (type.equals("GameOver")) {
                 System.out.println("游戏结束！"); // 打印游戏结束的信息
@@ -103,6 +106,7 @@ public class PokemonBattleClient {
 
     // 向服务器发送动作指令
     public void sendAction(String action) {
+        System.out.println("正在发送"); // 打印要发送的动作指令
         if (isMyTurn) { // 只有在轮到玩家时才发送动作
             JSONObject json = new JSONObject();
             json.put("action", action); // 将动作封装为 JSON 对象
