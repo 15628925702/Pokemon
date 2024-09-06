@@ -151,13 +151,11 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
         System.out.println("role1_cur_hp: " + role1_cur_hp + " role1_hp: " + role1_hp + '\n'
                 + "role2_cur_hp: " +role2_cur_hp + " role2_hp: " + role2_hp);
         int role1_width =(int)(((double)role1_cur_hp/role1_hp)*200);
-        System.out.println("width = " + role1_width);
         myStatusHpNum.setText(role1_cur_hp+"/"+role1_hp);
         myHpStatus.setPrefWidth(role1_width);
         int role2_width =(int)(((double)role2_cur_hp/role2_hp)*200);
         opHpStatus.setPrefWidth(role2_width);
         opStatusHpNum.setText(role2_cur_hp+"/"+role2_hp);
-        System.out.println("width = " + role2_width);
     }
 
     //悬浮效果
@@ -231,13 +229,14 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
 
     // 处理按钮点击并发送动作到服务器
     private void handleActionClick(int action) {
-        System.out.println("action = " + action);
+
         if (client != null && client.isMyTurn) { // 确保客户端对象存在并且轮到玩家操作
+            System.out.println("发起行动编号： " + action);
             client.sendAction(String.valueOf(action)); // 发送指令到服务器
         } else {
             Platform.runLater(() -> {
                 // 如果不是玩家回合，显示提示信息
-                setStatusLabelText("It's not your turn yet.");
+                setStatusLabelText("不是你的回合");
             });
         }
     }
@@ -247,7 +246,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public void onYourTurn() {
         Platform.runLater(() -> {
             // 更新 UI 状态，提示玩家可以操作
-            setStatusLabelText("It's your turn!");
+            setStatusLabelText("轮到你的回合！");
         });
     }
 
@@ -255,7 +254,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public void onGameOver() {
         Platform.runLater(() -> {
             // 更新 UI 状态，提示游戏结束
-            setStatusLabelText("Game over! Exiting...");
+            setStatusLabelText("胜负已分！游戏结束...");
             // 这里可以添加更多逻辑来处理游戏结束情况
         });
     }
@@ -263,7 +262,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public void onHealthUpdate(String healthInfo){
         Platform.runLater(() -> {
             // 更新 UI 状态，提示玩家可以操作
-            statusLabel.setText("Update Health!");
+            statusLabel.setText("对方的回合，等待对方行动（你的点击无效）");
         });
     }
 

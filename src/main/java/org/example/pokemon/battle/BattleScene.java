@@ -1,24 +1,21 @@
 
 package org.example.pokemon.battle;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.example.pokemon.HelloApplication;
 
 import java.io.IOException;
 
-public class BattleApplication extends Scene {
+public class BattleScene extends Scene {
 
     @FXML
     private BattleController controller;
 
-    public BattleApplication(Parent parent, double v, double v1) {
+    public BattleScene(Parent parent, double v, double v1) {
         super(parent, v, v1);
         //this.controller = controller;
         //this.stage = stage;
@@ -32,7 +29,6 @@ public class BattleApplication extends Scene {
 
 
     public void start(Stage primaryStage) throws IOException {
-        System.out.println("000000");
         //初始化ui
         FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));
 
@@ -43,7 +39,6 @@ public class BattleApplication extends Scene {
 
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
         this.controller = fxmlLoader.<BattleController>getController();
-        System.out.println("-------"+controller);
         primaryStage.setTitle("Battle");
         primaryStage.setScene(scene);
         primaryStage.show();

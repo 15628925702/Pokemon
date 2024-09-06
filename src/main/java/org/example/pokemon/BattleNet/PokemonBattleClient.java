@@ -79,7 +79,10 @@ public class PokemonBattleClient {
                     System.out.println("UI显示轮到你了"+isMyTurn); // 打印轮到玩家的提示
                 }
             }else if(type.equals("result")){
-                this.ifMiss = true;
+                int result=json.getInt("result");
+                if(result==-5){
+                    this.ifMiss=true;
+                }
             }else if (type.equals("GameOver")) {
                 System.out.println("游戏结束！"); // 打印游戏结束的信息
                 // 调用回调通知游戏结束

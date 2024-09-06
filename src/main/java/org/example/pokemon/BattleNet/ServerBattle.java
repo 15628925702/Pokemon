@@ -11,7 +11,7 @@ public class ServerBattle {
     // 进行操作，参数前为操作的对象，后为不操作的对象
     public int act(PokemonData actor, int action, PokemonData viewer) throws IOException, InterruptedException {
         System.out.println("++++++++++");
-        System.out.println("执行操作: " + action);
+        System.out.println("++执行操作: " + action);
         System.out.println("++++++++++");
         // 对命令进行分类
         switch (action) {
