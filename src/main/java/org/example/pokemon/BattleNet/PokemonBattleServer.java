@@ -43,8 +43,13 @@ public class PokemonBattleServer {
         // 从文件中加载宝可梦数
         poke1=new PokemonData();
         poke2=new PokemonData();
-        poke1.getPokeDataFromDb("小火龙");
-        poke2.getPokeDataFromDb("小火龙");
+        poke1.getPokeDataFromDb("皮卡丘");
+        poke1.setPokeSkill("冲撞",0);
+        poke1.setPokeSkill("十万伏特",1);
+        poke1.setPokeSkill("电击",2);
+        poke2.getPokeDataFromDb("妙蛙种子");
+        poke2.setPokeSkill("冲撞",0);
+        poke2.setPokeSkill("种子炸弹",1);
         System.out.println("宝可梦数据加载完成。");
 
         // 初始化战斗逻辑
@@ -92,11 +97,12 @@ public class PokemonBattleServer {
             int action = receivedMessage.getInt("action");
 
             // 执行攻击动作
-            battle.act(attacker, action, defender);
+            int result =battle.act(attacker, action, defender);
             System.out.println(attackerName + " 执行了动作: " + action);
 
             // 通知防守方攻击方的操作
             message = new JSONObject();
+            message.put("result", result);
             message.put("type", "Action");
             message.put("attacker", attackerName);
             message.put("action", action);
@@ -145,6 +151,7 @@ public class PokemonBattleServer {
         outA.println(healthMessage.toString());  // 更新客户端A的宝可梦血量
         outB.println(healthMessage.toString());  // 更新客户端B的宝可梦血量
         System.out.println("血量更新: " + healthInfo);
+        System.out.println("===========================");
     }
 
     // 主函数：启动服务器

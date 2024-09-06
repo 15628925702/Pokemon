@@ -72,7 +72,7 @@ public class BattleApplication extends Scene {
         pokemon4.setPokeSkill("种子炸弹",1);
 
         Battle battle = new Battle();
-        battle.initBattle(pokemon4,pokemon1,this);
+        battle.initBattle(pokemon4,pokemon1,this,controller.client);
     }
 
     //改写标签文本

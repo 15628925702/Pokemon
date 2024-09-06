@@ -11,13 +11,16 @@ public class PokemonBattleClient {
     private BufferedReader in; // 输入流，用于接收来自服务器的数据
     private PrintWriter out; // 输出流，用于向服务器发送数据
     public volatile boolean isMyTurn = false; // 标记是否轮到玩家操作（线程安全）
+    public volatile boolean ifMiss = false; // 标记是否轮到玩家操作（线程安全）
     private Thread communicationThread; // 用于运行通信的线程
     private ClientCallback callback; // 用于回调 UI 更新的接口
 
 
     // 添加用于存储血量的属性
-    private int healthMe; // 宝可梦A的血量
-    private int healthEn; // 宝可梦B的血量
+    public int healthMe; // 宝可梦A的血量
+    public int healthEn; // 宝可梦B的血量
+
+
 
     // 构造函数：初始化客户端套接字
     public PokemonBattleClient(ClientCallback callback) throws IOException {
@@ -65,6 +68,7 @@ public class PokemonBattleClient {
             JSONObject json = new JSONObject(serverMessage);
             String type = json.getString("type");
 
+
             if (type.equals("YourTurn")) {
                 this.isMyTurn = true; // 标记玩家可以操作
                 System.out.println("轮到你操作了。 "+"isMyturn="+isMyTurn); // 打印轮到玩家的提示
@@ -74,7 +78,9 @@ public class PokemonBattleClient {
                     callback.onYourTurn();
                     System.out.println("UI显示轮到你了"+isMyTurn); // 打印轮到玩家的提示
                 }
-            } else if (type.equals("GameOver")) {
+            }else if(type.equals("result")){
+                this.ifMiss = true;
+            }else if (type.equals("GameOver")) {
                 System.out.println("游戏结束！"); // 打印游戏结束的信息
                 // 调用回调通知游戏结束
                 if (callback != null) {

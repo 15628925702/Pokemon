@@ -10,7 +10,9 @@ public class ServerBattle {
 
     // 进行操作，参数前为操作的对象，后为不操作的对象
     public int act(PokemonData actor, int action, PokemonData viewer) throws IOException, InterruptedException {
+        System.out.println("++++++++++");
         System.out.println("执行操作: " + action);
+        System.out.println("++++++++++");
         // 对命令进行分类
         switch (action) {
             // 发动技能1 2 3 4
@@ -21,16 +23,16 @@ public class ServerBattle {
             // 使用道具
             case 4: {
                 System.out.println(actor.getPokemonName() + " 使用了道具。");
-                return -1;
+                return -4;
             }
             // 逃跑
             case 5: {
                 System.out.println(actor.getPokemonName() + " 选择了逃跑。");
-                return -2;
+                return -5;
             }
             default: {
                 System.out.println("无效的操作: " + action);
-                return -3;
+                return -6;
             }
         }
     }

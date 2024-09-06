@@ -59,7 +59,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public Label noticeLabel;
     public Button noticeButton;
 
-    private PokemonBattleClient client; // 客户端对象，用于与服务器通信
+    public PokemonBattleClient client; // 客户端对象，用于与服务器通信
 
     // 构造函数：初始化客户端
     public BattleController() {
