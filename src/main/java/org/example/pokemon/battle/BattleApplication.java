@@ -2,6 +2,7 @@
 package org.example.pokemon.battle;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,6 +14,8 @@ import org.example.pokemon.HelloApplication;
 import java.io.IOException;
 
 public class BattleApplication extends Scene {
+
+    @FXML
     private BattleController controller;
 
     public BattleApplication(Parent parent, double v, double v1) {
@@ -27,7 +30,9 @@ public class BattleApplication extends Scene {
     }
      */
 
+
     public void start(Stage primaryStage) throws IOException {
+        System.out.println("000000");
         //初始化ui
         FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));
 
@@ -37,10 +42,13 @@ public class BattleApplication extends Scene {
         //controller.setStatusLabel(statusLabel);
 
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
-        controller = fxmlLoader.<BattleController>getController();
+        this.controller = fxmlLoader.<BattleController>getController();
+        System.out.println("-------"+controller);
         primaryStage.setTitle("Battle");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        controller.initClient();
 
         PokemonData pokemon1 = new PokemonData();
         pokemon1.getPokeDataFromDb("皮卡丘");
