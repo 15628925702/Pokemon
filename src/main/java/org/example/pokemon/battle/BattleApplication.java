@@ -103,4 +103,5 @@ public class BattleApplication extends Application {
         controller.noticeLabel.setText(notice);
         controller.noticeButton.setDisable(false);
     }
+    
 }
