@@ -6,25 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" afterDir="false" />
-=======
->>>>>>> f29d450c9ec317e00e364d96fa7126c935d5b8d2
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PokeDatabase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PokeDatabase.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PokeSkillDatabase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PokeSkillDatabase.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/hello-view.fxml" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
->>>>>>> 82b20ffd8e3e840e45690b9b000d0ed3d5e0e488
->>>>>>> GUO-2
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemon.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,38 +39,23 @@
     </option>
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
-}</component>
+    &quot;associatedIndex&quot;: 3
+    }</component>
   <component name="ProjectId" id="2lVFi1kdq6dMSOJJAMkn5XONroI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
->>>>>>> GUO-2
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;JUnit.Pokemon中的所有.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-<<<<<<< HEAD
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Liu1.1&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Liu1.2&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-<<<<<<< HEAD
     &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.1/Pokemon/src/main/resources/org/example/pokemon/battle&quot;,
-=======
-    &quot;git-widget-placeholder&quot;: &quot;Liu&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon/Pokemon&quot;,
->>>>>>> GUO-2
-=======
-    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.1/Pokemon/src/main/resources/img/battle&quot;,
->>>>>>> f29d450c9ec317e00e364d96fa7126c935d5b8d2
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -89,48 +63,12 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-<<<<<<< HEAD
     &quot;应用程序.BattleApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.BattleTest.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.PokemonBattleClient.executor&quot;: &quot;Run&quot;
-=======
-    &quot;应用程序.HelloApplication.executor&quot;: &quot;Run&quot;
   }
 }</component>
-  <component name="RunManager" selected="应用程序.HelloApplication">
-=======
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.Pokemon中的所有.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Liu1.1",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Programs/Pokemon_Liu1.1/Pokemon/src/main/resources/org/example/pokemon/battle",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.BattleApplication.executor": "Run",
-    "应用程序.HelloApplication.executor": "Run",
-    "应用程序.PokemonBattleClient.executor": "Run"
->>>>>>> GUO-2
-  }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\img\battle" />
-      <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\org\example\pokemon\battle" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\org\example\pokemon" />
-      <recent name="D:\Programs\Pokemon_Liu1.1\Pokemon\src\main\resources\org\example\pokemon\battle" />
-    </key>
-  </component>
   <component name="RunManager" selected="应用程序.BattleApplication">
     <configuration name="BattleApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.pokemon.battle.BattleApplication" />
@@ -145,7 +83,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
->>>>>>> 82b20ffd8e3e840e45690b9b000d0ed3d5e0e488
+    <configuration name="BattleTest" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.battle.BattleApplication" />
+      <module name="Pokemon" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.pokemon.HelloApplication" />
       <module name="Pokemon" />
@@ -159,9 +103,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-<<<<<<< HEAD
-
-=======
     <configuration name="PokemonBattleClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.pokemon.net.PokemonBattleClient" />
       <module name="Pokemon" />
@@ -175,7 +116,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
->>>>>>> 82b20ffd8e3e840e45690b9b000d0ed3d5e0e488
     <configuration name="Pokemon中的所有" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Pokemon" />
       <option name="PACKAGE_NAME" value="" />
@@ -184,6 +124,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.Pokemon中的所有" />
+      <item itemvalue="应用程序.BattleTest" />
+      <item itemvalue="应用程序.BattleApplication" />
+      <item itemvalue="应用程序.HelloApplication" />
+      <item itemvalue="应用程序.PokemonBattleClient" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.BattleApplication" />
@@ -221,6 +168,9 @@
       <workItem from="1725409349107" duration="10170000" />
       <workItem from="1725427824263" duration="5335000" />
       <workItem from="1725496458968" duration="670000" />
+      <workItem from="1725510793199" duration="884000" />
+      <workItem from="1725513959670" duration="10442000" />
+      <workItem from="1725531516897" duration="825000" />
     </task>
     <servers />
   </component>

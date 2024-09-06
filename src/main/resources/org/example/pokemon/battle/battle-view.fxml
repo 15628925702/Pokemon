@@ -12,7 +12,10 @@
    <children>
       <Pane prefHeight="606.0" prefWidth="900.0" style="-fx-background-color: #7FFFD4;">
          <children>
-            <Label fx:id="statusLabel" layoutX="60.0" layoutY="117.0" prefHeight="176.0" prefWidth="792.0" />
+            <Label fx:id="statusLabel" alignment="TOP_LEFT" layoutX="41.0" layoutY="102.0" prefHeight="124.0" prefWidth="376.0">
+               <font>
+                  <Font name="Microsoft YaHei" size="14.0" />
+               </font></Label>
             <ImageView fx:id="opStage" fitHeight="141.0" fitWidth="415.0" layoutX="471.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../img/battle/battleStage.png" />
@@ -49,30 +52,35 @@
                      <font>
                         <Font name="Microsoft YaHei Bold" size="18.0" />
                      </font></Button>
-                  <Label fx:id="PPText" alignment="CENTER" layoutX="515.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="PP:">
+                  <Label fx:id="PPText" alignment="CENTER" layoutX="515.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="PP:" visible="false">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="20.0" />
                      </font></Label>
-                  <Label fx:id="PPContent1" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X">
+                  <Label fx:id="PPContent1" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X" visible="false">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="PPContent2" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X">
+                  <Label fx:id="PPContent2" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X" visible="false">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="PPContent3" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X">
+                  <Label fx:id="PPContent3" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X" visible="false">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="PPContent4" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X">
+                  <Label fx:id="PPContent4" alignment="CENTER" layoutX="684.0" layoutY="103.0" prefHeight="27.0" prefWidth="100.0" text="X/X" visible="false">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="20.0" />
                      </font>
                   </Label>
+                  <Button fx:id="returnButton" disable="true" layoutX="10.0" layoutY="8.0" mnemonicParsing="false" onAction="#returnButtonClick" prefHeight="144.0" prefWidth="804.0" style="-fx-background-color: white;" text="Button" visible="false">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="20.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="opStatusPane" layoutX="41.0" layoutY="14.0" prefHeight="75.0" prefWidth="325.0" style="-fx-background-color: ffffcc; -fx-border-color: black; -fx-border-width: 3px; -fx-border-radius: 3px;">
@@ -105,6 +113,22 @@
                      </font>
                   </Label>
                   <Label fx:id="myStatusHpNum" layoutX="32.0" layoutY="40.0" text="XX/XX" />
+               </children>
+            </Pane>
+            <ImageView fx:id="myImage" fitHeight="180.0" fitWidth="240.0" layoutX="129.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="opImage" fitHeight="180.0" fitWidth="240.0" layoutX="559.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+            <Pane fx:id="noticePane" layoutX="150.0" layoutY="142.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 5px;" visible="false">
+               <children>
+                  <Label fx:id="noticeLabel" alignment="CENTER" layoutX="17.0" layoutY="14.0" prefHeight="116.0" prefWidth="567.0" text="Label">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="noticeButton" disable="true" layoutX="271.0" layoutY="137.0" mnemonicParsing="false" onAction="#noticeButtonClick" onMouseEntered="#noticeButtonHover" onMouseExited="#noticeButtonExit" style="-fx-background-color: white;" text="确定">
+                     <font>
+                        <Font name="Microsoft YaHei" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>
