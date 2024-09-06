@@ -1,7 +1,6 @@
 package org.example.pokemon.BattleNet;
 
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
+
 import org.example.pokemon.battle.PokemonData;
 
 import java.io.IOException;

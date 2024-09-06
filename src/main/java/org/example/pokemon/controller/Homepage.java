@@ -37,7 +37,7 @@ public class Homepage {
 
     @FXML
     private void onPlayClicked() {
-       //todo: go to GameApp
+        //todo: go to GameApp
     }
 
     public void onBackpackClicked(MouseEvent event) {

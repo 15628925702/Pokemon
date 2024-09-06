@@ -13,6 +13,8 @@ import java.util.Scanner;
 public class PokemonData{
     //名字
     private String pokemonName;
+    //id
+    private int pokemonID;
     //属性
     private int pokemonType;
     //面板
@@ -116,6 +118,14 @@ public class PokemonData{
         this.skillsOfPokes = skillsOfPokes;
     }
 
+    public int getPokemonID() {
+        return pokemonID;
+    }
+
+    public void setPokemonID(int pokemonID) {
+        this.pokemonID = pokemonID;
+    }
+
     public static int[][] getTypeRelation() {
         return typeRelation;
     }
@@ -123,6 +133,7 @@ public class PokemonData{
     //深拷贝
     public void clonePokeData(PokemonData poke){
         this.pokemonName = poke.pokemonName;
+        this.pokemonID = poke.pokemonID;
         this.pokemonType = poke.pokemonType;
         this.hp = poke.hp;
         this.speed = poke.speed;
@@ -149,6 +160,7 @@ public class PokemonData{
         while (input.hasNext()) {
             if (input.next().equals(pokemonName)) {
                 this.pokemonName = pokemonName;
+                this.pokemonID = input.nextInt();
                 this.pokemonType = input.nextInt();
                 this.hp = input.nextInt();
                 this.speed = input.nextInt();

@@ -1,10 +1,7 @@
 package org.example.pokemon.BattleNet;
 
-import org.example.pokemon.battle.Battle;
 import org.example.pokemon.battle.PokemonData;
-import org.example.pokemon.battle.PokemonSkill;
 import org.json.JSONObject;
-
 import java.io.*;
 import java.net.*;
 

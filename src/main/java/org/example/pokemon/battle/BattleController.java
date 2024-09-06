@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.application.Platform;
 import org.example.pokemon.BattleNet.PokemonBattleClient;
+import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -45,6 +47,17 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public Pane skillPane;
     public ImageView myStage;
     public ImageView opStage;
+    public Label PPText;
+    public Label PPContent1;
+    public Label PPContent2;
+    public Label PPContent3;
+    public Label PPContent4;
+    public Button returnButton;
+    public ImageView myImage;
+    public ImageView opImage;
+    public Pane noticePane;
+    public Label noticeLabel;
+    public Button noticeButton;
 
     private PokemonBattleClient client; // 客户端对象，用于与服务器通信
 
@@ -146,15 +159,23 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     //悬浮效果
     public void skill1MouseHover(MouseEvent mouseEvent) {
         buttonSkill1.setStyle("-fx-background-color: #EDEDED;");
+        PPText.setVisible(true);
+        PPContent1.setVisible(true);
     }
     public void skill2MouseHover(MouseEvent mouseEvent) {
         buttonSkill2.setStyle("-fx-background-color: #EDEDED;");
+        PPText.setVisible(true);
+        PPContent2.setVisible(true);
     }
     public void skill3MouseHover(MouseEvent mouseEvent) {
         buttonSkill3.setStyle("-fx-background-color: #EDEDED;");
+        PPText.setVisible(true);
+        PPContent3.setVisible(true);
     }
     public void skill4MouseHover(MouseEvent mouseEvent) {
         buttonSkill4.setStyle("-fx-background-color: #EDEDED;");
+        PPText.setVisible(true);
+        PPContent4.setVisible(true);
     }
     public void toolMouseHover(MouseEvent mouseEvent) {
         toolButton.setStyle("-fx-background-color: #EDEDED;");
@@ -164,15 +185,23 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     }
     public void skill1MouseExit(MouseEvent mouseEvent) {
         buttonSkill1.setStyle("-fx-background-color: white;");
+        PPText.setVisible(false);
+        PPContent1.setVisible(false);
     }
     public void skill2MouseExit(MouseEvent mouseEvent) {
         buttonSkill2.setStyle("-fx-background-color: white;");
+        PPText.setVisible(false);
+        PPContent2.setVisible(false);
     }
     public void skill3MouseExit(MouseEvent mouseEvent) {
         buttonSkill3.setStyle("-fx-background-color: white;");
+        PPText.setVisible(false);
+        PPContent3.setVisible(false);
     }
     public void skill4MouseExit(MouseEvent mouseEvent) {
         buttonSkill4.setStyle("-fx-background-color: white;");
+        PPText.setVisible(false);
+        PPContent4.setVisible(false);
     }
     public void toolMouseExit(MouseEvent mouseEvent) {
         toolButton.setStyle("-fx-background-color: white;");
@@ -182,6 +211,19 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     }
 
     //获得技能信息
+    public void getSkillInfo(String skill1,String skill2,String skill3,String skill4,String pp1,String pp2,String pp3,String pp4) {
+        //显示技能名称
+        buttonSkill1.setText(skill1);
+        buttonSkill2.setText(skill2);
+        buttonSkill3.setText(skill3);
+        buttonSkill4.setText(skill4);
+
+        //显示技能次数
+        PPContent1.setText(pp1);
+        PPContent2.setText(pp2);
+        PPContent3.setText(pp3);
+        PPContent4.setText(pp4);
+    }
 
     // 处理按钮点击并发送动作到服务器
     private void handleActionClick(int action) {
@@ -190,7 +232,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
         } else {
             Platform.runLater(() -> {
                 // 如果不是玩家回合，显示提示信息
-                statusLabel.setText("It's not your turn yet.");
+                setStatusLabelText("It's not your turn yet.");
             });
         }
     }
@@ -200,7 +242,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public void onYourTurn() {
         Platform.runLater(() -> {
             // 更新 UI 状态，提示玩家可以操作
-            statusLabel.setText("It's your turn!");
+            setStatusLabelText("It's your turn!");
         });
     }
 
@@ -208,7 +250,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public void onGameOver() {
         Platform.runLater(() -> {
             // 更新 UI 状态，提示游戏结束
-            statusLabel.setText("Game over! Exiting...");
+            setStatusLabelText("Game over! Exiting...");
             // 这里可以添加更多逻辑来处理游戏结束情况
         });
     }
@@ -231,7 +273,59 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
         }
     }
 
+    //点击了反馈款2
+    public void returnButtonClick(ActionEvent actionEvent) {
+        returnButton.setDisable(true);
+        returnButton.setVisible(false);
+    }
 
+    //播放受击动画
+    public void showDamageAnimation() {
+        //获得初始坐标
+        double originX = opImage.getX();
+        double originY = opImage.getY();
 
+        //受击
+        opImage.setX(opImage.getX()+10);
+        opImage.setY(opImage.getY()-10);
+        try{
+            Thread.sleep(200);
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        opImage.setX(opImage.getX()-10);
+        opImage.setY(opImage.getY()-10);
+        try{
+            Thread.sleep(200);
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        opImage.setX(opImage.getX()+10);
+        opImage.setY(opImage.getY()+10);
+        try{
+            Thread.sleep(200);
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        opImage.setX(originX);
+        opImage.setY(originY);
+
+    }
+
+    //关闭窗口
+    public void noticeButtonClick(ActionEvent actionEvent) {
+        // 获取当前的 Stage
+        Stage stage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
+        // 关闭窗口
+        stage.close();
+    }
+
+    //悬浮效果
+    public void noticeButtonHover(MouseEvent mouseEvent) {
+        noticeButton.setStyle("-fx-background-color: #EDEDED;");
+    }
+    public void noticeButtonExit(MouseEvent mouseEvent) {
+        noticeButton.setStyle("-fx-background-color: white;");
+    }
 
 }
