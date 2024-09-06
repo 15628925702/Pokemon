@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="343">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="352">
  <tileset firstgid="1" name="outDoor" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="outDoor.png" width="256" height="282"/>
  </tileset>
@@ -18,13 +18,13 @@
  <tileset firstgid="261" name="water" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="D:/Download/water.png" width="96" height="128"/>
  </tileset>
- <tileset firstgid="273" name="nurseHouse" tilewidth="32" tileheight="32" tilecount="9" columns="3">
+ <tileset firstgid="273" name="nurseHouse" tilewidth="32" tileheight="32" tilecount="0" columns="3">
   <image source="nurseHouse.png" width="96" height="96"/>
  </tileset>
- <tileset firstgid="282" name="battleHouse" tilewidth="32" tileheight="32" tilecount="9" columns="3">
+ <tileset firstgid="273" name="battleHouse" tilewidth="32" tileheight="32" tilecount="0" columns="3">
   <image source="battleHouse.png" width="96" height="96"/>
  </tileset>
- <tileset firstgid="291" name="houses" tilewidth="32" tileheight="32" tilecount="40" columns="5">
+ <tileset firstgid="273" name="houses" tilewidth="32" tileheight="32" tilecount="40" columns="5">
   <image source="houses.png" width="160" height="256"/>
  </tileset>
  <layer id="1" name="图块层 1" width="32" height="25">
@@ -34,10 +34,10 @@
 47,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 55,1,1,1,1,1,1,1,1,1,1,1,4,1,1,2,2,1,1,1,2,2,2,1,1,1,1,2,2,2,2,1,
 47,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-55,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,1,1,4,1,1,311,1,1,1,315,1,1,1,1,1,1,
-47,1,1,1,4,1,1,1,1,1,1,1,1,1,1,297,298,299,1,1,1,316,317,318,319,320,1,1,1,1,1,17,
-55,1,1,1,1,1,1,1,1,1,1,1,1,1,1,302,303,304,1,1,4,321,322,323,324,325,1,1,1,1,17,36,
-47,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,326,1,1,1,330,1,1,1,17,36,26,
+55,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,1,1,4,1,1,293,1,1,1,297,1,1,1,1,1,1,
+47,1,1,1,4,1,1,1,1,1,1,1,1,1,1,279,280,281,1,1,1,298,299,300,301,302,1,1,1,1,1,17,
+55,1,1,1,1,1,1,1,1,1,1,1,1,1,1,284,285,286,1,1,4,303,304,305,306,307,1,1,1,1,17,36,
+47,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,308,1,1,1,312,1,1,1,17,36,26,
 55,1,1,1,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,17,36,26,26,
 47,1,1,1,1,1,1,1,1,1,1,1,1,1,41,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,
 55,1,1,1,1,1,1,1,1,1,1,1,1,1,49,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,
@@ -142,29 +142,29 @@
   <object id="297" type="block" gid="49" x="448" y="800" width="32" height="32"/>
   <object id="298" type="block" gid="50" x="480" y="800" width="32" height="32"/>
   <object id="299" type="block" gid="51" x="512" y="800" width="32" height="32"/>
-  <object id="301" type="block" gid="291" x="448" y="192" width="32" height="32"/>
-  <object id="302" type="block" gid="292" x="480" y="192" width="32" height="32"/>
-  <object id="303" type="block" gid="293" x="512" y="192" width="32" height="32"/>
-  <object id="304" type="block" gid="294" x="544" y="192" width="32" height="32"/>
-  <object id="305" type="block" gid="295" x="576" y="192" width="32" height="32"/>
-  <object id="306" type="block" gid="296" x="448" y="224" width="32" height="32"/>
-  <object id="307" type="block" gid="301" x="448" y="256" width="32" height="32"/>
-  <object id="308" type="block" gid="306" x="448" y="288" width="32" height="32"/>
-  <object id="309" type="block" gid="307" x="480" y="288" width="32" height="32"/>
-  <object id="310" type="block" gid="308" x="512" y="288" width="32" height="32"/>
-  <object id="311" type="block" gid="309" x="544" y="288" width="32" height="32"/>
-  <object id="312" type="block" gid="310" x="576" y="288" width="32" height="32"/>
-  <object id="315" type="block" gid="305" x="576" y="256" width="32" height="32"/>
-  <object id="316" type="block" gid="300" x="576" y="224" width="32" height="32"/>
-  <object id="332" type="block" gid="322" x="704" y="256" width="32" height="32"/>
-  <object id="333" type="block" gid="317" x="704" y="224" width="32" height="32"/>
-  <object id="334" type="block" gid="319" x="768" y="224" width="32" height="32"/>
-  <object id="336" type="block" gid="324" x="768" y="256" width="32" height="32"/>
-  <object id="337" type="block" gid="327" x="704" y="288" width="32" height="32"/>
-  <object id="338" type="block" gid="329" x="768" y="288" width="32" height="32"/>
-  <object id="339" type="block" gid="328" x="736" y="288" width="32" height="32"/>
-  <object id="340" type="block" gid="312" x="704" y="192" width="32" height="32"/>
-  <object id="341" type="block" gid="313" x="736" y="192" width="32" height="32"/>
-  <object id="342" type="block" gid="314" x="768" y="192" width="32" height="32"/>
+  <object id="301" type="block" gid="273" x="448" y="192" width="32" height="32"/>
+  <object id="302" type="block" gid="274" x="480" y="192" width="32" height="32"/>
+  <object id="303" type="block" gid="275" x="512" y="192" width="32" height="32"/>
+  <object id="304" type="block" gid="276" x="544" y="192" width="32" height="32"/>
+  <object id="305" type="block" gid="277" x="576" y="192" width="32" height="32"/>
+  <object id="306" type="block" gid="278" x="448" y="224" width="32" height="32"/>
+  <object id="307" type="block" gid="283" x="448" y="256" width="32" height="32"/>
+  <object id="308" type="block" gid="288" x="448" y="288" width="32" height="32"/>
+  <object id="309" type="block" gid="289" x="480" y="288" width="32" height="32"/>
+  <object id="310" type="block" gid="290" x="512" y="288" width="32" height="32"/>
+  <object id="311" type="block" gid="291" x="544" y="288" width="32" height="32"/>
+  <object id="312" type="block" gid="292" x="576" y="288" width="32" height="32"/>
+  <object id="315" type="block" gid="287" x="576" y="256" width="32" height="32"/>
+  <object id="316" type="block" gid="282" x="576" y="224" width="32" height="32"/>
+  <object id="332" type="block" gid="304" x="704" y="256" width="32" height="32"/>
+  <object id="333" type="block" gid="299" x="704" y="224" width="32" height="32"/>
+  <object id="334" type="block" gid="301" x="768" y="224" width="32" height="32"/>
+  <object id="336" type="block" gid="306" x="768" y="256" width="32" height="32"/>
+  <object id="337" type="block" gid="309" x="704" y="288" width="32" height="32"/>
+  <object id="338" type="block" gid="311" x="768" y="288" width="32" height="32"/>
+  <object id="339" type="block" gid="310" x="736" y="288" width="32" height="32"/>
+  <object id="340" type="block" gid="294" x="704" y="192" width="32" height="32"/>
+  <object id="341" type="block" gid="295" x="736" y="192" width="32" height="32"/>
+  <object id="342" type="block" gid="296" x="768" y="192" width="32" height="32"/>
  </objectgroup>
 </map>
