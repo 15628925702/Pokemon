@@ -67,6 +67,7 @@ public class PokemonBattleClient {
             if (type.equals("YourTurn")) {
                 isMyTurn = true; // 标记玩家可以操作
                 System.out.println("轮到你操作了。"); // 打印轮到玩家的提示
+                System.out.println(this.isMyTurn);
                 // 调用回调通知 UI 更新
                 if (callback != null) {
                     callback.onYourTurn();
@@ -103,6 +104,7 @@ public class PokemonBattleClient {
 
     // 向服务器发送动作指令
     public void sendAction(String action) {
+        System.out.println("正在发送"); // 打印要发送的动作指令
         if (isMyTurn) { // 只有在轮到玩家时才发送动作
             JSONObject json = new JSONObject();
             json.put("action", action); // 将动作封装为 JSON 对象
