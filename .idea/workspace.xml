@@ -1,53 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-11.03.29.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-11.03.50.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/map/Components/EnemyComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/map/Components/PlayerComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/map/Dir.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/map/GameApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/map/GameType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/map/InfoPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/map/MyEntityFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/level1.tmx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/levels/outDoor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/music/BGM.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/BuLunDan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/Nurse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/RacketTeam.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/player_stand2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/sea_anim.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/sea_anim2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/Readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/fxgl.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/BackpackViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/BackpackViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/Homepage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/Homepage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/item/回复药.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/item/矿泉水.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/backpack-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/backpack-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/homepage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/item.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/register.fxml" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/BattleNet/PokemonBattleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/BattleNet/PokemonBattleClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +24,7 @@
         <option value="CSS File" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="JavaFXApplication" />
       </list>
     </option>
   </component>
@@ -78,10 +42,10 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="customMavenHome" value="C:\Java Lib\apache-maven-3.8.8" />
-        <option name="localRepository" value="C:\Java Lib\apache-maven-3.8.8\repo" />
+        <option name="customMavenHome" value="D:\JAVA IDE WORKPLACE\apache-maven-3.8.8" />
+        <option name="localRepository" value="D:\JAVA IDE WORKPLACE\localRepo" />
         <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
-        <option name="userSettingsFile" value="C:\Java Lib\apache-maven-3.8.8\conf\settings.xml" />
+        <option name="userSettingsFile" value="D:\JAVA IDE WORKPLACE\apache-maven-3.8.8\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -97,34 +61,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameApp.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.MyJDBC.executor": "Run",
-    "Maven.Pokemon [org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile].executor": "Run",
-    "Maven.Pokemon [org.apache.maven.plugins:maven-compiler-plugin:3.11.0:help].executor": "Run",
-    "Maven.Pokemon [org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "test__merge",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Repo/Pokemon/src/main/lib/mysql-connector-j-9.0.0.jar",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.27586207",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MyJDBC.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Pokemon中的所有.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pokemon [org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pokemon [org.apache.maven.plugins:maven-compiler-plugin:3.11.0:help].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pokemon [org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Liu1.3&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.3/Pokemon/src/main/lib/mysql-connector-j-9.0.0.jar&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.27586207&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.Battle1.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.BattleApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.BattleTest.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.PokemonBattleServer.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.battle1.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.battle2.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.org.example.pokemon.battle.BattleTest.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Repo\Pokemon\src\main\lib" />
@@ -135,10 +106,9 @@
       <recent name="D:\Repo\Pokemon\src\main\resources\org\example\pokemon" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloApplication">
+  <component name="RunManager" selected="应用程序.battle2">
     <configuration name="GameApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.pokemon.map.GameApp" />
-
       <module name="Pokemon" />
       <extension name="coverage">
         <pattern>
@@ -150,21 +120,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-
-    <configuration name="BattleTest" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.battle.BattleApplication" />
-      <module name="Pokemon" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.HelloApplication" />
+    <configuration name="PokemonBattleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.BattleNet.PokemonBattleServer" />
       <module name="Pokemon" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.pokemon.controller.*" />
+          <option name="PATTERN" value="org.example.pokemon.BattleNet.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -172,16 +133,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-
-    <configuration name="PokemonBattleClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.net.PokemonBattleClient" />
+    <configuration name="battle1" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.battle.BattleTest" />
       <module name="Pokemon" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.pokemon.net.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="battle2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.battle.BattleTest" />
+      <module name="Pokemon" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -196,27 +157,23 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.Pokemon中的所有" />
-      <item itemvalue="应用程序.BattleTest" />
-      <item itemvalue="应用程序.BattleApplication" />
-      <item itemvalue="应用程序.HelloApplication" />
-      <item itemvalue="应用程序.PokemonBattleClient" />
+      <item itemvalue="应用程序.battle1" />
+      <item itemvalue="应用程序.battle2" />
+      <item itemvalue="应用程序.PokemonBattleServer" />
+      <item itemvalue="应用程序.GameApp" />
     </list>
-
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="Application.GameApp" />
-        <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="应用程序.PokemonBattleServer" />
+        <item itemvalue="JUnit.Pokemon中的所有" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
@@ -229,7 +186,6 @@
       <option name="presentableId" value="Default" />
       <updated>1725257460830</updated>
       <workItem from="1725257461860" duration="166000" />
-
       <workItem from="1725259094757" duration="6990000" />
       <workItem from="1725267769444" duration="640000" />
       <workItem from="1725270409737" duration="12593000" />
@@ -244,7 +200,8 @@
       <workItem from="1725510793199" duration="884000" />
       <workItem from="1725513959670" duration="10442000" />
       <workItem from="1725531516897" duration="825000" />
-
+      <workItem from="1725585128858" duration="4632000" />
+      <workItem from="1725589799934" duration="978000" />
     </task>
     <servers />
   </component>
