@@ -12,14 +12,21 @@ import org.example.pokemon.HelloApplication;
 
 import java.io.IOException;
 
-public class BattleApplication extends Application {
+public class BattleApplication extends Scene {
     private BattleController controller;
 
+    public BattleApplication(Parent parent, double v, double v1) {
+        super(parent, v, v1);
+        //this.controller = controller;
+        //this.stage = stage;
+    }
+
+    /*
     public static void main(String[] args) {
         launch(args);
     }
+     */
 
-    @Override
     public void start(Stage primaryStage) throws IOException {
         //初始化ui
         FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));

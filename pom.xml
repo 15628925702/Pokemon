@@ -67,12 +67,12 @@
       <version>20210307</version>
     </dependency>
 
+
     <dependency>
       <groupId>com.github.almasb</groupId>
       <artifactId>fxgl</artifactId>
       <version>21</version> <!-- 请使用最新的版本号 -->
     </dependency>
-
 
   </dependencies>
 
