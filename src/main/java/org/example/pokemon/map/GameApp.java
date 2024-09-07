@@ -5,23 +5,20 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.GameView;
 import com.almasb.fxgl.app.scene.SceneFactory;
-import com.almasb.fxgl.app.scene.StartupScene;
 import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.physics.CollisionHandler;
-import javafx.application.Application;
+import com.almasb.fxgl.ui.DialogBox;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.example.pokemon.map.Components.PlayerComponent;
-import org.example.pokemon.ui.TestGameMenu;
+import org.example.pokemon.map.ui.MySubScene;
 import org.example.pokemon.ui.TestMainMenu;
-
 //静态导入，舍去每次写FXGL
 import java.awt.*;
 import java.io.IOException;
@@ -42,15 +39,7 @@ public class GameApp extends GameApplication {
         gameSettings.setHeight(800);
 //        GameView view = new GameView(new InfoPane(),Integer.MAX_VALUE);
 //        getGameScene().addGameView(view);
-
-//        gameSettings.setGameMenuEnabled(true);
-////        gameSettings.setSceneFactory(new SceneFactory() {
-////            @Override
-////            public FXGLMenu newMainMenu() {
-////                return new TestGameMenu();
-////            }
-////
-////        });
+//        gameSettings.setMainMenuEnabled(true);
 
         gameSettings.setMainMenuEnabled(true);
         gameSettings.setSceneFactory(new SceneFactory(){
@@ -106,8 +95,25 @@ public class GameApp extends GameApplication {
                     case 1 -> {
                         switch(which){
                             //触发火箭队
+                            case 4 -> {
+                                FXGL.getDialogService().showChoiceBox("武藏：\n既然你诚心诚意的发问了，那么我就大发慈悲的告诉你，\n为了防止世界被破坏，为了维护世界的和平，贯彻爱与真实的邪恶，可爱又迷人的反派角色，\n我们是穿梭在银河的火箭队，白洞，白色的明天在等着我们。\n你是想挑战我们吗？",String->{
+                                    if(String == "是的"){
+                                        System.out.println("战斗开始");
+//                                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("login.fxml"));
+//                                        try {
+//                                            Scene scene = new Scene(fxmlLoader.load());
+//                                            Stage stage = new Stage();
+//                                            stage.setScene(scene);
+//                                            stage.show();
+//                                            DialogBox box = FXGL.getDialogService().showProgressBox("战斗中");
+//                                        } catch (IOException e) {
+//                                           e.printStackTrace();
+//                                        }
+                                    }
+                                    },"是的","算了");
+                            }
                             case 3 -> {
-                                FXGL.getDialogService().showChoiceBox("武藏：\n既然你诚心诚意的发问了，那么我就大发慈悲的告诉你，\n为了防止世界被破坏，为了维护世界的和平，贯彻爱与真实的邪恶，可爱又迷人的反派角色，\n我们是穿梭在银河的火箭队，白洞，白色的明天在等着我们。\n你是想挑战我们吗？",String->{System.out.println(String);},"yes","no");
+                                FXGL.getDialogService().showMessageBox("欢迎你踏上这段充满奇迹与挑战的旅程！\n在这个充满神奇生物的口袋妖怪世界，你将成为一名勇敢的探险者。\n记住，每一位伟大的训练师都是从第一步开始的。");
                             }
                             //触发海滩地图
                             case 2 -> {
@@ -187,7 +193,7 @@ public class GameApp extends GameApplication {
 
     @Override
     protected void onPreInit() {
-        FXGL.getSettings().setGlobalMusicVolume(0.2);
+        FXGL.getSettings().setGlobalMusicVolume(0.1);
         FXGL.loopBGM("BGM.mp3");
     }
 

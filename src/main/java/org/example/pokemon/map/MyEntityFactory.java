@@ -55,7 +55,7 @@ public class MyEntityFactory implements EntityFactory {
 
 
     @Spawns("block")
-    public Entity createTree1(SpawnData data){
+    public Entity createBlock(SpawnData data){
         return FXGL.entityBuilder(data)
                 .type(GameType.BLOCK)
                 .collidable()
@@ -63,6 +63,16 @@ public class MyEntityFactory implements EntityFactory {
                 .bbox(BoundingShape.box(32,32))
                 //不刷新，节省性能
                 .neverUpdated()
+                .build();
+    }
+
+    @Spawns("sandTree")
+    public Entity createSandTree(SpawnData data){
+        return FXGL.entityBuilder(data)
+                .type(GameType.SANDTREE)
+                .collidable()
+                .neverUpdated()
+                .viewWithBBox("sandTree2.png")
                 .build();
     }
 

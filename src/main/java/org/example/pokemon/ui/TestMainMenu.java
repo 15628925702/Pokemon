@@ -16,33 +16,13 @@ import org.example.pokemon.map.GameApp;
 
 import java.beans.EventHandler;
 import java.io.IOException;
-
+import java.sql.SQLException;
 
 
 public class TestMainMenu extends FXGLMenu {
     public TestMainMenu() {
        super(MenuType.MAIN_MENU);
-
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("login.fxml"));
-//        try {
-//            Scene scene = new Scene(fxmlLoader.load());
-//            getContentRoot().getChildren().setAll(scene.getRoot());
-//            System.out.println("load login");
-//
-//            LoginController loginController = fxmlLoader.getController();
-//            loginController.getLoginBtn().setOnAction(event -> {
-//                //todo: 验证账户 通过后再加载home
-//                Load("homepage.fxml");
-//            });
-//
-//            loginController.getNoAccountLabel().setOnMouseClicked(event -> {
-//                Load("register.fxml");
-//            });
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         Load("login.fxml");
-
     }
 
     public void Load(String src){
@@ -63,6 +43,8 @@ public class TestMainMenu extends FXGLMenu {
         if(src.equals("register.fxml")){
             RegisterController registerController = fxmlLoader.getController();
             registerController.sinUpBtn.setOnAction(event -> {
+
+//                if (registerController.verify())
                 Load("homepage.fxml");
             });
             registerController.cancelBtn.setOnAction(event ->
@@ -72,8 +54,9 @@ public class TestMainMenu extends FXGLMenu {
         if(src.equals("login.fxml")){
             LoginController loginController = fxmlLoader.getController();
             loginController.getLoginBtn().setOnAction(event -> {
-                //todo: 验证账户 通过后再加载home
-                Load("homepage.fxml");
+                if (loginController.verify()){
+                    Load("homepage.fxml");
+                }
             });
 
             loginController.getNoAccountLabel().setOnMouseClicked(event -> {

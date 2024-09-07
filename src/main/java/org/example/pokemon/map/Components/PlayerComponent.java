@@ -29,7 +29,7 @@ public class PlayerComponent extends Component {
     private Dir dir;
     private boolean isStopped;
     private boolean isActive;
-    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK,GameType.ENEMY,GameType.SEA,GameType.INTERACTIVE));
+    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK,GameType.ENEMY,GameType.SEA,GameType.INTERACTIVE,GameType.SANDTREE));
     private LazyValue<EntityGroup> activeEntityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.INTERACTIVE));
     private LazyValue<EntityGroup> grassLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.GRASS));
     private Entity hint;

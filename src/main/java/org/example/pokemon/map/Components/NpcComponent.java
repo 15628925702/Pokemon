@@ -21,7 +21,7 @@ public class NpcComponent extends Component {
     private AnimatedTexture at;
     private Dir dir;
     private boolean isStopped;
-    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK,GameType.PLAYER,GameType.SEA));
+    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK,GameType.PLAYER,GameType.SEA,GameType.SANDTREE,GameType.NURSE));
 
 
     public NpcComponent(GameType type) {

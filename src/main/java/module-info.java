@@ -30,5 +30,4 @@ open module org.example.pokemon {
     exports org.example.pokemon.battle;
     // 导出额外的包给 com.almasb.fxgl.core
     exports org.example.pokemon.map to com.almasb.fxgl.core;
-    exports org.example.pokemon.util;
 }

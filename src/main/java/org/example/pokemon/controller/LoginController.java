@@ -4,15 +4,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.example.pokemon.HelloApplication;
+import org.example.pokemon.connection.ConnectToSQL;
 
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class LoginController {
 
@@ -40,71 +46,62 @@ public class LoginController {
         //todo: switch to reset password page
     }
 
-//    @FXML
-//    private void onSignInClicked(MouseEvent event) throws IOException {
-//
-//        /*
-//        String inputPhoneNumber = phoneNumber.getText();
-//        String inputPassword = password.getText();
-//
-//        ConnectToSQL connectToSQL = new ConnectToSQL();
-//        Connection connection = connectToSQL.getConnection();
-//        String sql = String.format("SELECT * FROM users WHERE `phoneNumber` = '%s' AND `password` = '%s';", inputPhoneNumber, inputPassword);
-//        System.out.println(sql);
-//        try{
-//            Statement statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery(sql);
-//            if(resultSet.next()){
-//                System.out.println(resultSet.getString("phoneNumber"));
-//                loadHomePage(event);
-//            } else {
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                alert.setTitle("登录失败");
-//                alert.setHeaderText(null);
-//                alert.setContentText("账号或密码错误！如果你没有账号，请先进行注册。");
-//                alert.showAndWait();
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                connection.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-//
-//         */
-//
-//
-//    }
-
-    @FXML
-    private void onNoAccountClicked(MouseEvent event) throws IOException {
-        //loadRegisterPage(event);
-
+    public void showAlert(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("登录失败");
+        alert.setHeaderText(null);
+        alert.setContentText("账号或密码错误！如果你没有账号，请先进行注册。");
+        alert.showAndWait();
     }
 
-    private void loadHomePage(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getClassLoader().getResource("homepage.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Welcome to Pokemon World!\uD83D\uDE09");
-        stage.setScene(scene);
-        stage.show();
+
+    public boolean verify ()  {
+        String inputPhone = phoneNumber.getText().trim();
+        String inputPassword = password.getText().trim();
+        if (inputPhone.isEmpty() || inputPassword.isEmpty()) {
+            showAlert();
+            return false;
+        }
+
+        ConnectToSQL connectToSQL = new ConnectToSQL();
+        //建立数据库连接
+        Connection connection = connectToSQL.getConnection();
+
+        //执行查找
+        try {
+            if(selectFromSQL(connection, inputPhone, inputPassword) != null && selectFromSQL(connection, inputPhone, inputPassword).next()){
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }  finally {
+            //关闭数据库连接
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        showAlert();
+        return false;
     }
 
-    private void loadRegisterPage(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("register.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    public ResultSet selectFromSQL(Connection connection,String inputPhone, String inputPassword) {
 
+        String sql = String.format("SELECT * FROM users WHERE `phoneNumber` = '%s' AND `password` = '%s';", inputPhone, inputPassword);
+        System.out.println(sql);
+        //执行查找
+        ResultSet resultSet = null;
+        try {
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
 
-        Scene scene = new Scene(fxmlLoader.load());
-
-        stage.setResizable(false);
-        stage.setTitle("registering...");
-        stage.setScene(scene);
-        stage.show();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return resultSet;
     }
+
 }
