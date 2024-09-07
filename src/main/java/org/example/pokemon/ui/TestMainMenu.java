@@ -54,10 +54,9 @@ public class TestMainMenu extends FXGLMenu {
         if(src.equals("login.fxml")){
             LoginController loginController = fxmlLoader.getController();
             loginController.getLoginBtn().setOnAction(event -> {
-//                if (loginController.verify()){
-//                    Load("homepage.fxml");
-//                }
-                Load("homepage.fxml");
+                if (loginController.verify()){
+                    Load("homepage.fxml");
+                }
             });
 
             loginController.getNoAccountLabel().setOnMouseClicked(event -> {

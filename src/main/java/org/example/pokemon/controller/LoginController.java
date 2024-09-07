@@ -85,7 +85,7 @@ public class LoginController {
 
     public ResultSet selectFromSQL(Connection connection,String inputPhone, String inputPassword) {
 
-        String sql = String.format("SELECT * FROM users WHERE `phoneNumber` = '%s' AND `password` = '%s';", inputPhone, inputPassword);
+        String sql = String.format("SELECT * FROM users WHERE phoneNumber = '%s' AND password = '%s';", inputPhone, inputPassword);
         System.out.println(sql);
         //执行查找
         ResultSet resultSet = null;
