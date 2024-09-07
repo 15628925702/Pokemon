@@ -53,6 +53,18 @@ public class MyEntityFactory implements EntityFactory {
                 .build();
     }
 
+    @Spawns("doctor")
+    public Entity createDoctor(SpawnData data) {
+        return FXGL.entityBuilder(data)
+                .type(GameType.DOCTOR)
+                .type(GameType.INTERACTIVE)
+                .collidable()
+                .with(new KeepOnScreenComponent())
+                .bbox(BoundingShape.box(32,50))
+                .with(new NpcComponent(GameType.DOCTOR))
+                .build();
+    }
+
 
     @Spawns("block")
     public Entity createBlock(SpawnData data){

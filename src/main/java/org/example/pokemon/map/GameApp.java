@@ -20,8 +20,7 @@ import org.example.pokemon.battle.Battle;
 import org.example.pokemon.battle.BattleScene;
 import org.example.pokemon.map.Components.PlayerComponent;
 import org.example.pokemon.ui.TestMainMenu;
-//静态导入，舍去每次写FXGL
-import java.awt.*;
+
 import java.io.IOException;
 import java.util.Map;
 
@@ -38,6 +37,7 @@ public class GameApp extends GameApplication {
         gameSettings.setVersion("0.1");
         gameSettings.setWidth(1024);
         gameSettings.setHeight(800);
+        gameSettings.setAppIcon("icon.png");
 //        GameView view = new GameView(new InfoPane(),Integer.MAX_VALUE);
 //        getGameScene().addGameView(view);
 //        gameSettings.setMainMenuEnabled(true);
@@ -96,11 +96,10 @@ public class GameApp extends GameApplication {
                     case 1 -> {
                         switch(which){
                             //触发火箭队
-                            case 4 -> {
+                            case 5 -> {
                                 FXGL.getDialogService().showChoiceBox("武藏：\n既然你诚心诚意的发问了，那么我就大发慈悲的告诉你，\n为了防止世界被破坏，为了维护世界的和平，贯彻爱与真实的邪恶，可爱又迷人的反派角色，\n我们是穿梭在银河的火箭队，白洞，白色的明天在等着我们。\n你是想挑战我们吗？",String->{
                                     if(String == "是的"){
-                                        System.out.println("战斗开始");
-
+//                                        System.out.println("战斗开始");
                                         FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));
                                         try {
                                             BattleScene battle= new BattleScene(fxmlLoader.load(), 900, 600);
@@ -111,10 +110,21 @@ public class GameApp extends GameApplication {
 
 
                                         } catch (IOException e) {
-                                           e.printStackTrace();
+                                            e.printStackTrace();
                                         }
+
+
                                     }
                                 },"是的","算了");
+                            }
+                            //大木家
+                            case 4 -> {
+                                setLevelFromMap("level4.tmx");
+                                FXGL.set("level",4);
+                                FXGL.set("active",-1);
+                                player = spawn("player",480,544);
+                                playerComponent = player.getComponent(PlayerComponent.class);
+                                spawn("doctor",448,384);
                             }
                             case 3 -> {
                                 FXGL.getDialogService().showMessageBox("欢迎你踏上这段充满奇迹与挑战的旅程！\n在这个充满神奇生物的口袋妖怪世界，你将成为一名勇敢的探险者。\n记住，每一位伟大的训练师都是从第一步开始的。");
@@ -180,6 +190,23 @@ public class GameApp extends GameApplication {
                             //售货机
                             case 2 -> {
 
+                            }
+                        }
+                    }
+                    //大木家
+                    case 4 ->{
+                        switch(which){
+                            //返回草地
+                            case 0 -> {
+                                setLevelFromMap("level1.tmx");
+                                FXGL.set("level",1);
+                                FXGL.set("active",-1);
+                                player = spawn("player",576,554);
+                                playerComponent = player.getComponent(PlayerComponent.class);
+                                spawn("enemy",200,200);
+                            }
+                            case 1 -> {
+                                FXGL.getDialogService().showChoiceBox("大木博士：\n我等你好久了，冒险者，准备好选择你的第一只宝可梦了吗\n那么你选择",String->{System.out.println(String);},"小火龙","杰尼龟","妙蛙种子");
                             }
                         }
                     }

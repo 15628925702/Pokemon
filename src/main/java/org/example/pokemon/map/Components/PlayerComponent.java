@@ -87,14 +87,14 @@ public class PlayerComponent extends Component {
 //                entity.translateY(speed*tpf);
 //                entity.translateX(0);
             double dis = speed*tpf;
-            //if(Math.abs(dis)>1.0)dis=speed/Math.abs(speed)*1.0;
+            if(Math.abs(dis)>1.2)dis=speed/Math.abs(speed)*1.2;
             move(0,dis);
         }
         else{
 //                entity.translateX(speed*tpf);
 //                entity.translateY(0);
             double dis = speed*tpf;
-            //if(Math.abs(dis)>1.0)dis=speed/Math.abs(speed)*1.0;
+            if(Math.abs(dis)>1.2)dis=speed/Math.abs(speed)*1.2;
             move(dis,0);
         }
 

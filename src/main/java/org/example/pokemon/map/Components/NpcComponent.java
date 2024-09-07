@@ -37,8 +37,9 @@ public class NpcComponent extends Component {
     private AnimationChannel createAc(int i,int j,GameType type) {
         if(type ==GameType.ENEMY)
             return new AnimationChannel(FXGL.image("RacketTeam.png"),4,128/4,200/4, Duration.seconds(0.75),i,j);
-
-        else
+        else if (type ==GameType.DOCTOR) {
+            return new AnimationChannel(FXGL.image("bigWood.png"),4,128/4,200/4, Duration.seconds(0.75),i,j);
+        } else
             return new AnimationChannel(FXGL.image("Nurse2.png"),4,128/4,200/4, Duration.seconds(0.75),i,j);
     }
 
