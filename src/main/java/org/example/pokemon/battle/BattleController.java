@@ -148,8 +148,8 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     }
     //修改状态栏
     public void setHpStatus(int role1_cur_hp, int role2_cur_hp,int role1_hp, int role2_hp) {
-        System.out.println("role1_cur_hp: " + role1_cur_hp + " role1_hp: " + role1_hp + '\n'
-                + "role2_cur_hp: " +role2_cur_hp + " role2_hp: " + role2_hp);
+        //System.out.println("role1_cur_hp: " + role1_cur_hp + " role1_hp: " + role1_hp + '\n'
+        //        + "role2_cur_hp: " +role2_cur_hp + " role2_hp: " + role2_hp);
         int role1_width =(int)(((double)role1_cur_hp/role1_hp)*200);
         myStatusHpNum.setText(role1_cur_hp+"/"+role1_hp);
         myHpStatus.setPrefWidth(role1_width);

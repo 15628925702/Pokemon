@@ -40,23 +40,35 @@ public class PokemonBattleServer {
         inB = new BufferedReader(new InputStreamReader(clientB.getInputStream()));
         outB = new PrintWriter(clientB.getOutputStream(), true);
 
-        // 从文件中加载宝可梦数
-        poke1=new PokemonData();
-        poke2=new PokemonData();
+        // 向客户端A和客户端B发送“已经完成匹配”的信息
+        JSONObject matchMessage = new JSONObject();
+        matchMessage.put("type", "MatchComplete");
+        matchMessage.put("message", "已经完成匹配");
+        outA.println(matchMessage.toString());
+        outB.println(matchMessage.toString());
+        System.out.println("已向两个客户端发送“已经完成匹配”的信息。");
+
+        // 从文件中加载宝可梦数据
+        poke1 = new PokemonData();
+        poke2 = new PokemonData();
         poke1.getPokeDataFromDb("皮卡丘");
-        poke1.setPokeSkill("冲撞",0);
-        poke1.setPokeSkill("十万伏特",1);
-        poke1.setPokeSkill("电击",2);
+        poke1.setPokeSkill("冲撞", 0);
+        poke1.setPokeSkill("十万伏特", 1);
+        poke1.setPokeSkill("电击", 2);
         poke2.getPokeDataFromDb("妙蛙种子");
-        poke2.setPokeSkill("冲撞",0);
-        poke2.setPokeSkill("种子炸弹",1);
+        poke2.setPokeSkill("冲撞", 0);
+        poke2.setPokeSkill("种子炸弹", 1);
         System.out.println("宝可梦数据加载完成。");
+
+        updateHealth();
+
 
         // 初始化战斗逻辑
         battle = new ServerBattle();
         // 启动战斗线程
         new Thread(this::runBattle).start();
     }
+
 
     // 运行战斗逻辑
     private void runBattle() {
@@ -84,6 +96,7 @@ public class PokemonBattleServer {
     }
 
     // 处理每一轮的攻击操作
+    // 处理每一轮的攻击操作
     private boolean processTurn(PokemonData attacker, PokemonData defender, PrintWriter attackerOut, BufferedReader attackerIn, PrintWriter defenderOut, String attackerName) throws IOException {
         try {
             // 通知攻击方轮到他们操作
@@ -97,7 +110,7 @@ public class PokemonBattleServer {
             int action = receivedMessage.getInt("action");
 
             // 执行攻击动作
-            int result =battle.act(attacker, action, defender);
+            int result = battle.act(attacker, action, defender);
             System.out.println(attackerName + " 执行了动作: " + action);
 
             // 通知防守方攻击方的操作
@@ -107,6 +120,14 @@ public class PokemonBattleServer {
             message.put("attacker", attackerName);
             message.put("action", action);
             defenderOut.println(message.toString());
+
+            // 通知攻击方自己执行的动作结果
+            message = new JSONObject();
+            message.put("result", result);
+            message.put("type", "Action");
+            message.put("attacker", attackerName);
+            message.put("action", action);
+            attackerOut.println(message.toString());
 
         } catch (InterruptedException e) {
             // 处理 InterruptedException 异常
@@ -141,6 +162,7 @@ public class PokemonBattleServer {
 
         return true;  // 继续游戏
     }
+
 
     // 更新双方宝可梦的血量
     private void updateHealth() {

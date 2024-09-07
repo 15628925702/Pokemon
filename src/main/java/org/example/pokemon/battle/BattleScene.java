@@ -41,9 +41,13 @@ public class BattleScene extends Scene {
         this.controller = fxmlLoader.<BattleController>getController();
         primaryStage.setTitle("Battle");
         primaryStage.setScene(scene);
-        primaryStage.show();
+        //primaryStage.show();
 
         controller.initClient();
+        while(!controller.client.ifCom){
+            //System.out.println("匹配中");
+        }
+        primaryStage.show();
 
         PokemonData pokemon1 = new PokemonData();
         pokemon1.getPokeDataFromDb("皮卡丘");

@@ -59,6 +59,7 @@ public class Battle {
         poke1.clonePokeData(oriPoke1);
         poke2.clonePokeData(oriPoke2);
         //showPet(poke1,poke2,ui);
+        showHp(poke1,poke2,ui,client);   //显示宝可梦状态
 
         boolean isOn = true;    //对战是否进行中
         showStatus("游戏开始",ui);
@@ -150,15 +151,13 @@ public class Battle {
         int action = command;
 
         //判断是否命中
-        if(client.ifMiss==true){
-            showReturn("技能未命中",ui);
-        }
+
 
         //对命令进行分类
         switch (action){
             //发动技能1 2 3 4
             case 0,1,2,3:{
-                useSkill(actor,viewer,action,ui);
+                useSkill(actor,viewer,action,ui,client);
             }
             //使用道具
             case 4:{
@@ -175,9 +174,21 @@ public class Battle {
     }
 
     //发动技能
-    public int useSkill(PokemonData actor, PokemonData viewer, int flag, BattleScene ui) throws IOException {
-        //获得伤害(治疗量)
-        int effect = actor.useSkill(flag,viewer.getPhysical_defense(),viewer.getSpecial_defense());
+    public int useSkill(PokemonData actor, PokemonData viewer, int flag, BattleScene ui,PokemonBattleClient client) throws IOException {
+        int effect = 0;
+
+        while(true){
+            //获得伤害(治疗量)
+            effect = actor.useSkill(flag,viewer.getPhysical_defense(),viewer.getSpecial_defense());
+            if(effect != -3){
+                break;
+            }
+            PokemonSkill temp = actor.getSkill(flag);
+            temp.setSkillTimes(temp.getSkillTimes()+1);
+        }
+
+
+
         //处理技能特殊情况
         if(effect==-1){
             showReturn("技能为空,发动失败",ui);
@@ -188,8 +199,9 @@ public class Battle {
         }
 
         showStatus(actor.getPokemonName()+"使用了技能"+actor.getSkillName(flag),ui);
-        if(effect==-3){
-            showReturn("没有命中",ui);
+        if(client.ifMiss==true){
+            showReturn("技能未命中",ui);
+            client.ifMiss=false;
             return -3;
         }
         //获得技能类型
@@ -395,21 +407,35 @@ public class Battle {
 
     //设置血量显示
     public void showHp(PokemonData actor, PokemonData viewer, BattleScene ui, PokemonBattleClient client) throws IOException {
-        //获得actor的目前血量以及血量上限
-        int actor_cur_hp = client.healthMe;
-        PokemonData temp_actor = new PokemonData();
-        temp_actor.getPokeDataFromDb(actor.getPokemonName());
-        int actor_hpLimit = temp_actor.getHp();
+        Platform.runLater(()->{
+            //获得actor的目前血量以及血量上限
+            int actor_cur_hp = client.healthMe;
+            PokemonData temp_actor = new PokemonData();
+            try {
+                temp_actor.getPokeDataFromDb(actor.getPokemonName());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            int actor_hpLimit = temp_actor.getHp();
 
-        //获得viewer的目前血量以及血量上限
-        int viewer_cur_hp = client.healthEn;
-        PokemonData temp_viewer = new PokemonData();
-        temp_viewer.getPokeDataFromDb(viewer.getPokemonName());
-        System.out.println(temp_viewer.toString());
-        int viewer_hpLimit = temp_viewer.getHp();
-        System.out.println("viewHpLimit: "+viewer_hpLimit);
+            //获得viewer的目前血量以及血量上限
+            int viewer_cur_hp = client.healthEn;
+            PokemonData temp_viewer = new PokemonData();
+            try {
+                temp_viewer.getPokeDataFromDb(viewer.getPokemonName());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            //System.out.println(temp_viewer.toString());
+            int viewer_hpLimit = temp_viewer.getHp();
+            System.out.println("actHpCur:"+actor_cur_hp);
+            System.out.println("actHpLimit: "+actor_hpLimit);
+            System.out.println("viewHpCur:"+viewer_cur_hp);
+            System.out.println("viewHpLimit: "+viewer_hpLimit);
 
-        ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,actor_hpLimit,viewer_hpLimit);
+            ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,actor_hpLimit,viewer_hpLimit);
+        });
+
     }
 
     //显示技能使用
