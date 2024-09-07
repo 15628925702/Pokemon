@@ -44,7 +44,7 @@ public class TestMainMenu extends FXGLMenu {
             RegisterController registerController = fxmlLoader.getController();
             registerController.sinUpBtn.setOnAction(event -> {
 
-                if (registerController.verify())
+//                if (registerController.verify())
                 Load("homepage.fxml");
             });
             registerController.cancelBtn.setOnAction(event ->

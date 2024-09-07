@@ -11,7 +11,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.pokemon.connection.ConnectToSQL;
-import org.example.pokemon.sms.SendMessage;
 
 import java.io.IOException;
 import java.sql.*;
@@ -34,22 +33,14 @@ public class RegisterController {
     @FXML
     public Button sendVerificationCodeBtn;
 
-    private String genVerCode;
+    private String code;
 
     @FXML
     private void onSendVerificationCodeClicked(MouseEvent event) {
         //todo:
         //生成验证码
         int number = (int) (Math.random() * 9000)+ 1000;
-        System.out.println("random number: " + number);
-        genVerCode = String.valueOf(number);
-        //发送验证码
-        String phone = phoneNumber.getText();
-        try {
-            SendMessage.sendMessage(phone, genVerCode);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        code = String.valueOf(number);
         disabledBtn();
     }
 
@@ -127,14 +118,14 @@ public class RegisterController {
         if(!inputPassword.equals(inputConfirmPassword)) {
             return false;
         }
-        if(!inputVerificationCode.equals(genVerCode)){
+        if(!inputVerificationCode.equals(code)){
             return false;
         }
 
         //连接数据库查询
         ConnectToSQL connectToSQL = new ConnectToSQL();
         Connection connection = connectToSQL.getConnection();
-        String sql = "SELECT COUNT(*) FROM users WHERE phoneNumber = "  + inputPhone + ";";
+        String sql = "SELECT COUNT(*) FROM users WHERE `phoneNumber` = " + "'" + inputPhone + "'";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
