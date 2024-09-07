@@ -68,11 +68,21 @@
     </dependency>
 
 
+
     <dependency>
       <groupId>com.github.almasb</groupId>
       <artifactId>fxgl</artifactId>
       <version>21</version> <!-- 请使用最新的版本号 -->
     </dependency>
+
+
+<!--    阿里云短信验证服务-->
+    <dependency>
+      <groupId>com.aliyun</groupId>
+      <artifactId>dysmsapi20170525</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
 
   </dependencies>
 

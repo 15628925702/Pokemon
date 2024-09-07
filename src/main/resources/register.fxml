@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@org/example/pokemon/style/register.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.controller.Register">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@org/example/pokemon/style/register.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.controller.RegisterController">
    <children>
       <Label layoutX="43.0" layoutY="103.0" text="手机号码">
          <font>
@@ -72,8 +72,8 @@
             </TextField>
          </children>
       </VBox>
-      <Button layoutX="123.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#onSignUpClicked" prefHeight="36.0" prefWidth="63.0" text="注册" textFill="WHITE" />
-      <Button layoutX="220.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#onCancelClicked" prefHeight="36.0" prefWidth="63.0" text="取消" textFill="WHITE" />
+      <Button fx:id="sinUpBtn" layoutX="123.0" layoutY="256.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="63.0" text="注册" textFill="WHITE" />
+      <Button fx:id="cancelBtn" layoutX="220.0" layoutY="256.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="63.0" text="取消" textFill="WHITE" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="304.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@org/example/pokemon/img/duck-removebg-preview.png" />

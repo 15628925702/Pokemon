@@ -14,28 +14,32 @@ import org.example.pokemon.map.GameType;
 
 import java.util.List;
 
-public class EnemyComponent extends Component {
+public class NpcComponent extends Component {
     private static final double SPEED = 30;
     private double speed;
     private AnimationChannel acUp,acDown,acLeft,acRight;
     private AnimatedTexture at;
     private Dir dir;
     private boolean isStopped;
-    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK,GameType.PLAYER));
+    private LazyValue<EntityGroup> entityGroupLazyValue = new LazyValue<>(()->FXGL.getGameWorld().getGroup(GameType.BLOCK,GameType.PLAYER,GameType.SEA,GameType.SANDTREE,GameType.NURSE));
 
 
-    public EnemyComponent() {
-        acUp = createAc(12,15);
-        acDown = createAc(0,3);
-        acLeft = createAc(4,7);
-        acRight = createAc(8,11);
+    public NpcComponent(GameType type) {
+        acUp = createAc(12,15,type);
+        acDown = createAc(0,3,type);
+        acLeft = createAc(4,7,type);
+        acRight = createAc(8,11,type);
         at = new AnimatedTexture(acDown);
         dir = Dir.DOWN;
 
     }
 
-    private AnimationChannel createAc(int i,int j){
-        return new AnimationChannel(FXGL.image("RacketTeam.png"),4,128/4,200/4, Duration.seconds(0.75),i,j);
+    private AnimationChannel createAc(int i,int j,GameType type) {
+        if(type ==GameType.ENEMY)
+            return new AnimationChannel(FXGL.image("RacketTeam.png"),4,128/4,200/4, Duration.seconds(0.75),i,j);
+
+        else
+            return new AnimationChannel(FXGL.image("Nurse2.png"),4,128/4,200/4, Duration.seconds(0.75),i,j);
     }
 
     @Override

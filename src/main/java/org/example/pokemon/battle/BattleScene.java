@@ -117,5 +117,5 @@ public class BattleScene extends Scene {
         controller.noticeLabel.setText(notice);
         controller.noticeButton.setDisable(false);
     }
-    
+
 }

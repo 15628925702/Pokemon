@@ -1,6 +1,6 @@
 .root {
-    -fx-background-image: url("../img/pokemon-bg.jpg");
-    -fx-background-size: cover;
+    /*-fx-background-image: url("../img/pokemon-bg.jpg");*/
+    -fx-background-color: F9CA18;
 }
 
 .left {
