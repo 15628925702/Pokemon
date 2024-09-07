@@ -16,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.example.pokemon.battle.Battle;
+import org.example.pokemon.battle.BattleScene;
 import org.example.pokemon.map.Components.PlayerComponent;
 import org.example.pokemon.ui.TestMainMenu;
 //静态导入，舍去每次写FXGL
@@ -98,16 +100,19 @@ public class GameApp extends GameApplication {
                                 FXGL.getDialogService().showChoiceBox("武藏：\n既然你诚心诚意的发问了，那么我就大发慈悲的告诉你，\n为了防止世界被破坏，为了维护世界的和平，贯彻爱与真实的邪恶，可爱又迷人的反派角色，\n我们是穿梭在银河的火箭队，白洞，白色的明天在等着我们。\n你是想挑战我们吗？",String->{
                                     if(String == "是的"){
                                         System.out.println("战斗开始");
-//                                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("login.fxml"));
-//                                        try {
-//                                            Scene scene = new Scene(fxmlLoader.load());
-//                                            Stage stage = new Stage();
-//                                            stage.setScene(scene);
-//                                            stage.show();
-//                                            DialogBox box = FXGL.getDialogService().showProgressBox("战斗中");
-//                                        } catch (IOException e) {
-//                                           e.printStackTrace();
-//                                        }
+
+                                        FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));
+                                        try {
+                                            BattleScene battle= new BattleScene(fxmlLoader.load(), 900, 600);
+                                            Stage stage = new Stage();
+                                            stage.setScene(battle);
+                                            stage.show();
+                                            battle.start(stage);
+
+
+                                        } catch (IOException e) {
+                                           e.printStackTrace();
+                                        }
                                     }
                                 },"是的","算了");
                             }

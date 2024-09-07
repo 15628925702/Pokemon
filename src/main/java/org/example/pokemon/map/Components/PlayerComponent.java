@@ -22,7 +22,7 @@ import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 public class PlayerComponent extends Component {
 
-    private static final double SPEED = 150;
+    private static final double SPEED = 300;
     private double speed;
     private AnimationChannel acUp,acDown,acLeft,acRight;
     private AnimatedTexture at;
@@ -87,14 +87,14 @@ public class PlayerComponent extends Component {
 //                entity.translateY(speed*tpf);
 //                entity.translateX(0);
             double dis = speed*tpf;
-            if(Math.abs(dis)>1.0)dis=speed/Math.abs(speed)*1.0;
+            //if(Math.abs(dis)>1.0)dis=speed/Math.abs(speed)*1.0;
             move(0,dis);
         }
         else{
 //                entity.translateX(speed*tpf);
 //                entity.translateY(0);
             double dis = speed*tpf;
-            if(Math.abs(dis)>1.0)dis=speed/Math.abs(speed)*1.0;
+            //if(Math.abs(dis)>1.0)dis=speed/Math.abs(speed)*1.0;
             move(dis,0);
         }
 
