@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="" />
+    <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.16.05.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.21.14.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.24.45.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.27.53.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.42.26.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.51.09.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-21.51.13.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-22.16.15.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-23.18.50.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-23.23.23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/ui/TestMainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/ui/TestMainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/register.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -198,6 +213,8 @@
       <workItem from="1725585128858" duration="4632000" />
       <workItem from="1725589799934" duration="978000" />
       <workItem from="1725721457027" duration="2384000" />
+      <workItem from="1725725168643" duration="398000" />
+      <workItem from="1725752550624" duration="2653000" />
     </task>
     <servers />
   </component>

@@ -6,11 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.pokemon.connection.ConnectToSQL;
+import org.example.pokemon.sms.SendMessage;
 
 import java.io.IOException;
 import java.sql.*;
@@ -18,14 +20,15 @@ import java.sql.*;
 public class RegisterController {
     public Button sinUpBtn;
     public Button cancelBtn;
+    public TextField nickname;
     @FXML
     private TextField phoneNumber;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @FXML
-    private TextField confirmPassword;
+    private PasswordField confirmPassword;
 
     @FXML
     private TextField verificationCode;
@@ -37,17 +40,23 @@ public class RegisterController {
 
     @FXML
     private void onSendVerificationCodeClicked(MouseEvent event) {
-        //todo:
         //生成验证码
         int number = (int) (Math.random() * 9000)+ 1000;
         code = String.valueOf(number);
+        System.out.println("verification: " + code);
+        String inputPhoneNumber = phoneNumber.getText().trim();
+        try {
+            SendMessage.sendMessage(inputPhoneNumber, code);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         disabledBtn();
     }
 
     private void disabledBtn() {
         sendVerificationCodeBtn.setDisable(true);
         sendVerificationCodeBtn.setText("禁用中🚫");
-        PauseTransition pause = new PauseTransition(Duration.seconds(60));
+        PauseTransition pause = new PauseTransition(Duration.seconds(10));
         pause.setOnFinished(e -> {
             sendVerificationCodeBtn.setDisable(false);
             sendVerificationCodeBtn.setText("获取验证码");
@@ -108,11 +117,12 @@ public class RegisterController {
     public boolean verify() {
         String inputPhone = phoneNumber.getText().trim();
         String inputPassword = password.getText().trim();
-        String inputConfirmPassword = confirmPassword.getText();
-        String inputVerificationCode = verificationCode.getText();
+        String inputConfirmPassword = confirmPassword.getText().trim();
+        String inputVerificationCode = verificationCode.getText().trim();
+        String inputNickname = nickname.getText().trim();
 
         //检验输入有效性
-        if (inputPhone.isEmpty() || inputPassword.isEmpty() || inputConfirmPassword.isEmpty() || inputVerificationCode.isEmpty()) {
+        if (inputPhone.isEmpty() || inputPassword.isEmpty() || inputConfirmPassword.isEmpty() || inputVerificationCode.isEmpty() || inputNickname.isEmpty()) {
             return false;
         }
         if(!inputPassword.equals(inputConfirmPassword)) {
@@ -125,7 +135,7 @@ public class RegisterController {
         //连接数据库查询
         ConnectToSQL connectToSQL = new ConnectToSQL();
         Connection connection = connectToSQL.getConnection();
-        String sql = "SELECT COUNT(*) FROM users WHERE `phoneNumber` = " + "'" + inputPhone + "'";
+        String sql = "SELECT COUNT(*) FROM users WHERE phoneNumber = " +  inputPhone ;
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -148,4 +158,37 @@ public class RegisterController {
         }
         return true;
     }
+
+    public void updateTable() {
+        String inputPhone = phoneNumber.getText().trim();
+        String inputPassword = password.getText().trim();
+        String inputNickname = nickname.getText().trim();
+
+        boolean inserted = false;
+        //数据库插入
+        ConnectToSQL connectToSQL = new ConnectToSQL();
+
+        String query = "INSERT INTO users (phoneNumber, password, nickname) VALUES(?,?,?);";
+       try (Connection connection = connectToSQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query) ){
+           //设置参数值
+           preparedStatement.setString(1, inputPhone);
+           preparedStatement.setString(2, inputPassword);
+           preparedStatement.setString(3, inputNickname);
+
+           // 执行插入操作
+           int affectedRows = preparedStatement.executeUpdate();
+
+           // 检查是否插入成功
+           if (affectedRows > 0) {
+               System.out.println("数据插入成功！");
+               inserted = true;
+           } else {
+               System.out.println("数据插入失败。");
+           }
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+    }
+
 }
