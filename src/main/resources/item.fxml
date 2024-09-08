@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="310.0" prefWidth="281.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.controller.ItemController">
     <children>
-        <VBox fx:id="card" alignment="CENTER" layoutX="46.0" layoutY="23.0" prefHeight="264.0" prefWidth="189.0" styleClass="box" stylesheets="@org/example/pokemon/style/item.css">
+        <VBox fx:id="card" alignment="CENTER" layoutX="46.0" layoutY="23.0" onMouseClicked="#onItemClicked" prefHeight="264.0" prefWidth="189.0" styleClass="box" stylesheets="@org/example/pokemon/style/item.css">
             <children>
                 <Pane prefHeight="3.0" prefWidth="213.0" VBox.vgrow="ALWAYS" />
                 <ImageView fx:id="img" fitHeight="103.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" />
