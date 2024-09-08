@@ -1,25 +1,21 @@
 .left-top {
-    -fx-background-color: #ebc95e;
+    -fx-background-color: #ffbd33;
     -fx-background-radius: 0 0 50 50;
 }
 
 .button {
-    -fx-background-color: #ebc95e;
+    -fx-background-color: #fff;
     -fx-background-radius: 50;
 }
 
-.white-bg {
-    -fx-background-color: #fff;
+.yellow-bg {
+    -fx-background-color: #ffbd33;
 }
 
-.header {
-    -fx-background-color: #ebc95e;
-}
-
-.scroll-pane {
-    -fx-background-color: rgba(0, 0, 0 , 0);
-}
+/*.scroll-pane {*/
+/*    -fx-background: linear-gradient(to right top, #f6d365 0%, #fda085 100%);*/
+/*}*/
 
 .scroll-bar {
-   -fx-font-size: 20px;
+    -fx-font-size: 20px;
 }

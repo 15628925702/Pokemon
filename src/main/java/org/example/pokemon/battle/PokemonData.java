@@ -177,7 +177,7 @@ public class PokemonData{
 
     //显示宝可梦信息
     public void showPokeInfo(){
-        System.out.println(this.toString());
+        //System.out.println(this.toString());
     }
 
     @Override
@@ -210,6 +210,11 @@ public class PokemonData{
     //获得技能类别
     public int getSkillType(int flag){
         return skillsOfPokes[flag].getSkillType();
+    }
+
+    //获得技能
+    public PokemonSkill getSkill(int flag){
+        return skillsOfPokes[flag];
     }
 
     //获得技能属性

@@ -7,6 +7,7 @@ public class BackPack {
 
     private List<Item> items;
     private int capacity;
+    private Item item;
 
     public BackPack(int capacity) {
         items = new ArrayList<Item>(capacity + 1);
@@ -40,22 +41,78 @@ public class BackPack {
     }
 
     public List<Item> initData () {
-        Item item = new Item();
-        item.setName("回复药");
-        item.setType("药草和果树");
-        item.setDescription("回复200点血量");
+        item = new Item();
+
+        item.setName("榴石果");
+        item.setType("树果");
+        item.setDescription("宝可梦会变得非常容易和训练家亲密，但ＨＰ的基础点数会降低。");
         item.setAmount(5);
-        item.setImageUrl("https://pokemon-1326430649.cos.ap-chongqing.myqcloud.com/item%2F%E7%9F%BF%E6%B3%89%E6%B0%B4.png");
+        item.setImageUrl("/item_pic/榴石果.png");
         items.add(item);
-        for (int i = 0; i < 19; i++) {
-            item = new Item();
-            item.setName("矿泉水");
-            item.setType("药草和果树");
-            item.setDescription("回复500点血量");
-            item.setAmount(1);
-            item.setImageUrl("https://pokemon-1326430649.cos.ap-chongqing.myqcloud.com/item%2F%E5%9B%9E%E5%A4%8D%E8%8D%AF.png");
-            items.add(item);
-        }
+
+        item = new Item();
+        item.setName("大师球");
+        item.setType("精灵球");
+        item.setDescription("必定能捉到野生宝可梦的，性能最好的球");
+        item.setAmount(5);
+        item.setImageUrl("/item_pic/大师球.png");
+        items.add(item);
+
+        item = new Item();
+        item.setName("大胆薄荷");
+        item.setType("药物");
+        item.setDescription("防御提高");
+        item.setAmount(5);
+        item.setImageUrl("/item_pic/大胆薄荷.png");
+        items.add(item);
+
+        item = new Item();
+        item.setName("腐朽的剑");
+        item.setType("进化道具");
+        item.setDescription("据说很久以前，英雄就是拿着这把剑驱走了灾厄。而现在早已变得锈迹斑斑。");
+        item.setAmount(5);
+        item.setImageUrl("/item_pic/腐朽的剑.png");
+        items.add(item);
+
+        item = new Item();
+        item.setName("腐朽的盾");
+        item.setType("进化道具");
+        item.setDescription("据说很久以前，英雄就是拿着这把剑驱走了灾厄。而现在早已变得锈迹斑斑。");
+        item.setAmount(5);
+        item.setImageUrl("/item_pic/腐朽的盾.png");
+        items.add(item);
+
+        item = new Item();
+        item.setName("要害攻击");
+        item.setType("战斗道具");
+        item.setDescription("击中要害的几率会大幅提高。只能使用１次。离场后，效果便会消失。");
+        item.setAmount(5);
+        item.setImageUrl("/item_pic/要害攻击.png");
+        items.add(item);
+
+        item = new Item();
+        item.setName("酸酸苹果");
+        item.setType("进化道具");
+        item.setDescription("这种神奇的苹果可以使特定的宝可梦进化。吃起来酸酸的。");
+        item.setAmount(5);
+        item.setImageUrl("/item_pic/酸酸苹果.png");
+        items.add(item);
+
+        item = new Item();
+        item.setName("HP增强剂");
+        item.setType("药物");
+        item.setDescription("宝可梦的营养饮料。能提高１只宝可梦的ＨＰ的基础点数。");
+        item.setAmount(5);
+        item.setImageUrl("/item_pic/HP增强剂.png");
+        items.add(item);
+
+        item = new Item();
+        item.setName("PP提升剂");
+        item.setType("药物");
+        item.setDescription("能让宝可梦学会的其中１个招式的ＰＰ最大值少量提高。");
+        item.setAmount(5);
+        item.setImageUrl("/item_pic/PP提升剂.png");
+        items.add(item);
 
         return items;
     }

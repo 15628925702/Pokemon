@@ -7,7 +7,6 @@ import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import org.example.pokemon.HelloApplication;
 import org.example.pokemon.model.BackPack;
 
 import javafx.scene.control.Label;
@@ -66,7 +65,6 @@ public class BackpackViewController implements Initializable {
             @Override
             public void myEvent(Item item) {
                setChosenItem(item);
-
             }
          };
       }
@@ -75,7 +73,7 @@ public class BackpackViewController implements Initializable {
       try {
          for (Item item : items) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(HelloApplication.class.getClassLoader().getResource("item.fxml"));
+            fxmlLoader.setLocation(getClass().getClassLoader().getResource("item.fxml"));
 
             Pane pane = fxmlLoader.load();
 
@@ -83,7 +81,7 @@ public class BackpackViewController implements Initializable {
             itemController.setData(item, myListener);
 
 
-            if (col == 4) {
+            if (col == 3) {
                col = 0;
                row++;
             }

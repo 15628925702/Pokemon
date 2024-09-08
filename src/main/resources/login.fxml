@@ -13,103 +13,103 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="612.0" prefWidth="623.0" spacing="20.0" stylesheets="@org/example/pokemon/style/login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.controller.Login">
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1024.0" spacing="20.0" stylesheets="@org/example/pokemon/style/login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.controller.LoginController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <AnchorPane prefHeight="419.0" prefWidth="583.0">
-      <children>
-         <ImageView fitHeight="82.0" fitWidth="251.0" layoutX="135.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@org/example/pokemon/img/pokemon-removebg-preview.png" />
-            </image>
-         </ImageView>
-         <VBox layoutX="14.0" layoutY="102.0" prefHeight="108.0" prefWidth="361.0">
-            <children>
-               <HBox prefHeight="23.0" prefWidth="366.0">
-                  <children>
-                     <Label text="PHONE">
-                        <HBox.margin>
-                           <Insets left="60.0" />
-                        </HBox.margin>
-                        <font>
-                           <Font name="Agency FB Bold" size="19.0" />
-                        </font>
-                        <padding>
-                           <Insets top="6.0" />
-                        </padding>
-                     </Label>
-                     <TextField fx:id="phoneNumber">
-                        <HBox.margin>
-                           <Insets left="65.0" />
-                        </HBox.margin>
-                        <padding>
-                           <Insets bottom="10.0" left="10.0" top="10.0" />
-                        </padding>
-                     </TextField>
-                  </children>
-                  <VBox.margin>
-                     <Insets bottom="40.0" top="30.0" />
-                  </VBox.margin>
-               </HBox>
-               <HBox prefHeight="25.0" prefWidth="493.0">
-                  <children>
-                     <Label text="PASSWORD">
-                        <HBox.margin>
-                           <Insets left="60.0" />
-                        </HBox.margin>
-                        <font>
-                           <Font name="Agency FB Bold" size="18.0" />
-                        </font>
-                        <padding>
-                           <Insets top="6.0" />
-                        </padding>
-                     </Label>
-                     <PasswordField fx:id="password">
-                        <HBox.margin>
-                           <Insets left="40.0" />
-                        </HBox.margin>
-                        <padding>
-                           <Insets bottom="10.0" left="10.0" top="10.0" />
-                        </padding>
-                     </PasswordField>
-                  </children>
-                  <VBox.margin>
-                     <Insets />
-                  </VBox.margin>
-               </HBox>
-            </children>
-         </VBox>
-         <ImageView fitHeight="256.0" fitWidth="199.0" layoutX="357.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@org/example/pokemon/img/pikachu-intro.png" />
-            </image>
-         </ImageView>
-          <Button layoutX="185.0" layoutY="269.0" onMouseClicked="#onSignInClicked" prefHeight="34.0" prefWidth="123.0" stylesheets="@org/example/pokemon/style/login.css" textFill="WHITE">
-            <font>
-               <Font name="Eras Demi ITC" size="18.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Button>
-         <Label layoutX="185.0" layoutY="321.0" onKeyPressed="#onForgetClicked" onMouseClicked="#onForgetClicked" styleClass="line" text="forget password?" textFill="WHITE" underline="true">
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <font>
-               <Font name="Agency FB" size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="welcomeText" layoutX="185.0" layoutY="355.0" />
-         <Label layoutX="185.0" layoutY="348.0" onMouseClicked="#onNoAccountClicked" styleClass="line" text="No Account? REGISTER NOW!!" textFill="WHITE" underline="true">
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <font>
-               <Font name="Agency FB" size="18.0" />
-            </font>
-         </Label>
-      </children>
-   </AnchorPane>
+    <AnchorPane prefHeight="496.0" prefWidth="734.0">
+        <children>
+            <ImageView fitHeight="130.0" fitWidth="294.0" layoutX="344.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@org/example/pokemon/img/pokemon-removebg-preview.png" />
+                </image>
+            </ImageView>
+            <VBox layoutX="255.0" layoutY="128.0" prefHeight="108.0" prefWidth="361.0">
+                <children>
+                    <HBox prefHeight="23.0" prefWidth="366.0">
+                        <children>
+                            <Label text="PHONE">
+                                <HBox.margin>
+                                    <Insets left="60.0" />
+                                </HBox.margin>
+                                <font>
+                                    <Font name="Agency FB Bold" size="19.0" />
+                                </font>
+                                <padding>
+                                    <Insets top="6.0" />
+                                </padding>
+                            </Label>
+                            <TextField fx:id="phoneNumber">
+                                <HBox.margin>
+                                    <Insets left="65.0" />
+                                </HBox.margin>
+                                <padding>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                </padding>
+                            </TextField>
+                        </children>
+                        <VBox.margin>
+                            <Insets bottom="40.0" top="30.0" />
+                        </VBox.margin>
+                    </HBox>
+                    <HBox prefHeight="25.0" prefWidth="493.0">
+                        <children>
+                            <Label text="PASSWORD">
+                                <HBox.margin>
+                                    <Insets left="60.0" />
+                                </HBox.margin>
+                                <font>
+                                    <Font name="Agency FB Bold" size="18.0" />
+                                </font>
+                                <padding>
+                                    <Insets top="6.0" />
+                                </padding>
+                            </Label>
+                            <PasswordField fx:id="password">
+                                <HBox.margin>
+                                    <Insets left="40.0" />
+                                </HBox.margin>
+                                <padding>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                </padding>
+                            </PasswordField>
+                        </children>
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                    </HBox>
+                </children>
+            </VBox>
+            <ImageView fitHeight="256.0" fitWidth="199.0" layoutX="649.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@org/example/pokemon/img/皮卡丘-removebg-preview.png" />
+                </image>
+            </ImageView>
+            <Button fx:id="loginBtn" layoutX="430.0" layoutY="294.0"  prefHeight="34.0" prefWidth="123.0" stylesheets="@org/example/pokemon/style/login.css" textFill="WHITE">
+                <font>
+                    <Font name="Eras Demi ITC" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+            <Label layoutX="441.0" layoutY="359.0" onKeyPressed="#onForgetClicked" onMouseClicked="#onForgetClicked" styleClass="line" text="forget password?" textFill="WHITE" underline="true">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <font>
+                    <Font name="Agency FB" size="18.0" />
+                </font>
+            </Label>
+            <Label fx:id="welcomeText" layoutX="185.0" layoutY="355.0" />
+            <Label fx:id="noAccountLabel" layoutX="416.0" layoutY="396.0"  styleClass="line" text="No Account? REGISTER NOW!!" textFill="WHITE" underline="true">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <font>
+                    <Font name="Agency FB" size="18.0" />
+                </font>
+            </Label>
+        </children>
+    </AnchorPane>
 </VBox>

@@ -7,7 +7,15 @@ open module org.example.pokemon {
     requires java.desktop;
     requires mysql.connector.j;
     requires com.almasb.fxgl.all;
-    requires org.json; // 添加对 org.json 模块的依赖
+
+    requires org.json;
+    //阿里云验证码服务模块
+    requires tea;
+    requires dysmsapi20170525;
+    requires tea.openapi;
+    requires tea.util; // 添加对 org.json 模块的依赖
+
+
 
     // 开放的包（用于反射）
 //    opens org.example.pokemon to javafx.fxml;

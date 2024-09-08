@@ -2,6 +2,8 @@ package org.example.pokemon.BattleNet;
 
 import java.io.*;
 import java.net.*;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PokemonBattleClient {
@@ -11,13 +13,17 @@ public class PokemonBattleClient {
     private BufferedReader in; // 输入流，用于接收来自服务器的数据
     private PrintWriter out; // 输出流，用于向服务器发送数据
     public volatile boolean isMyTurn = false; // 标记是否轮到玩家操作（线程安全）
+    public volatile boolean ifMiss = false; // 标记是否轮到玩家操作（线程安全）
+    public volatile boolean ifCom = false; // 标记是否轮到玩家操作（线程安全）
     private Thread communicationThread; // 用于运行通信的线程
     private ClientCallback callback; // 用于回调 UI 更新的接口
 
 
     // 添加用于存储血量的属性
-    private int healthMe; // 宝可梦A的血量
-    private int healthEn; // 宝可梦B的血量
+    public int healthMe; // 宝可梦A的血量
+    public int healthEn; // 宝可梦B的血量
+
+
 
     // 构造函数：初始化客户端套接字
     public PokemonBattleClient(ClientCallback callback) throws IOException {
@@ -41,7 +47,7 @@ public class PokemonBattleClient {
             try {
                 String serverMessage;
                 while ((serverMessage = in.readLine()) != null) {
-                    System.out.println("收到来自服务器的消息： " + serverMessage); // 打印接收到的服务器消息
+                    //System.out.println("收到来自服务器的消息： " + serverMessage); // 打印接收到的服务器消息
                     handleServerMessage(serverMessage);
                 }
             } catch (IOException e) {
@@ -58,51 +64,82 @@ public class PokemonBattleClient {
         communicationThread.setDaemon(true); // 设置为守护线程
         communicationThread.start(); // 启动线程
     }
-
-    // 处理来自服务器的消息
     private void handleServerMessage(String serverMessage) {
         try {
             JSONObject json = new JSONObject(serverMessage);
             String type = json.getString("type");
 
-            if (type.equals("YourTurn")) {
-                this.isMyTurn = true; // 标记玩家可以操作
-                System.out.println("轮到你操作了。 "+"isMyturn="+isMyTurn); // 打印轮到玩家的提示
+            switch (type) {
+                case "MatchComplete":
+                    ifCom=true;
+                    System.out.println("已完成匹配");
+                    break;
 
-                // 调用回调通知 UI 更新
-                if (callback != null) {
-                    callback.onYourTurn();
-                    System.out.println("UI显示轮到你了"+isMyTurn); // 打印轮到玩家的提示
-                }
-            } else if (type.equals("GameOver")) {
-                System.out.println("游戏结束！"); // 打印游戏结束的信息
-                // 调用回调通知游戏结束
-                if (callback != null) {
-                    callback.onGameOver();
-                }
-            } else if (type.equals("HealthUpdate")) {
-                String healthInfo = json.getString("healthInfo");
-                System.out.println("服务器消息 - " + healthInfo); // 打印血量更新的信息
+                case "YourTurn":
+                    this.isMyTurn = true;
+                    System.out.println("轮到你操作了。 " + "isMyturn=" + isMyTurn);
+                    if (callback != null) {
+                        callback.onYourTurn();
+                        System.out.println("UI显示轮到你了" + isMyTurn);
+                    }
+                    break;
 
-                // 解析血量信息并更新属性
-                String[] healthParts = healthInfo.split(", ");
-                this.healthMe = Integer.parseInt(healthParts[0].split(": ")[1]); // 提取A的血量
-                this.healthEn = Integer.parseInt(healthParts[1].split(": ")[1]); // 提取B的血量
+                case "Action":
+                    int result = json.getInt("result");
+                    System.out.println("接受到的result值: " + result); // 调试输出
+                    if (result == -3) {
+                        this.ifMiss = true;
+                        System.out.println("操作结果为-3,闪避成功，ifMiss已设置为true");
+                    }
+                    // 处理其他可能的result值
+                    break;
 
-                // 打印更新后的血量
-                System.out.println("更新后的血量 - 宝可梦A: " + healthMe+ ", 宝可梦B: " + healthEn);
 
-                // 可以在此处更新 UI 以显示血量
-                if (callback != null) {
-                    callback.onHealthUpdate(healthInfo);
-                }
-            } else {
-                System.out.println("服务器消息： " + serverMessage); // 打印服务器的其他消息
+                case "GameOver":
+                    System.out.println("游戏结束！");
+                    if (callback != null) {
+                        callback.onGameOver();
+                    }
+                    break;
+
+                case "HealthUpdate":
+                    String healthInfo = json.getString("healthInfo");
+                    System.out.println("服务器消息 - " + healthInfo);
+
+                    // 解析血量信息并更新属性
+                    String[] healthParts = healthInfo.split(", ");
+                    if(!isMyTurn){
+                        this.healthMe = Integer.parseInt(healthParts[0].split(": ")[1]);
+                        this.healthEn = Integer.parseInt(healthParts[1].split(": ")[1]);
+                    }else{
+                        this.healthMe = Integer.parseInt(healthParts[1].split(": ")[1]);
+                        this.healthEn = Integer.parseInt(healthParts[0].split(": ")[1]);
+                    }
+
+
+                    // 打印更新后的血量
+                    System.out.println("更新后的血量 - 宝可梦A: " + healthMe + ", 宝可梦B: " + healthEn);
+                    System.out.println("=======================================================");
+                    System.out.println("=======================================================");
+
+                    if (callback != null) {
+                        callback.onHealthUpdate(healthInfo);
+                    }
+                    break;
+
+                default:
+                    System.out.println("服务器消息： " + serverMessage);
+                    break;
             }
+        } catch (JSONException e) {
+            System.err.println("处理服务器消息时出错：" + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("解析血量信息时出错：" + e.getMessage());
         } catch (Exception e) {
-            System.err.println("处理服务器消息时出错：" + e.getMessage()); // 打印异常信息
+            System.err.println("处理服务器消息时出错：" + e.getMessage());
         }
     }
+
 
     // 向服务器发送动作指令
     public void sendAction(String action) {
