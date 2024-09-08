@@ -48,6 +48,17 @@ public class PokemonBattleServer {
         outB.println(matchMessage.toString());
         System.out.println("已向两个客户端发送“已经完成匹配”的信息。");
 
+        // 发送角色信息
+        JSONObject roleMessageA = new JSONObject();
+        roleMessageA.put("type", "Role");
+        roleMessageA.put("role", "A");
+        outA.println(roleMessageA.toString());
+
+        JSONObject roleMessageB = new JSONObject();
+        roleMessageB.put("type", "Role");
+        roleMessageB.put("role", "B");
+        outB.println(roleMessageB.toString());
+
         // 从文件中加载宝可梦数据
         poke1 = new PokemonData();
         poke2 = new PokemonData();
@@ -62,12 +73,12 @@ public class PokemonBattleServer {
 
         updateHealth();
 
-
         // 初始化战斗逻辑
         battle = new ServerBattle();
         // 启动战斗线程
         new Thread(this::runBattle).start();
     }
+
 
 
     // 运行战斗逻辑

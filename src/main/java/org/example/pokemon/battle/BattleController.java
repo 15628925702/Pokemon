@@ -81,7 +81,6 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
             setBattleInfo(0);
             handleActionClick(0); // 发送技能指令
         }
-
     }
     public void skill2Click(ActionEvent actionEvent) throws FileNotFoundException {
         if(client.isMyTurn) {

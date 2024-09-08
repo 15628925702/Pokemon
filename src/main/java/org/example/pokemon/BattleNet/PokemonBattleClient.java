@@ -15,6 +15,7 @@ public class PokemonBattleClient {
     public volatile boolean isMyTurn = false; // 标记是否轮到玩家操作（线程安全）
     public volatile boolean ifMiss = false; // 标记是否轮到玩家操作（线程安全）
     public volatile boolean ifCom = false; // 标记是否轮到玩家操作（线程安全）
+    public volatile boolean ifIamA = false; // 标记是否轮到玩家操作（线程安全）
     private Thread communicationThread; // 用于运行通信的线程
     private ClientCallback callback; // 用于回调 UI 更新的接口
 
@@ -71,8 +72,19 @@ public class PokemonBattleClient {
 
             switch (type) {
                 case "MatchComplete":
-                    ifCom=true;
+                    ifCom = true;
                     System.out.println("已完成匹配");
+                    break;
+
+                case "Role":
+                    String role = json.getString("role");
+                    if ("A".equals(role)) {
+                        this.ifIamA = true;
+                        System.out.println("你是客户端A");
+                    } else if ("B".equals(role)) {
+                        this.ifIamA = false;
+                        System.out.println("你是客户端B");
+                    }
                     break;
 
                 case "YourTurn":
@@ -94,7 +106,6 @@ public class PokemonBattleClient {
                     // 处理其他可能的result值
                     break;
 
-
                 case "GameOver":
                     System.out.println("游戏结束！");
                     if (callback != null) {
@@ -108,9 +119,9 @@ public class PokemonBattleClient {
 
                     // 解析血量信息并更新属性
                     String[] healthParts = healthInfo.split(", ");
-                    if(!isMyTurn){
-                        this.healthMe = Integer.parseInt(healthParts[0].split(": ")[1]);
+                    if(this.ifIamA==true){
                         this.healthEn = Integer.parseInt(healthParts[1].split(": ")[1]);
+                        this.healthMe = Integer.parseInt(healthParts[0].split(": ")[1]);
                     }else{
                         this.healthMe = Integer.parseInt(healthParts[1].split(": ")[1]);
                         this.healthEn = Integer.parseInt(healthParts[0].split(": ")[1]);
@@ -118,7 +129,7 @@ public class PokemonBattleClient {
 
 
                     // 打印更新后的血量
-                    System.out.println("更新后的血量 - 宝可梦A: " + healthMe + ", 宝可梦B: " + healthEn);
+                    System.out.println("更新后的血量 - 我方宝可梦: " + healthMe + ", 敌方宝可梦: " + healthEn);
                     System.out.println("=======================================================");
                     System.out.println("=======================================================");
 
@@ -139,6 +150,7 @@ public class PokemonBattleClient {
             System.err.println("处理服务器消息时出错：" + e.getMessage());
         }
     }
+
 
 
     // 向服务器发送动作指令

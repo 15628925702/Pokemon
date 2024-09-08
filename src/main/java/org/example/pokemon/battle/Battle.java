@@ -406,8 +406,10 @@ public class Battle {
     }
 
     //设置血量显示
+    //设置血量显示
     public void showHp(PokemonData actor, PokemonData viewer, BattleScene ui, PokemonBattleClient client) throws IOException {
         Platform.runLater(()->{
+            int actor_lim_hp,viewer_lim_hp;
             //获得actor的目前血量以及血量上限
             int actor_cur_hp = client.healthMe;
             PokemonData temp_actor = new PokemonData();
@@ -416,7 +418,7 @@ public class Battle {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            int actor_hpLimit = temp_actor.getHp();
+            //int actor_lim_hp = temp_actor.getHp();
 
             //获得viewer的目前血量以及血量上限
             int viewer_cur_hp = client.healthEn;
@@ -427,13 +429,20 @@ public class Battle {
                 throw new RuntimeException(e);
             }
             //System.out.println(temp_viewer.toString());
-            int viewer_hpLimit = temp_viewer.getHp();
+            //int viewer_lim_hp = temp_viewer.getHp();
+            if(client.isMyTurn){
+                actor_lim_hp = temp_actor.getHp();
+                viewer_lim_hp = temp_viewer.getHp();
+            }else{
+                actor_lim_hp = temp_viewer.getHp();
+                viewer_lim_hp = temp_actor.getHp();
+            }
             System.out.println("actHpCur:"+actor_cur_hp);
-            System.out.println("actHpLimit: "+actor_hpLimit);
+            System.out.println("actHpLimit: "+actor_lim_hp);
             System.out.println("viewHpCur:"+viewer_cur_hp);
-            System.out.println("viewHpLimit: "+viewer_hpLimit);
+            System.out.println("viewHpLimit: "+viewer_lim_hp);
 
-            ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,actor_hpLimit,viewer_hpLimit);
+            ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,actor_lim_hp,viewer_lim_hp);
         });
 
     }
