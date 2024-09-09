@@ -37,9 +37,8 @@ public class PokemonBattleClient {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream())); // 初始化输入流
             out = new PrintWriter(socket.getOutputStream(), true); // 初始化输出流
 
-            sendPokeName(); // 发送宝可梦名字
-
             startCommunication(); // 启动通信线程
+            sendPokeName(); // 发送宝可梦名字
         } catch (IOException e) {
             System.err.println("连接到服务器失败：" + e.getMessage());
             throw e;
@@ -80,13 +79,29 @@ public class PokemonBattleClient {
 
     private void handleServerMessage(String serverMessage) {
         try {
+            System.out.println("接收到了新消息————————————————————————————————————");
             JSONObject json = new JSONObject(serverMessage);
             String type = json.getString("type");
 
             switch (type) {
+
+                case "PokeNames":
+                    if (this.ifIamA) {
+                        this.PokeAName = json.getString("pokeAName");
+                        this.PokeBName = json.getString("pokeBName");
+                    } else {
+                        this.PokeAName = json.getString("pokeAName");
+                        this.PokeBName = json.getString("pokeBName");
+                    }
+                    System.out.println("接收到宝可梦A名字: " + PokeAName);
+                    System.out.println("接收到宝可梦B名字: " + PokeBName);
+                    break;
+
                 case "MatchComplete":
                     ifCom = true;
                     System.out.println("已完成匹配");
+                    System.out.println("宝可梦A名字："+PokeAName+", 宝可梦B名字："+PokeBName);
+
                     break;
 
                 case "Role":
@@ -99,6 +114,8 @@ public class PokemonBattleClient {
                         System.out.println("你是客户端B");
                     }
                     break;
+
+
 
                 case "YourTurn":
                     this.isMyTurn = true;
@@ -119,13 +136,6 @@ public class PokemonBattleClient {
                     // 处理其他可能的result值
                     break;
 
-                case "GameOver":
-                    System.out.println("游戏结束！");
-                    if (callback != null) {
-                        callback.onGameOver();
-                    }
-                    break;
-
                 case "HealthUpdate":
                     String healthInfo = json.getString("healthInfo");
                     System.out.println("服务器消息 - " + healthInfo);
@@ -142,22 +152,16 @@ public class PokemonBattleClient {
 
                     // 打印更新后的血量
                     System.out.println("更新后的血量 - 我方宝可梦: " + healthMe + ", 敌方宝可梦: " + healthEn);
-                    System.out.println("=======================================================");
-                    System.out.println("=======================================================");
 
                     if (callback != null) {
                         callback.onHealthUpdate(healthInfo);
                     }
                     break;
 
-                case "PokeName":
-                    String pokeName = json.getString("pokeName");
-                    if (this.ifIamA) {
-                        this.PokeAName = pokeName;
-                        System.out.println("接收到宝可梦A名字: " + PokeAName);
-                    } else {
-                        this.PokeBName = pokeName;
-                        System.out.println("接收到宝可梦B名字: " + PokeBName);
+                case "GameOver":
+                    System.out.println("游戏结束！");
+                    if (callback != null) {
+                        callback.onGameOver();
                     }
                     break;
 

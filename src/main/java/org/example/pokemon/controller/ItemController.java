@@ -18,8 +18,6 @@ import org.example.pokemon.model.Item;
 import org.example.pokemon.model.MyListener;
 
 public class ItemController {
-    @FXML
-    private Label amount;
 
     @FXML
     private Label description;
@@ -50,7 +48,6 @@ public class ItemController {
         name.setText(item.getName());
         type.setText(item.getType());
         description.setText(item.getDescription());
-        amount.setText(String.valueOf(item.getAmount()));
         Image image = new Image(getClass().getResourceAsStream(item.getImageUrl()));
         img.setImage(image);
 

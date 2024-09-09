@@ -2,20 +2,22 @@ package org.example.pokemon.battle;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;
-import org.example.pokemon.BattleNet.PokemonBattleClient;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
-//战斗系统
-public class Battle {
+//单机战斗系统
+public class Battle1p {
     //属性
     private int round;  //轮数
     private int command;    //指令
     private Object lock = new Object();    //线程锁
 
     //构造方法
-    public Battle() {
+    public Battle1p() {
         this.round = 1;
     }
 
@@ -25,7 +27,8 @@ public class Battle {
     }
 
     //初始化对战
-    public void initBattle(PokemonData poke1, PokemonData poke2, BattleScene ui, PokemonBattleClient client) throws IOException {
+    //poke1:player poke2:ai
+    public void initBattle(PokemonData poke1, PokemonData poke2, Battle1pScene ui) throws IOException {
         //建立两个线程
         //接收线程
         Thread accept = new Thread() {
@@ -43,7 +46,7 @@ public class Battle {
         //操作线程
         Thread action = new Thread(() -> {
             try {
-                battleStart(poke1, poke2, ui,client);
+                battleStart(poke1, poke2, ui);
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace(); // 适当地处理异常
             }
@@ -52,25 +55,26 @@ public class Battle {
     }
 
     //开始游戏
-    public void battleStart(PokemonData oriPoke1, PokemonData oriPoke2, BattleScene ui, PokemonBattleClient client) throws IOException, InterruptedException {
+    public void battleStart(PokemonData oriPoke1, PokemonData oriPoke2, Battle1pScene ui) throws IOException, InterruptedException {
         //创建对战对象
         PokemonData poke1 = new PokemonData();
         PokemonData poke2 = new PokemonData();
         poke1.clonePokeData(oriPoke1);
         poke2.clonePokeData(oriPoke2);
         //showPet(poke1,poke2,ui);
-        showPokeName(poke1,poke2,ui,client);    //显示宝可梦名字
-        showHp(poke1,poke2,ui,client);   //显示宝可梦状态
+        showPet(poke1, poke2, ui);
+        showPokeName(poke1,poke2,ui);    //显示宝可梦名字
+        showHp(poke1,poke2,ui);   //显示宝可梦状态
 
         boolean isOn = true;    //对战是否进行中
         showStatus("游戏开始",ui);
         int status = 0;
         int result = 0;
         while (isOn){
-            showStatus("轮数"+round,ui);
+            setStatus("轮数"+round,ui);
 
             if(compareSpeed(poke1, poke2)){
-                status = act(poke1, poke2, ui, client); //操作
+                status = playerAct(poke1, poke2, ui); //操作
 
                 //判断游戏是否结束
                 if(status == -2){
@@ -82,7 +86,7 @@ public class Battle {
                 if(result!=0){
                     break;
                 }
-                status = act(poke2, poke1, ui, client); //操作
+                status = aiAct(poke1, poke2, ui); //操作
 
                 //判断游戏是否结束
                 if(status == -2){
@@ -96,7 +100,7 @@ public class Battle {
                 }
             }
             else{
-                status = act(poke2, poke1, ui, client); //操作
+                status = aiAct(poke1, poke2, ui); //操作
 
                 //判断游戏是否结束
                 if(status == -2){
@@ -109,7 +113,7 @@ public class Battle {
                     break;
                 }
 
-                status = act(poke1, poke2, ui, client); //操作
+                status = playerAct(poke1, poke2, ui); //操作
 
                 //判断游戏是否结束
                 if(status == -2){
@@ -141,8 +145,8 @@ public class Battle {
     }
 
     //进行操作 参数前为操作的对象 后为不操作的对象
-    public int act(PokemonData actor, PokemonData viewer, BattleScene ui, PokemonBattleClient client) throws IOException, InterruptedException {
-        showPokeStatus(actor,viewer,ui,client);   //显示宝可梦状态
+    public int playerAct(PokemonData actor, PokemonData viewer, Battle1pScene ui) throws IOException, InterruptedException {
+        showPokeStatus(actor,viewer,ui);   //显示宝可梦状态
         showPet(actor,viewer,ui);
 
         //获得执行命令
@@ -158,7 +162,7 @@ public class Battle {
         switch (action){
             //发动技能1 2 3 4
             case 0,1,2,3:{
-                useSkill(actor,viewer,action,ui,client);
+                return useSkill(actor,viewer,action,ui);
             }
             //使用道具
             case 4:{
@@ -174,21 +178,49 @@ public class Battle {
         }
     }
 
-    //发动技能
-    public int useSkill(PokemonData actor, PokemonData viewer, int flag, BattleScene ui,PokemonBattleClient client) throws IOException {
-        int effect = 0;
+    //ai行动
+    public int aiAct(PokemonData poke1, PokemonData poke2, Battle1pScene ui) throws IOException, InterruptedException {
+        showPokeStatus(poke1,poke2,ui);   //显示宝可梦状态
+        showPet(poke1,poke2,ui);
 
-        while(true){
-            //获得伤害(治疗量)
-            effect = actor.useSkill(flag,viewer.getPhysical_defense(),viewer.getSpecial_defense());
-            if(effect != -3){
+        Thread.sleep(1000);
+
+        System.out.println("调用ai计算");
+        //获得技能加权评分
+        PokemonSkill[] skills = new PokemonSkill[4];
+        double[] score = new double[4];
+        skills = poke2.getSkillsOfPokes();
+
+        for(int i=0;i<skills.length;i++){
+            //System.out.println(i+"进入循环");
+            if(skills[i]==null){
+                //System.out.println(i+"为空,退出循环");
                 break;
             }
-            PokemonSkill temp = actor.getSkill(flag);
-            temp.setSkillTimes(temp.getSkillTimes()+1);
+            score[i] = skills[i].getSkillScore(poke1, poke2);
+            System.out.println("技能"+skills[i].getSkillName()+"分数为"+score[i]);
         }
 
+        double record = 0;
+        int flag = 0;
+        //获得评分最大值的技能
+        for(int i=0;i<skills.length;i++){
+            if(score[i]>record){
+                record = score[i];
+                flag = i;
+            }
+        }
 
+        return useSkill(poke2,poke1,flag,ui);
+    }
+
+
+    //发动技能
+    public int useSkill(PokemonData actor, PokemonData viewer, int flag, Battle1pScene ui) throws IOException {
+        int effect = 0;
+
+        //获得伤害(治疗量)
+        effect = actor.useSkill(flag,viewer.getPhysical_defense(),viewer.getSpecial_defense());
 
         //处理技能特殊情况
         if(effect==-1){
@@ -200,9 +232,8 @@ public class Battle {
         }
 
         showStatus(actor.getPokemonName()+"使用了技能"+actor.getSkillName(flag),ui);
-        if(client.ifMiss==true){
+        if(effect == -3){
             showReturn("技能未命中",ui);
-            client.ifMiss=false;
             return -3;
         }
         //获得技能类型
@@ -232,7 +263,7 @@ public class Battle {
     }
 
     //计算伤害并返回给服务器端
-    public int damageAction(PokemonData actor, PokemonData viewer, int effect, int type, BattleScene ui){
+    public int damageAction(PokemonData actor, PokemonData viewer, int effect, int type, Battle1pScene ui){
         int damage = effect;
         if(effect>viewer.getHp()){
             damage = viewer.getHp();
@@ -243,7 +274,7 @@ public class Battle {
     }
 
     //计算回复量并返回给服务器端
-    public int recoverAction(PokemonData actor,PokemonData viewer,int effect,int type, BattleScene ui) throws IOException {
+    public int recoverAction(PokemonData actor,PokemonData viewer,int effect,int type, Battle1pScene ui) throws IOException {
         int recover = effect;   //获得回复量
         //获得生命上限
         PokemonData temp_actor = new PokemonData();
@@ -263,7 +294,7 @@ public class Battle {
 
 
     //受到伤害
-    public void beDamaged(PokemonData actor, PokemonData viewer, int effect, BattleScene ui) {
+    public void beDamaged(PokemonData actor, PokemonData viewer, int effect, Battle1pScene ui) {
         viewer.setHp(viewer.getHp()-effect);    //设置血量
         String showContent = actor.getPokemonName()+" 对 "+viewer.getPokemonName()+"造成了"+effect+"点伤害,效果拔群";
         ui.showDamageAnimation(1);
@@ -271,20 +302,20 @@ public class Battle {
     }
 
     //恢复血量
-    public void beRecovered(PokemonData actor,PokemonData viewer,int effect, BattleScene ui){
+    public void beRecovered(PokemonData actor,PokemonData viewer,int effect, Battle1pScene ui){
         viewer.setHp(viewer.getHp()+effect);
         String showContent = actor.getPokemonName()+"恢复了"+effect+"点生命值";
         showReturn(showContent,ui);
     }
 
     //显示宝可梦信息
-    public void showPokeStatus(PokemonData actor, PokemonData viewer, BattleScene ui, PokemonBattleClient client) throws IOException {
+    public void showPokeStatus(PokemonData actor, PokemonData viewer, Battle1pScene ui) throws IOException {
         //FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));
         //fxmlLoader.load();
         //BattleController controller = fxmlLoader.<BattleController>getController();
         Platform.runLater(()->{
             try {
-                showHp(actor,viewer,ui,client);
+                showHp(actor,viewer,ui);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -314,7 +345,7 @@ public class Battle {
     }
 
     //检测游戏是否结束
-    public int checkIsOver(PokemonData poke1,PokemonData poke2, BattleScene ui){
+    public int checkIsOver(PokemonData poke1,PokemonData poke2, Battle1pScene ui){
         if(poke1.getHp()==0){
             showNotice(poke1.getPokemonName()+"晕倒了,"+poke2.getPokemonName()+"胜利",ui);
             return -1;
@@ -327,7 +358,7 @@ public class Battle {
     }
 
     //显示技能信息
-    public void showSkills(PokemonData actor, BattleScene ui) throws IOException {
+    public void showSkills(PokemonData actor, Battle1pScene ui) throws IOException {
         PokemonSkill[] skills = actor.getSkillsOfPokes();//获得技能
         String[] skillNames = new String[skills.length];//技能名
         String[] skillTimes = new String[skills.length];//技能次数
@@ -408,67 +439,63 @@ public class Battle {
 
     //设置血量显示
     //设置血量显示
-    public void showHp(PokemonData actor, PokemonData viewer, BattleScene ui, PokemonBattleClient client) throws IOException {
+    public void showHp(PokemonData poke1, PokemonData poke2, Battle1pScene ui) throws IOException {
         Platform.runLater(()->{
-            int actor_lim_hp,viewer_lim_hp;
+
+            int poke1_lim_hp,poke2_lim_hp;
             //获得actor的目前血量以及血量上限
-            int actor_cur_hp = client.healthMe;
+            int actor_cur_hp = poke1.getHp();
             PokemonData temp_actor = new PokemonData();
             try {
-                temp_actor.getPokeDataFromDb(actor.getPokemonName());
+                temp_actor.getPokeDataFromDb(poke1.getPokemonName());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            //int actor_lim_hp = temp_actor.getHp();
+            poke1_lim_hp = temp_actor.getHp();
 
             //获得viewer的目前血量以及血量上限
-            int viewer_cur_hp = client.healthEn;
+            int viewer_cur_hp = poke2.getHp();
             PokemonData temp_viewer = new PokemonData();
             try {
-                temp_viewer.getPokeDataFromDb(viewer.getPokemonName());
+                temp_viewer.getPokeDataFromDb(poke2.getPokemonName());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             //System.out.println(temp_viewer.toString());
-            //int viewer_lim_hp = temp_viewer.getHp();
-            if(client.isMyTurn){
-                actor_lim_hp = temp_actor.getHp();
-                viewer_lim_hp = temp_viewer.getHp();
-            }else{
-                actor_lim_hp = temp_viewer.getHp();
-                viewer_lim_hp = temp_actor.getHp();
-            }
-            System.out.println("攻击方现在血量:"+actor_cur_hp);
-            System.out.println("攻击方血量上限: "+actor_lim_hp);
-            System.out.println("防守方现在血量:"+viewer_cur_hp);
-            System.out.println("防守方血量上限: "+viewer_lim_hp);
+            poke2_lim_hp = temp_viewer.getHp();
 
-            ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,actor_lim_hp,viewer_lim_hp);
+
+            System.out.println("actHpCur:"+actor_cur_hp);
+            System.out.println("actHpLimit: "+poke1_lim_hp);
+            System.out.println("viewHpCur:"+viewer_cur_hp);
+            System.out.println("viewHpLimit: "+poke2_lim_hp);
+
+            ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,poke1_lim_hp,poke2_lim_hp);
         });
 
     }
 
     //显示技能使用
-    public void setStatus(String text, BattleScene ui){
+    public void setStatus(String text, Battle1pScene ui){
         Platform.runLater(()->{
             ui.setStatusLabelText(text);
         });
     }
-    public void showStatus(String text, BattleScene ui){
+    public void showStatus(String text, Battle1pScene ui){
         Platform.runLater(()->{
             ui.addStatusLabelText(text);
         });
     }
 
     //显示状态反馈
-    public void showReturn(String text, BattleScene ui){
+    public void showReturn(String text, Battle1pScene ui){
         Platform.runLater(()->{
             ui.setReturnButtonText(text);
         });
     }
 
     //显示宠物图像
-    public void showPet(PokemonData actor, PokemonData viewer, BattleScene ui) {
+    public void showPet(PokemonData actor, PokemonData viewer, Battle1pScene ui) {
         int actor_id = actor.getPokemonID();
         System.out.println(actor_id);
         int viewer_id = viewer.getPokemonID();
@@ -481,23 +508,18 @@ public class Battle {
     }
 
     //显示通知
-    public void showNotice(String text, BattleScene ui){
+    public void showNotice(String text, Battle1pScene ui){
         Platform.runLater(()->{
             ui.showNotice(text);
         });
     }
 
     //显示宝可梦名
-    public void showPokeName(PokemonData poke1,PokemonData poke2, BattleScene ui, PokemonBattleClient client){
+    public void showPokeName(PokemonData poke1,PokemonData poke2, Battle1pScene ui){
         Platform.runLater(()->{
             String name1 = poke1.getPokemonName();
             String name2 = poke2.getPokemonName();
-            if(client.ifIamA){
-                ui.showPokeName(name1,name2);
-            }else{
-                ui.showPokeName(name2,name1);
-            }
+            ui.showPokeName(name1,name2);
         });
     }
-
 }

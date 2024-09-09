@@ -85,24 +85,11 @@
                                     <Insets bottom="10.0" left="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label prefHeight="28.0" prefWidth="87.0" text="数量">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="10.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label fx:id="amountLabel" prefHeight="15.0" prefWidth="130.0" text="+961 xx-xxx-xxx">
-                                 <VBox.margin>
-                                    <Insets left="10.0" />
-                                 </VBox.margin>
-                              </Label>
                            </children>
                         </VBox>
                         <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button onMouseClicked="#onUseClicked" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="使用" />
+                              <Button mnemonicParsing="false" onMouseClicked="#onUseClicked" prefHeight="38.0" prefWidth="109.0" text="使用" />
                            </children>
                         </HBox>
                      </children>

@@ -13,9 +13,9 @@ import org.example.pokemon.model.BackPack;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
+import org.example.pokemon.model.Data;
 import org.example.pokemon.model.Item;
 import org.example.pokemon.model.MyListener;
-import org.example.pokemon.model.Spirit;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,8 +24,6 @@ import java.util.ResourceBundle;
 
 public class BackpackViewController implements Initializable {
 
-   @FXML
-   private Label amountLabel;
 
    @FXML
    private Label descripitionLabel;
@@ -53,7 +51,6 @@ public class BackpackViewController implements Initializable {
       nameLabel.setText(item.getName());
       descripitionLabel.setText(item.getDescription());
       typeLabel.setText(item.getType());
-      amountLabel.setText(String.valueOf(item.getAmount()));
    }
 
    @Override
@@ -83,7 +80,7 @@ public class BackpackViewController implements Initializable {
             itemController.setData(item, myListener);
 
 
-            if (col == 3) {
+            if (col == 2) {
                col = 0;
                row++;
             }
@@ -96,12 +93,16 @@ public class BackpackViewController implements Initializable {
 
    }
 
-   private Spirit spirit = new Spirit();
-   public void onUseClicked(MouseEvent event) {
-      Spirit spirit = new Spirit();
-      spirit.addID(1);
-   }
-   public Spirit getSpirit () {
-      return this.spirit;
+   public void onUseClicked(MouseEvent mouseEvent) {
+      if (this.nameLabel.getText().equals("榴石果")) {
+         System.out.println("已选择榴石果");
+         Data.ID = 1;
+      }
+      if (this.nameLabel.getText().equals("大师球")) {
+         System.out.println("已选择大师球");
+         Data.ID = 2;
+      }
+
+
    }
 }

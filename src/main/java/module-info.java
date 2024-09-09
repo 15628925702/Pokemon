@@ -5,7 +5,7 @@ open module org.example.pokemon {
     requires javafx.media;
     requires java.sql;
     requires java.desktop;
-    requires mysql.connector.j;
+    requires com.microsoft.sqlserver.jdbc;
     requires com.almasb.fxgl.all;
 
     requires org.json;

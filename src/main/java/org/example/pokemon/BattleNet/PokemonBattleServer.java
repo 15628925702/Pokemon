@@ -46,14 +46,6 @@ public class PokemonBattleServer {
             // 处理客户端发送的宝可梦名字
             handlePokeNames();
 
-            // 向客户端A和客户端B发送“已经完成匹配”的信息
-            JSONObject matchMessage = new JSONObject();
-            matchMessage.put("type", "MatchComplete");
-            matchMessage.put("message", "已经完成匹配");
-            outA.println(matchMessage.toString());
-            outB.println(matchMessage.toString());
-            System.out.println("已向两个客户端发送“已经完成匹配”的信息。");
-
             // 发送角色信息
             sendRoleInfo();
 
@@ -64,6 +56,16 @@ public class PokemonBattleServer {
 
             // 初始化战斗逻辑
             battle = new ServerBattle();
+
+            // 向客户端A和客户端B发送“已经完成匹配”的信息
+            JSONObject matchMessage = new JSONObject();
+            matchMessage.put("type", "MatchComplete");
+            matchMessage.put("message", "已经完成匹配");
+            outA.println(matchMessage.toString());
+            outB.println(matchMessage.toString());
+            System.out.println("已向两个客户端发送“已经完成匹配”的信息。");
+
+
             // 启动战斗线程
             new Thread(this::runBattle).start();
         } catch (IOException e) {
@@ -79,22 +81,24 @@ public class PokemonBattleServer {
             PokeAName = pokeNameMessageA.getString("pokeName");
             System.out.println("接收到客户端A的宝可梦名字: " + PokeAName);
 
-            // 发送客户端A的宝可梦名字到客户端B
-            JSONObject pokeNameInfoA = new JSONObject();
-            pokeNameInfoA.put("type", "PokeName");
-            pokeNameInfoA.put("pokeName", PokeAName);
-            outB.println(pokeNameInfoA.toString());
-
             // 从客户端B接收宝可梦名字
             JSONObject pokeNameMessageB = new JSONObject(inB.readLine());
             PokeBName = pokeNameMessageB.getString("pokeName");
             System.out.println("接收到客户端B的宝可梦名字: " + PokeBName);
 
-            // 发送客户端B的宝可梦名字到客户端A
+            // 发送两个宝可梦名字到客户端A
+            JSONObject pokeNameInfoA = new JSONObject();
+            pokeNameInfoA.put("type", "PokeNames");
+            pokeNameInfoA.put("pokeAName", PokeAName);
+            pokeNameInfoA.put("pokeBName", PokeBName);
+            outA.println(pokeNameInfoA.toString());
+
+            // 发送两个宝可梦名字到客户端B
             JSONObject pokeNameInfoB = new JSONObject();
-            pokeNameInfoB.put("type", "PokeName");
-            pokeNameInfoB.put("pokeName", PokeBName);
-            outA.println(pokeNameInfoB.toString());
+            pokeNameInfoB.put("type", "PokeNames");
+            pokeNameInfoB.put("pokeAName", PokeAName);
+            pokeNameInfoB.put("pokeBName", PokeBName);
+            outB.println(pokeNameInfoB.toString());
         } catch (IOException e) {
             System.err.println("处理宝可梦名字时发生错误: " + e.getMessage());
         }
@@ -116,15 +120,48 @@ public class PokemonBattleServer {
     // 从文件中加载宝可梦数据
     private void loadPokemonData() {
         try {
-            poke1 = new PokemonData();
-            poke2 = new PokemonData();
-            poke1.getPokeDataFromDb("皮卡丘");
-            poke1.setPokeSkill("冲撞", 0);
-            poke1.setPokeSkill("十万伏特", 1);
-            poke1.setPokeSkill("电击", 2);
-            poke2.getPokeDataFromDb("妙蛙种子");
-            poke2.setPokeSkill("冲撞", 0);
-            poke2.setPokeSkill("种子炸弹", 1);
+            poke1=new PokemonData();
+            poke2=new PokemonData();
+
+            PokemonData pokemon1 = new PokemonData();
+            pokemon1.getPokeDataFromDb("皮卡丘");
+            pokemon1.setPokeSkill("冲撞",0);
+            pokemon1.setPokeSkill("十万伏特",1);
+            pokemon1.setPokeSkill("电击",2);
+
+            PokemonData pokemon2 = new PokemonData();
+            pokemon2.getPokeDataFromDb("小火龙");
+            pokemon2.setPokeSkill("冲撞",0);
+            pokemon2.setPokeSkill("喷火",1);
+
+            PokemonData pokemon3 = new PokemonData();
+            pokemon3.getPokeDataFromDb("杰尼龟");
+            pokemon3.setPokeSkill("冲撞",0);
+            pokemon3.setPokeSkill("水枪",1);
+
+            PokemonData pokemon4 = new PokemonData();
+            pokemon4.getPokeDataFromDb("妙蛙种子");
+            pokemon4.setPokeSkill("冲撞",0);
+            pokemon4.setPokeSkill("种子炸弹",1);
+
+
+            if(PokeAName.equals("皮卡丘")){
+                poke1.clonePokeData(pokemon1);
+                System.out.println("宝可梦A是皮卡丘——" );
+            }
+            if(PokeAName.equals("小火龙")){
+                poke1.clonePokeData(pokemon2);
+                System.out.println("宝可梦A是小火龙——" );
+            }
+            if(PokeBName.equals("皮卡丘")){
+                poke2.clonePokeData(pokemon1);
+                System.out.println("宝可梦B是皮卡丘——" );
+            }
+            if(PokeBName.equals("小火龙")){
+                poke2.clonePokeData(pokemon2);
+                System.out.println("宝可梦B是小火龙——" );
+            }
+
             System.out.println("宝可梦数据加载完成。");
         } catch (Exception e) {
             System.err.println("加载宝可梦数据时发生错误: " + e.getMessage());
