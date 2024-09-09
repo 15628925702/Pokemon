@@ -6,10 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-09.33.18.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-11.54.23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-12.59.48.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-13.02.35.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-08-9月-2024-16.48.47.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-08-9月-2024-16.48.48.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-08-9月-2024-17.02.28.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/BattleNet/PokemonBattleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/BattleNet/PokemonBattleClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle1p.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle1p.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle1pScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle1pScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PokeDatabase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PokeDatabase.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PokeSkillDatabase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PokeSkillDatabase.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,10 +80,10 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Liu1.6&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Liu2.0&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.6/Pokemon/src/main/lib/mysql-connector-j-9.0.0.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu2.0/Pokemon/src/main/lib/mysql-connector-j-9.0.0.jar&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -108,7 +117,7 @@
       <recent name="D:\Repo\Pokemon\src\main\resources\org\example\pokemon" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.Battle1pTest">
+  <component name="RunManager" selected="应用程序.Map1">
     <configuration name="Battle1pTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.pokemon.battle.Battle1pTest" />
       <module name="Pokemon" />
@@ -226,6 +235,9 @@
       <workItem from="1725841725908" duration="131000" />
       <workItem from="1725848538950" duration="4018000" />
       <workItem from="1725860775549" duration="6106000" />
+      <workItem from="1725868258647" duration="593000" />
+      <workItem from="1725869938622" duration="741000" />
+      <workItem from="1725875536312" duration="1989000" />
     </task>
     <servers />
   </component>

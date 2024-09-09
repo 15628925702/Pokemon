@@ -63,8 +63,14 @@ public class Battle1pScene extends Scene{
         pokemon4.setPokeSkill("冲撞",0);
         pokemon4.setPokeSkill("种子炸弹",1);
 
+        PokemonData pokemon5 = new PokemonData();
+        pokemon5.getPokeDataFromDb("喵喵");
+        pokemon5.setPokeSkill("冲撞",0);
+        pokemon5.setPokeSkill("抓",1);
+        pokemon5.setPokeSkill("击掌奇袭",2);
+
         Battle1p battle = new Battle1p();
-        battle.initBattle(pokemon2,pokemon3,this);
+        battle.initBattle(pokemon1,pokemon2,this);
     }
 
     //改写标签文本

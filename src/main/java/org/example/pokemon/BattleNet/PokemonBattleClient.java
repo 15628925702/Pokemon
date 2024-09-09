@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PokemonBattleClient {
-    private static final String SERVER_ADDRESS = "localhost"; // 服务器地址
+    private static final String SERVER_ADDRESS = "121.40.128.110"; // 服务器地址
     private static final int PORT = 12345; // 服务器端口
     private Socket socket; // 套接字，用于与服务器连接
     private BufferedReader in; // 输入流，用于接收来自服务器的数据

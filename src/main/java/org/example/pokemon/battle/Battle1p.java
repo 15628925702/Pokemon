@@ -228,7 +228,7 @@ public class Battle1p {
             return -1;
         }else if (effect==-2){
             showReturn("使用次数不足",ui);
-            return -2;
+            return -6;
         }
 
         showStatus(actor.getPokemonName()+"使用了技能"+actor.getSkillName(flag),ui);

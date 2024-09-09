@@ -189,10 +189,10 @@ public class PokemonSkill {
         }
 
         //定义权重
-        double weightHitRate = 0.2;
-        double weightPower = 0.3;
+        double weightHitRate = 0.15;
+        double weightPower = 0.25;
         double weightTimes = 0.1;
-        double weightDiffer = 0.4;
+        double weightDiffer = 0.5;
 
         return calculateScore(weightHitRate,weightPower,weightTimes,defenceDiffer,weightDiffer);
     }
