@@ -16,30 +16,43 @@ public class PokemonBattleClient {
     public volatile boolean ifMiss = false; // 标记是否轮到玩家操作（线程安全）
     public volatile boolean ifCom = false; // 标记是否轮到玩家操作（线程安全）
     public volatile boolean ifIamA = false; // 标记是否轮到玩家操作（线程安全）
+    public volatile String PokeAName; // 标记是否轮到玩家操作（线程安全）
+    public volatile String PokeBName; // 标记是否轮到玩家操作（线程安全）
+    public volatile String PokeMeName; // 当前玩家的宝可梦名字（线程安全）
     private Thread communicationThread; // 用于运行通信的线程
     private ClientCallback callback; // 用于回调 UI 更新的接口
-
 
     // 添加用于存储血量的属性
     public int healthMe; // 宝可梦A的血量
     public int healthEn; // 宝可梦B的血量
 
-
-
     // 构造函数：初始化客户端套接字
-    public PokemonBattleClient(ClientCallback callback) throws IOException {
+    public PokemonBattleClient(ClientCallback callback, String pokeMeName) throws IOException {
         this.callback = callback;
+        this.PokeMeName = pokeMeName; // 初始化宝可梦名字
         System.out.println("正在连接到服务器：" + SERVER_ADDRESS + "，端口：" + PORT);
         try {
             socket = new Socket(SERVER_ADDRESS, PORT); // 连接到服务器
             System.out.println("成功连接到服务器。");
             in = new BufferedReader(new InputStreamReader(socket.getInputStream())); // 初始化输入流
             out = new PrintWriter(socket.getOutputStream(), true); // 初始化输出流
+
+            sendPokeName(); // 发送宝可梦名字
+
             startCommunication(); // 启动通信线程
         } catch (IOException e) {
             System.err.println("连接到服务器失败：" + e.getMessage());
             throw e;
         }
+    }
+
+    // 发送宝可梦名字到服务器
+    private void sendPokeName() {
+        JSONObject json = new JSONObject();
+        json.put("type", "PokeName");
+        json.put("pokeName", PokeMeName);
+        out.println(json.toString());
+        System.out.println("发送宝可梦名字：" + PokeMeName);
     }
 
     // 启动通信线程
@@ -48,7 +61,6 @@ public class PokemonBattleClient {
             try {
                 String serverMessage;
                 while ((serverMessage = in.readLine()) != null) {
-                    //System.out.println("收到来自服务器的消息： " + serverMessage); // 打印接收到的服务器消息
                     handleServerMessage(serverMessage);
                 }
             } catch (IOException e) {
@@ -65,6 +77,7 @@ public class PokemonBattleClient {
         communicationThread.setDaemon(true); // 设置为守护线程
         communicationThread.start(); // 启动线程
     }
+
     private void handleServerMessage(String serverMessage) {
         try {
             JSONObject json = new JSONObject(serverMessage);
@@ -119,14 +132,13 @@ public class PokemonBattleClient {
 
                     // 解析血量信息并更新属性
                     String[] healthParts = healthInfo.split(", ");
-                    if(this.ifIamA==true){
+                    if (this.ifIamA) {
                         this.healthEn = Integer.parseInt(healthParts[1].split(": ")[1]);
                         this.healthMe = Integer.parseInt(healthParts[0].split(": ")[1]);
-                    }else{
+                    } else {
                         this.healthMe = Integer.parseInt(healthParts[1].split(": ")[1]);
                         this.healthEn = Integer.parseInt(healthParts[0].split(": ")[1]);
                     }
-
 
                     // 打印更新后的血量
                     System.out.println("更新后的血量 - 我方宝可梦: " + healthMe + ", 敌方宝可梦: " + healthEn);
@@ -135,6 +147,17 @@ public class PokemonBattleClient {
 
                     if (callback != null) {
                         callback.onHealthUpdate(healthInfo);
+                    }
+                    break;
+
+                case "PokeName":
+                    String pokeName = json.getString("pokeName");
+                    if (this.ifIamA) {
+                        this.PokeAName = pokeName;
+                        System.out.println("接收到宝可梦A名字: " + PokeAName);
+                    } else {
+                        this.PokeBName = pokeName;
+                        System.out.println("接收到宝可梦B名字: " + PokeBName);
                     }
                     break;
 
@@ -150,8 +173,6 @@ public class PokemonBattleClient {
             System.err.println("处理服务器消息时出错：" + e.getMessage());
         }
     }
-
-
 
     // 向服务器发送动作指令
     public void sendAction(String action) {

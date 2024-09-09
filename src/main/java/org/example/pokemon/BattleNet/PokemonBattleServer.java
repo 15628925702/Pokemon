@@ -17,6 +17,8 @@ public class PokemonBattleServer {
     private ServerBattle battle;  // 战斗逻辑对象
     private PokemonData poke1;  // 宝可梦1数据
     private PokemonData poke2;  // 宝可梦2数据
+    public String PokeAName; // 宝可梦A名字
+    public String PokeBName; // 宝可梦B名字
 
     // 构造函数：初始化服务器套接字
     public PokemonBattleServer() throws IOException {
@@ -25,30 +27,81 @@ public class PokemonBattleServer {
     }
 
     // 启动服务器并开始战斗
-    public void start() throws IOException {
-        System.out.println("等待客户端连接...");
+    public void start() {
+        try {
+            System.out.println("等待客户端连接...");
 
-        // 接受两个客户端的连接
-        clientA = serverSocket.accept();
-        clientB = serverSocket.accept();
-        System.out.println("两个客户端已连接。");
+            // 接受两个客户端的连接
+            clientA = serverSocket.accept();
+            clientB = serverSocket.accept();
+            System.out.println("两个客户端已连接。");
 
-        // 创建输入输出流
-        inA = new BufferedReader(new InputStreamReader(clientA.getInputStream()));
-        outA = new PrintWriter(clientA.getOutputStream(), true);
+            // 创建输入输出流
+            inA = new BufferedReader(new InputStreamReader(clientA.getInputStream()));
+            outA = new PrintWriter(clientA.getOutputStream(), true);
 
-        inB = new BufferedReader(new InputStreamReader(clientB.getInputStream()));
-        outB = new PrintWriter(clientB.getOutputStream(), true);
+            inB = new BufferedReader(new InputStreamReader(clientB.getInputStream()));
+            outB = new PrintWriter(clientB.getOutputStream(), true);
 
-        // 向客户端A和客户端B发送“已经完成匹配”的信息
-        JSONObject matchMessage = new JSONObject();
-        matchMessage.put("type", "MatchComplete");
-        matchMessage.put("message", "已经完成匹配");
-        outA.println(matchMessage.toString());
-        outB.println(matchMessage.toString());
-        System.out.println("已向两个客户端发送“已经完成匹配”的信息。");
+            // 处理客户端发送的宝可梦名字
+            handlePokeNames();
 
-        // 发送角色信息
+            // 向客户端A和客户端B发送“已经完成匹配”的信息
+            JSONObject matchMessage = new JSONObject();
+            matchMessage.put("type", "MatchComplete");
+            matchMessage.put("message", "已经完成匹配");
+            outA.println(matchMessage.toString());
+            outB.println(matchMessage.toString());
+            System.out.println("已向两个客户端发送“已经完成匹配”的信息。");
+
+            // 发送角色信息
+            sendRoleInfo();
+
+            // 从文件中加载宝可梦数据
+            loadPokemonData();
+
+            updateHealth();
+
+            // 初始化战斗逻辑
+            battle = new ServerBattle();
+            // 启动战斗线程
+            new Thread(this::runBattle).start();
+        } catch (IOException e) {
+            System.err.println("启动服务器时发生错误: " + e.getMessage());  // 打印异常信息
+        }
+    }
+
+    // 处理客户端发送的宝可梦名字
+    private void handlePokeNames() {
+        try {
+            // 从客户端A接收宝可梦名字
+            JSONObject pokeNameMessageA = new JSONObject(inA.readLine());
+            PokeAName = pokeNameMessageA.getString("pokeName");
+            System.out.println("接收到客户端A的宝可梦名字: " + PokeAName);
+
+            // 发送客户端A的宝可梦名字到客户端B
+            JSONObject pokeNameInfoA = new JSONObject();
+            pokeNameInfoA.put("type", "PokeName");
+            pokeNameInfoA.put("pokeName", PokeAName);
+            outB.println(pokeNameInfoA.toString());
+
+            // 从客户端B接收宝可梦名字
+            JSONObject pokeNameMessageB = new JSONObject(inB.readLine());
+            PokeBName = pokeNameMessageB.getString("pokeName");
+            System.out.println("接收到客户端B的宝可梦名字: " + PokeBName);
+
+            // 发送客户端B的宝可梦名字到客户端A
+            JSONObject pokeNameInfoB = new JSONObject();
+            pokeNameInfoB.put("type", "PokeName");
+            pokeNameInfoB.put("pokeName", PokeBName);
+            outA.println(pokeNameInfoB.toString());
+        } catch (IOException e) {
+            System.err.println("处理宝可梦名字时发生错误: " + e.getMessage());
+        }
+    }
+
+    // 发送角色信息
+    private void sendRoleInfo() {
         JSONObject roleMessageA = new JSONObject();
         roleMessageA.put("type", "Role");
         roleMessageA.put("role", "A");
@@ -58,28 +111,25 @@ public class PokemonBattleServer {
         roleMessageB.put("type", "Role");
         roleMessageB.put("role", "B");
         outB.println(roleMessageB.toString());
-
-        // 从文件中加载宝可梦数据
-        poke1 = new PokemonData();
-        poke2 = new PokemonData();
-        poke1.getPokeDataFromDb("皮卡丘");
-        poke1.setPokeSkill("冲撞", 0);
-        poke1.setPokeSkill("十万伏特", 1);
-        poke1.setPokeSkill("电击", 2);
-        poke2.getPokeDataFromDb("妙蛙种子");
-        poke2.setPokeSkill("冲撞", 0);
-        poke2.setPokeSkill("种子炸弹", 1);
-        System.out.println("宝可梦数据加载完成。");
-
-        updateHealth();
-
-        // 初始化战斗逻辑
-        battle = new ServerBattle();
-        // 启动战斗线程
-        new Thread(this::runBattle).start();
     }
 
-
+    // 从文件中加载宝可梦数据
+    private void loadPokemonData() {
+        try {
+            poke1 = new PokemonData();
+            poke2 = new PokemonData();
+            poke1.getPokeDataFromDb("皮卡丘");
+            poke1.setPokeSkill("冲撞", 0);
+            poke1.setPokeSkill("十万伏特", 1);
+            poke1.setPokeSkill("电击", 2);
+            poke2.getPokeDataFromDb("妙蛙种子");
+            poke2.setPokeSkill("冲撞", 0);
+            poke2.setPokeSkill("种子炸弹", 1);
+            System.out.println("宝可梦数据加载完成。");
+        } catch (Exception e) {
+            System.err.println("加载宝可梦数据时发生错误: " + e.getMessage());
+        }
+    }
 
     // 运行战斗逻辑
     private void runBattle() {
@@ -96,9 +146,9 @@ public class PokemonBattleServer {
         } finally {
             // 关闭客户端和服务器的套接字
             try {
-                clientA.close();
-                clientB.close();
-                serverSocket.close();
+                if (clientA != null) clientA.close();
+                if (clientB != null) clientB.close();
+                if (serverSocket != null) serverSocket.close();
                 System.out.println("服务器和客户端连接已关闭。");
             } catch (IOException e) {
                 System.err.println("关闭连接时发生错误: " + e.getMessage());  // 打印异常信息
@@ -106,7 +156,6 @@ public class PokemonBattleServer {
         }
     }
 
-    // 处理每一轮的攻击操作
     // 处理每一轮的攻击操作
     private boolean processTurn(PokemonData attacker, PokemonData defender, PrintWriter attackerOut, BufferedReader attackerIn, PrintWriter defenderOut, String attackerName) throws IOException {
         try {
@@ -174,7 +223,6 @@ public class PokemonBattleServer {
         return true;  // 继续游戏
     }
 
-
     // 更新双方宝可梦的血量
     private void updateHealth() {
         String healthInfo = "剩余血量 - 宝可梦1: " + poke1.getHp() + ", 宝可梦2: " + poke2.getHp();
@@ -185,7 +233,6 @@ public class PokemonBattleServer {
         outB.println(healthMessage.toString());  // 更新客户端B的宝可梦血量
         System.out.println("血量更新: " + healthInfo);
         System.out.println("====================================================================");
-        
     }
 
     // 主函数：启动服务器
