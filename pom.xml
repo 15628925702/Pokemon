@@ -16,6 +16,7 @@
     <java.version>21</java.version>
   </properties>
 
+
   <dependencies>
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -41,6 +42,7 @@
       <scope>test</scope>
     </dependency>
 
+
     <!-- Jackson dependencies -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -64,6 +66,24 @@
       <artifactId>json</artifactId>
       <version>20210307</version>
     </dependency>
+
+
+
+    <dependency>
+      <groupId>com.github.almasb</groupId>
+      <artifactId>fxgl</artifactId>
+      <version>21</version> <!-- 请使用最新的版本号 -->
+    </dependency>
+
+
+<!--    阿里云短信验证服务-->
+    <dependency>
+      <groupId>com.aliyun</groupId>
+      <artifactId>dysmsapi20170525</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>
@@ -77,6 +97,47 @@
           <target>${java.version}</target>
         </configuration>
       </plugin>
+
+      <!-- Create an executable JAR with dependencies included -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Main-Class>org.example.pokemon.BattleNet.PokemonBattleServer</Main-Class>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version> <!-- 更新到合适的版本 -->
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
@@ -85,7 +146,7 @@
           <execution>
             <id>default-cli</id>
             <configuration>
-              <mainClass>org.example.pokemon.HelloApplication</mainClass>
+              <mainClass>org.example.pokemon.BattleNet.PokemonBattleServer</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

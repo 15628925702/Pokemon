@@ -1,10 +1,7 @@
 package org.example.pokemon.BattleNet;
 
-import org.example.pokemon.battle.Battle;
 import org.example.pokemon.battle.PokemonData;
-import org.example.pokemon.battle.PokemonSkill;
 import org.json.JSONObject;
-
 import java.io.*;
 import java.net.*;
 
@@ -43,12 +40,38 @@ public class PokemonBattleServer {
         inB = new BufferedReader(new InputStreamReader(clientB.getInputStream()));
         outB = new PrintWriter(clientB.getOutputStream(), true);
 
-        // 从文件中加载宝可梦数
-        poke1=new PokemonData();
-        poke2=new PokemonData();
-        poke1.getPokeDataFromDb("小火龙");
-        poke2.getPokeDataFromDb("小火龙");
+        // 向客户端A和客户端B发送“已经完成匹配”的信息
+        JSONObject matchMessage = new JSONObject();
+        matchMessage.put("type", "MatchComplete");
+        matchMessage.put("message", "已经完成匹配");
+        outA.println(matchMessage.toString());
+        outB.println(matchMessage.toString());
+        System.out.println("已向两个客户端发送“已经完成匹配”的信息。");
+
+        // 发送角色信息
+        JSONObject roleMessageA = new JSONObject();
+        roleMessageA.put("type", "Role");
+        roleMessageA.put("role", "A");
+        outA.println(roleMessageA.toString());
+
+        JSONObject roleMessageB = new JSONObject();
+        roleMessageB.put("type", "Role");
+        roleMessageB.put("role", "B");
+        outB.println(roleMessageB.toString());
+
+        // 从文件中加载宝可梦数据
+        poke1 = new PokemonData();
+        poke2 = new PokemonData();
+        poke1.getPokeDataFromDb("皮卡丘");
+        poke1.setPokeSkill("冲撞", 0);
+        poke1.setPokeSkill("十万伏特", 1);
+        poke1.setPokeSkill("电击", 2);
+        poke2.getPokeDataFromDb("妙蛙种子");
+        poke2.setPokeSkill("冲撞", 0);
+        poke2.setPokeSkill("种子炸弹", 1);
         System.out.println("宝可梦数据加载完成。");
+
+        updateHealth();
 
         // 初始化战斗逻辑
         battle = new ServerBattle();
@@ -56,46 +79,7 @@ public class PokemonBattleServer {
         new Thread(this::runBattle).start();
     }
 
-    private PokemonData loadPokemonData(String fileName) {
-        System.out.println("尝试加载文件: " + fileName);
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            System.out.println("文件打开成功。开始读取数据...");
 
-            // 读取宝可梦名字
-            String name = reader.readLine();
-            System.out.println("宝可梦名字: " + name);
-            int pokemonType = Integer.parseInt(reader.readLine());
-            int hp = Integer.parseInt(reader.readLine());
-            int speed = Integer.parseInt(reader.readLine());
-            int physical_attack = Integer.parseInt(reader.readLine());
-            int physical_defense = Integer.parseInt(reader.readLine());
-            int special_attack = Integer.parseInt(reader.readLine());
-            int special_defense = Integer.parseInt(reader.readLine());
-            PokemonSkill[] skillsOfPokes = new PokemonSkill[4];
-            for (int i = 0; i < 4; i++) {
-                String skill = reader.readLine();
-                System.out.println("技能 " + (i + 1) + ": " + skill);
-                skillsOfPokes[i] = convertToPokemonSkill(skill);
-            }
-
-            System.out.println("成功加载宝可梦数据: " + name);  // 打印加载成功的信息
-            return new PokemonData(name, pokemonType, hp, speed, physical_attack, physical_defense, special_attack, special_defense, skillsOfPokes);
-        } catch (IOException e) {
-            System.err.println("加载宝可梦数据时发生错误: " + e.getMessage());  // 打印异常信息
-            return null;  // 处理错误的情况
-        } catch (NumberFormatException e) {
-            System.err.println("数据格式错误: " + e.getMessage());  // 捕捉数据格式异常
-            return null;  // 处理格式错误
-        }
-    }
-
-
-    // 假设有这样的方法
-    private PokemonSkill convertToPokemonSkill(String skillName) {
-        // 实现将技能名转换为 PokemonSkill 对象的逻辑
-        // 这里是一个示例，具体实现取决于 PokemonSkill 类
-        return new PokemonSkill();
-    }
 
     // 运行战斗逻辑
     private void runBattle() {
@@ -123,6 +107,7 @@ public class PokemonBattleServer {
     }
 
     // 处理每一轮的攻击操作
+    // 处理每一轮的攻击操作
     private boolean processTurn(PokemonData attacker, PokemonData defender, PrintWriter attackerOut, BufferedReader attackerIn, PrintWriter defenderOut, String attackerName) throws IOException {
         try {
             // 通知攻击方轮到他们操作
@@ -136,15 +121,24 @@ public class PokemonBattleServer {
             int action = receivedMessage.getInt("action");
 
             // 执行攻击动作
-            battle.act(attacker, action, defender);
+            int result = battle.act(attacker, action, defender);
             System.out.println(attackerName + " 执行了动作: " + action);
 
             // 通知防守方攻击方的操作
             message = new JSONObject();
+            message.put("result", result);
             message.put("type", "Action");
             message.put("attacker", attackerName);
             message.put("action", action);
             defenderOut.println(message.toString());
+
+            // 通知攻击方自己执行的动作结果
+            message = new JSONObject();
+            message.put("result", result);
+            message.put("type", "Action");
+            message.put("attacker", attackerName);
+            message.put("action", action);
+            attackerOut.println(message.toString());
 
         } catch (InterruptedException e) {
             // 处理 InterruptedException 异常
@@ -180,6 +174,7 @@ public class PokemonBattleServer {
         return true;  // 继续游戏
     }
 
+
     // 更新双方宝可梦的血量
     private void updateHealth() {
         String healthInfo = "剩余血量 - 宝可梦1: " + poke1.getHp() + ", 宝可梦2: " + poke2.getHp();
@@ -189,6 +184,7 @@ public class PokemonBattleServer {
         outA.println(healthMessage.toString());  // 更新客户端A的宝可梦血量
         outB.println(healthMessage.toString());  // 更新客户端B的宝可梦血量
         System.out.println("血量更新: " + healthInfo);
+        System.out.println("====================================================================");
     }
 
     // 主函数：启动服务器
