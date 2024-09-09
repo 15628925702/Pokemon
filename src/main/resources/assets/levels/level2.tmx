@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="373">
+ <tileset firstgid="1" name="wwwater" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+  <image source="wwwater.png" width="128" height="64"/>
+ </tileset>
+ <tileset firstgid="9" name="wwater" tilewidth="32" tileheight="32" tilecount="32" columns="8">
+  <image source="wwater.png" width="282" height="128"/>
+ </tileset>
+ <tileset firstgid="41" name="waterCorner" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="waterCorner.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="45" name="outDoor" tilewidth="32" tileheight="32" tilecount="64" columns="8">
+  <image source="../../../../../../../Pokemon/src/main/resources/assets/levels/outDoor.png" width="256" height="282"/>
+ </tileset>
+ <layer id="1" name="图块层 1" width="32" height="25">
+  <data encoding="csv">
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,42,19,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,42,19,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,44,35,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,44,35,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="对象层 1">
+  <object id="1" type="sea" x="576" y="0" width="32" height="32"/>
+  <object id="2" type="sea" x="608" y="0" width="32" height="32"/>
+  <object id="3" type="sea" x="640" y="0" width="32" height="32"/>
+  <object id="4" type="sea" x="672" y="0" width="32" height="32"/>
+  <object id="5" type="sea" x="704" y="0" width="32" height="32"/>
+  <object id="8" type="sea" x="736" y="0" width="32" height="32"/>
+  <object id="13" type="sea" x="768" y="0" width="32" height="32"/>
+  <object id="14" type="sea" x="800" y="0" width="32" height="32"/>
+  <object id="15" type="sea" x="832" y="0" width="32" height="32"/>
+  <object id="17" type="sea" x="864" y="0" width="32" height="32"/>
+  <object id="18" type="sea" x="896" y="0" width="32" height="32"/>
+  <object id="19" type="sea" x="928" y="0" width="32" height="32"/>
+  <object id="20" type="sea" x="960" y="0" width="32" height="32"/>
+  <object id="21" type="sea" x="992" y="0" width="32" height="32"/>
+  <object id="22" type="sea" x="576" y="32" width="32" height="32"/>
+  <object id="23" type="sea" x="608" y="32" width="32" height="32"/>
+  <object id="24" type="sea" x="640" y="32" width="32" height="32"/>
+  <object id="25" type="sea" x="672" y="32" width="32" height="32"/>
+  <object id="26" type="sea" x="704" y="32" width="32" height="32"/>
+  <object id="27" type="sea" x="736" y="32" width="32" height="32"/>
+  <object id="28" type="sea" x="768" y="32" width="32" height="32"/>
+  <object id="29" type="sea" x="800" y="32" width="32" height="32"/>
+  <object id="30" type="sea" x="832" y="32" width="32" height="32"/>
+  <object id="31" type="sea" x="864" y="32" width="32" height="32"/>
+  <object id="32" type="sea" x="896" y="32" width="32" height="32"/>
+  <object id="33" type="sea" x="928" y="32" width="32" height="32"/>
+  <object id="34" type="sea" x="960" y="32" width="32" height="32"/>
+  <object id="35" type="sea" x="992" y="32" width="32" height="32"/>
+  <object id="36" type="sea" x="576" y="64" width="32" height="32"/>
+  <object id="37" type="sea" x="608" y="64" width="32" height="32"/>
+  <object id="38" type="sea" x="640" y="64" width="32" height="32"/>
+  <object id="39" type="sea" x="672" y="64" width="32" height="32"/>
+  <object id="40" type="sea" x="704" y="64" width="32" height="32"/>
+  <object id="41" type="sea" x="736" y="64" width="32" height="32"/>
+  <object id="42" type="sea" x="768" y="64" width="32" height="32"/>
+  <object id="43" type="sea" x="800" y="64" width="32" height="32"/>
+  <object id="44" type="sea" x="832" y="64" width="32" height="32"/>
+  <object id="45" type="sea" x="864" y="64" width="32" height="32"/>
+  <object id="46" type="sea" x="896" y="64" width="32" height="32"/>
+  <object id="47" type="sea" x="928" y="64" width="32" height="32"/>
+  <object id="48" type="sea" x="960" y="64" width="32" height="32"/>
+  <object id="49" type="sea" x="992" y="64" width="32" height="32"/>
+  <object id="50" type="sea" x="992" y="96" width="32" height="32"/>
+  <object id="51" type="sea" x="960" y="96" width="32" height="32"/>
+  <object id="52" type="sea" x="928" y="96" width="32" height="32"/>
+  <object id="53" type="sea" x="896" y="96" width="32" height="32"/>
+  <object id="54" type="sea" x="864" y="96" width="32" height="32"/>
+  <object id="55" type="sea" x="832" y="96" width="32" height="32"/>
+  <object id="56" type="sea" x="800" y="96" width="32" height="32"/>
+  <object id="57" type="sea" x="768" y="96" width="32" height="32"/>
+  <object id="58" type="sea" x="736" y="96" width="32" height="32"/>
+  <object id="59" type="sea" x="704" y="96" width="32" height="32"/>
+  <object id="60" type="sea" x="672" y="96" width="32" height="32"/>
+  <object id="61" type="sea" x="640" y="96" width="32" height="32"/>
+  <object id="62" type="sea" x="608" y="96" width="32" height="32"/>
+  <object id="63" type="sea" x="608" y="128" width="32" height="32"/>
+  <object id="64" type="sea" x="640" y="128" width="32" height="32"/>
+  <object id="65" type="sea" x="672" y="128" width="32" height="32"/>
+  <object id="66" type="sea" x="704" y="128" width="32" height="32"/>
+  <object id="67" type="sea" x="736" y="128" width="32" height="32"/>
+  <object id="68" type="sea" x="768" y="128" width="32" height="32"/>
+  <object id="69" type="sea" x="800" y="128" width="32" height="32"/>
+  <object id="70" type="sea" x="832" y="128" width="32" height="32"/>
+  <object id="71" type="sea" x="864" y="128" width="32" height="32"/>
+  <object id="72" type="sea" x="896" y="128" width="32" height="32"/>
+  <object id="73" type="sea" x="928" y="128" width="32" height="32"/>
+  <object id="74" type="sea" x="960" y="128" width="32" height="32"/>
+  <object id="75" type="sea" x="992" y="128" width="32" height="32"/>
+  <object id="76" type="sea" x="608" y="160" width="32" height="32"/>
+  <object id="77" type="sea" x="640" y="160" width="32" height="32"/>
+  <object id="78" type="sea" x="672" y="160" width="32" height="32"/>
+  <object id="79" type="sea" x="704" y="160" width="32" height="32"/>
+  <object id="80" type="sea" x="736" y="160" width="32" height="32"/>
+  <object id="81" type="sea" x="768" y="160" width="32" height="32"/>
+  <object id="82" type="sea" x="800" y="160" width="32" height="32"/>
+  <object id="83" type="sea" x="832" y="160" width="32" height="32"/>
+  <object id="84" type="sea" x="864" y="160" width="32" height="32"/>
+  <object id="85" type="sea" x="896" y="160" width="32" height="32"/>
+  <object id="86" type="sea" x="928" y="160" width="32" height="32"/>
+  <object id="87" type="sea" x="960" y="160" width="32" height="32"/>
+  <object id="88" type="sea" x="992" y="160" width="32" height="32"/>
+  <object id="89" type="sea" x="608" y="192" width="32" height="32"/>
+  <object id="90" type="sea" x="640" y="192" width="32" height="32"/>
+  <object id="91" type="sea" x="672" y="192" width="32" height="32"/>
+  <object id="92" type="sea" x="800" y="192" width="32" height="32"/>
+  <object id="93" type="sea" x="736" y="192" width="32" height="32"/>
+  <object id="94" type="sea" x="768" y="192" width="32" height="32"/>
+  <object id="95" type="sea" x="800" y="192" width="32" height="32"/>
+  <object id="96" type="sea" x="832" y="192" width="32" height="32"/>
+  <object id="97" type="sea" x="864" y="192" width="32" height="32"/>
+  <object id="98" type="sea" x="896" y="192" width="32" height="32"/>
+  <object id="99" type="sea" x="928" y="192" width="32" height="32"/>
+  <object id="100" type="sea" x="960" y="192" width="32" height="32"/>
+  <object id="101" type="sea" x="992" y="192" width="32" height="32"/>
+  <object id="102" type="sea" x="992" y="224" width="32" height="32"/>
+  <object id="107" type="sea" x="960" y="224" width="32" height="32"/>
+  <object id="108" type="sea" x="928" y="224" width="32" height="32"/>
+  <object id="109" type="sea" x="896" y="224" width="32" height="32"/>
+  <object id="110" type="sea" x="864" y="224" width="32" height="32"/>
+  <object id="111" type="sea" x="832" y="224" width="32" height="32"/>
+  <object id="112" type="sea" x="800" y="224" width="32" height="32"/>
+  <object id="113" type="sea" x="768" y="224" width="32" height="32"/>
+  <object id="114" type="sea" x="736" y="224" width="32" height="32"/>
+  <object id="116" type="sea" x="704" y="224" width="32" height="32"/>
+  <object id="117" type="sea" x="672" y="224" width="32" height="32"/>
+  <object id="118" type="sea" x="640" y="224" width="32" height="32"/>
+  <object id="119" type="sea" x="608" y="224" width="32" height="32"/>
+  <object id="120" type="sea" x="608" y="256" width="32" height="32"/>
+  <object id="121" type="sea" x="640" y="256" width="32" height="32"/>
+  <object id="122" type="sea" x="672" y="256" width="32" height="32"/>
+  <object id="123" type="sea" x="704" y="256" width="32" height="32"/>
+  <object id="124" type="sea" x="736" y="256" width="32" height="32"/>
+  <object id="125" type="sea" x="768" y="256" width="32" height="32"/>
+  <object id="126" type="sea" x="800" y="256" width="32" height="32"/>
+  <object id="127" type="sea" x="832" y="256" width="32" height="32"/>
+  <object id="128" type="sea" x="864" y="256" width="32" height="32"/>
+  <object id="129" type="sea" x="896" y="256" width="32" height="32"/>
+  <object id="130" type="sea" x="928" y="256" width="32" height="32"/>
+  <object id="131" type="sea" x="960" y="256" width="32" height="32"/>
+  <object id="132" type="sea" x="992" y="256" width="32" height="32"/>
+  <object id="133" type="sea" x="992" y="288" width="32" height="32"/>
+  <object id="134" type="sea" x="960" y="288" width="32" height="32"/>
+  <object id="135" type="sea" x="928" y="288" width="32" height="32"/>
+  <object id="136" type="sea" x="896" y="288" width="32" height="32"/>
+  <object id="137" type="sea" x="864" y="288" width="32" height="32"/>
+  <object id="138" type="sea" x="832" y="288" width="32" height="32"/>
+  <object id="139" type="sea" x="800" y="288" width="32" height="32"/>
+  <object id="140" type="sea" x="768" y="288" width="32" height="32"/>
+  <object id="141" type="sea" x="736" y="288" width="32" height="32"/>
+  <object id="142" type="sea" x="704" y="288" width="32" height="32"/>
+  <object id="143" type="sea" x="672" y="288" width="32" height="32"/>
+  <object id="144" type="sea" x="640" y="288" width="32" height="32"/>
+  <object id="145" type="sea" x="640" y="320" width="32" height="32"/>
+  <object id="146" type="sea" x="672" y="320" width="32" height="32"/>
+  <object id="147" type="sea" x="704" y="320" width="32" height="32"/>
+  <object id="150" type="sea" x="736" y="320" width="32" height="32"/>
+  <object id="151" type="sea" x="768" y="320" width="32" height="32"/>
+  <object id="152" type="sea" x="800" y="320" width="32" height="32"/>
+  <object id="153" type="sea" x="832" y="320" width="32" height="32"/>
+  <object id="154" type="sea" x="864" y="320" width="32" height="32"/>
+  <object id="155" type="sea" x="896" y="320" width="32" height="32"/>
+  <object id="156" type="sea" x="928" y="320" width="32" height="32"/>
+  <object id="157" type="sea" x="960" y="320" width="32" height="32"/>
+  <object id="158" type="sea" x="992" y="320" width="32" height="32"/>
+  <object id="159" type="sea" x="992" y="352" width="32" height="32"/>
+  <object id="160" type="sea" x="960" y="352" width="32" height="32"/>
+  <object id="161" type="sea" x="928" y="352" width="32" height="32"/>
+  <object id="162" type="sea" x="896" y="352" width="32" height="32"/>
+  <object id="163" type="sea" x="864" y="352" width="32" height="32"/>
+  <object id="164" type="sea" x="832" y="352" width="32" height="32"/>
+  <object id="165" type="sea" x="800" y="352" width="32" height="32"/>
+  <object id="166" type="sea" x="768" y="352" width="32" height="32"/>
+  <object id="167" type="sea" x="736" y="352" width="32" height="32"/>
+  <object id="168" type="sea" x="704" y="352" width="32" height="32"/>
+  <object id="169" type="sea" x="672" y="352" width="32" height="32"/>
+  <object id="170" type="sea" x="640" y="352" width="32" height="32"/>
+  <object id="171" type="sea" x="640" y="384" width="32" height="32"/>
+  <object id="172" type="sea" x="672" y="384" width="32" height="32"/>
+  <object id="173" type="sea" x="704" y="384" width="32" height="32"/>
+  <object id="174" type="sea" x="736" y="384" width="32" height="32"/>
+  <object id="175" type="sea" x="768" y="384" width="32" height="32"/>
+  <object id="176" type="sea" x="800" y="384" width="32" height="32"/>
+  <object id="177" type="sea" x="832" y="384" width="32" height="32"/>
+  <object id="178" type="sea" x="864" y="384" width="32" height="32"/>
+  <object id="179" type="sea" x="896" y="384" width="32" height="32"/>
+  <object id="180" type="sea" x="928" y="384" width="32" height="32"/>
+  <object id="181" type="sea" x="960" y="384" width="32" height="32"/>
+  <object id="182" type="sea" x="992" y="384" width="32" height="32"/>
+  <object id="183" type="sea" x="992" y="416" width="32" height="32"/>
+  <object id="184" type="sea" x="960" y="416" width="32" height="32"/>
+  <object id="185" type="sea" x="928" y="416" width="32" height="32"/>
+  <object id="186" type="sea" x="896" y="416" width="32" height="32"/>
+  <object id="187" type="sea" x="864" y="416" width="32" height="32"/>
+  <object id="188" type="sea" x="832" y="416" width="32" height="32"/>
+  <object id="189" type="sea" x="800" y="416" width="32" height="32"/>
+  <object id="190" type="sea" x="768" y="416" width="32" height="32"/>
+  <object id="191" type="sea" x="736" y="416" width="32" height="32"/>
+  <object id="192" type="sea" x="704" y="416" width="32" height="32"/>
+  <object id="193" type="sea" x="672" y="416" width="32" height="32"/>
+  <object id="194" type="sea" x="640" y="416" width="32" height="32"/>
+  <object id="195" type="sea" x="640" y="448" width="32" height="32"/>
+  <object id="196" type="sea" x="672" y="448" width="32" height="32"/>
+  <object id="197" type="sea" x="704" y="448" width="32" height="32"/>
+  <object id="198" type="sea" x="736" y="448" width="32" height="32"/>
+  <object id="199" type="sea" x="768" y="448" width="32" height="32"/>
+  <object id="200" type="sea" x="800" y="448" width="32" height="32"/>
+  <object id="201" type="sea" x="832" y="448" width="32" height="32"/>
+  <object id="202" type="sea" x="864" y="448" width="32" height="32"/>
+  <object id="203" type="sea" x="896" y="448" width="32" height="32"/>
+  <object id="204" type="sea" x="928" y="448" width="32" height="32"/>
+  <object id="205" type="sea" x="960" y="448" width="32" height="32"/>
+  <object id="206" type="sea" x="992" y="448" width="32" height="32"/>
+  <object id="207" type="sea" x="992" y="480" width="32" height="32"/>
+  <object id="208" type="sea" x="960" y="480" width="32" height="32"/>
+  <object id="209" type="sea" x="928" y="480" width="32" height="32"/>
+  <object id="210" type="sea" x="896" y="480" width="32" height="32"/>
+  <object id="211" type="sea" x="864" y="480" width="32" height="32"/>
+  <object id="212" type="sea" x="832" y="480" width="32" height="32"/>
+  <object id="213" type="sea" x="800" y="480" width="32" height="32"/>
+  <object id="214" type="sea" x="768" y="480" width="32" height="32"/>
+  <object id="215" type="sea" x="736" y="480" width="32" height="32"/>
+  <object id="216" type="sea" x="704" y="480" width="32" height="32"/>
+  <object id="217" type="sea" x="672" y="480" width="32" height="32"/>
+  <object id="218" type="sea" x="640" y="480" width="32" height="32"/>
+  <object id="219" type="sea" x="608" y="512" width="32" height="32"/>
+  <object id="220" type="sea" x="640" y="512" width="32" height="32"/>
+  <object id="221" type="sea" x="672" y="512" width="32" height="32"/>
+  <object id="222" type="sea" x="704" y="512" width="32" height="32"/>
+  <object id="223" type="sea" x="736" y="512" width="32" height="32"/>
+  <object id="224" type="sea" x="768" y="512" width="32" height="32"/>
+  <object id="225" type="sea" x="800" y="512" width="32" height="32"/>
+  <object id="226" type="sea" x="832" y="512" width="32" height="32"/>
+  <object id="227" type="sea" x="864" y="512" width="32" height="32"/>
+  <object id="228" type="sea" x="896" y="512" width="32" height="32"/>
+  <object id="229" type="sea" x="928" y="512" width="32" height="32"/>
+  <object id="230" type="sea" x="960" y="512" width="32" height="32"/>
+  <object id="231" type="sea" x="992" y="512" width="32" height="32"/>
+  <object id="233" type="sea" x="992" y="544" width="32" height="32"/>
+  <object id="234" type="sea" x="960" y="544" width="32" height="32"/>
+  <object id="235" type="sea" x="928" y="544" width="32" height="32"/>
+  <object id="236" type="sea" x="896" y="544" width="32" height="32"/>
+  <object id="237" type="sea" x="864" y="544" width="32" height="32"/>
+  <object id="238" type="sea" x="832" y="544" width="32" height="32"/>
+  <object id="239" type="sea" x="800" y="544" width="32" height="32"/>
+  <object id="240" type="sea" x="768" y="544" width="32" height="32"/>
+  <object id="241" type="sea" x="736" y="544" width="32" height="32"/>
+  <object id="242" type="sea" x="704" y="544" width="32" height="32"/>
+  <object id="243" type="sea" x="672" y="544" width="32" height="32"/>
+  <object id="244" type="sea" x="640" y="544" width="32" height="32"/>
+  <object id="245" type="sea" x="608" y="544" width="32" height="32"/>
+  <object id="246" type="sea" x="608" y="576" width="32" height="32"/>
+  <object id="247" type="sea" x="640" y="576" width="32" height="32"/>
+  <object id="248" type="sea" x="672" y="576" width="32" height="32"/>
+  <object id="249" type="sea" x="704" y="576" width="32" height="32"/>
+  <object id="250" type="sea" x="736" y="576" width="32" height="32"/>
+  <object id="251" type="sea" x="768" y="576" width="32" height="32"/>
+  <object id="253" type="sea" x="800" y="576" width="32" height="32"/>
+  <object id="254" type="sea" x="832" y="576" width="32" height="32"/>
+  <object id="255" type="sea" x="864" y="576" width="32" height="32"/>
+  <object id="256" type="sea" x="896" y="576" width="32" height="32"/>
+  <object id="257" type="sea" x="928" y="576" width="32" height="32"/>
+  <object id="258" type="sea" x="960" y="576" width="32" height="32"/>
+  <object id="259" type="sea" x="992" y="576" width="32" height="32"/>
+  <object id="260" type="sea" x="992" y="608" width="32" height="32"/>
+  <object id="261" type="sea" x="960" y="608" width="32" height="32"/>
+  <object id="262" type="sea" x="928" y="608" width="32" height="32"/>
+  <object id="263" type="sea" x="896" y="608" width="32" height="32"/>
+  <object id="264" type="sea" x="864" y="608" width="32" height="32"/>
+  <object id="265" type="sea" x="832" y="608" width="32" height="32"/>
+  <object id="266" type="sea" x="800" y="608" width="32" height="32"/>
+  <object id="267" type="sea" x="768" y="608" width="32" height="32"/>
+  <object id="268" type="sea" x="736" y="608" width="32" height="32"/>
+  <object id="269" type="sea" x="704" y="608" width="32" height="32"/>
+  <object id="270" type="sea" x="672" y="608" width="32" height="32"/>
+  <object id="271" type="sea" x="640" y="608" width="32" height="32"/>
+  <object id="272" type="sea" x="608" y="608" width="32" height="32"/>
+  <object id="273" type="sea" x="608" y="640" width="32" height="32"/>
+  <object id="274" type="sea" x="640" y="640" width="32" height="32"/>
+  <object id="275" type="sea" x="672" y="640" width="32" height="32"/>
+  <object id="276" type="sea" x="704" y="640" width="32" height="32"/>
+  <object id="277" type="sea" x="736" y="640" width="32" height="32"/>
+  <object id="278" type="sea" x="768" y="640" width="32" height="32"/>
+  <object id="279" type="sea" x="800" y="640" width="32" height="32"/>
+  <object id="280" type="sea" x="832" y="640" width="32" height="32"/>
+  <object id="281" type="sea" x="864" y="640" width="32" height="32"/>
+  <object id="282" type="sea" x="896" y="640" width="32" height="32"/>
+  <object id="283" type="sea" x="928" y="640" width="32" height="32"/>
+  <object id="284" type="sea" x="960" y="640" width="32" height="32"/>
+  <object id="285" type="sea" x="992" y="640" width="32" height="32"/>
+  <object id="286" type="sea" x="992" y="672" width="32" height="32"/>
+  <object id="287" type="sea" x="960" y="672" width="32" height="32"/>
+  <object id="288" type="sea" x="928" y="672" width="32" height="32"/>
+  <object id="289" type="sea" x="896" y="672" width="32" height="32"/>
+  <object id="290" type="sea" x="864" y="672" width="32" height="32"/>
+  <object id="291" type="sea" x="832" y="672" width="32" height="32"/>
+  <object id="292" type="sea" x="800" y="672" width="32" height="32"/>
+  <object id="293" type="sea" x="768" y="672" width="32" height="32"/>
+  <object id="294" type="sea" x="736" y="672" width="32" height="32"/>
+  <object id="295" type="sea" x="704" y="672" width="32" height="32"/>
+  <object id="296" type="sea" x="672" y="672" width="32" height="32"/>
+  <object id="297" type="sea" x="640" y="672" width="32" height="32"/>
+  <object id="298" type="sea" x="608" y="672" width="32" height="32"/>
+  <object id="299" type="sea" x="608" y="704" width="32" height="32"/>
+  <object id="300" type="sea" x="640" y="704" width="32" height="32"/>
+  <object id="301" type="sea" x="672" y="704" width="32" height="32"/>
+  <object id="302" type="sea" x="704" y="704" width="32" height="32"/>
+  <object id="303" type="sea" x="736" y="704" width="32" height="32"/>
+  <object id="304" type="sea" x="768" y="704" width="32" height="32"/>
+  <object id="305" type="sea" x="800" y="704" width="32" height="32"/>
+  <object id="306" type="sea" x="832" y="704" width="32" height="32"/>
+  <object id="308" type="sea" x="864" y="704" width="32" height="32"/>
+  <object id="309" type="sea" x="896" y="704" width="32" height="32"/>
+  <object id="310" type="sea" x="928" y="704" width="32" height="32"/>
+  <object id="311" type="sea" x="960" y="704" width="32" height="32"/>
+  <object id="312" type="sea" x="992" y="704" width="32" height="32"/>
+  <object id="313" type="sea" x="992" y="736" width="32" height="32"/>
+  <object id="314" type="sea" x="960" y="736" width="32" height="32"/>
+  <object id="315" type="sea" x="928" y="736" width="32" height="32"/>
+  <object id="316" type="sea" x="896" y="736" width="32" height="32"/>
+  <object id="317" type="sea" x="864" y="736" width="32" height="32"/>
+  <object id="318" type="sea" x="832" y="736" width="32" height="32"/>
+  <object id="319" type="sea" x="832" y="736" height="32"/>
+  <object id="323" type="sea" x="800" y="736" width="32" height="32"/>
+  <object id="324" type="sea" x="768" y="736" width="32" height="32"/>
+  <object id="325" type="sea" x="736" y="736" width="32" height="32"/>
+  <object id="326" type="sea" x="704" y="736" width="32" height="32"/>
+  <object id="327" type="sea" x="672" y="736" width="32" height="32"/>
+  <object id="328" type="sea" x="640" y="736" width="32" height="32"/>
+  <object id="329" type="sea" x="608" y="736" width="32" height="32"/>
+  <object id="330" type="sea" x="576" y="736" width="32" height="32"/>
+  <object id="331" type="sea" x="576" y="768" width="32" height="32"/>
+  <object id="332" type="sea" x="608" y="768" width="32" height="32"/>
+  <object id="333" type="sea" x="640" y="768" width="32" height="32"/>
+  <object id="334" type="sea" x="672" y="768" width="32" height="32"/>
+  <object id="335" type="sea" x="704" y="768" width="32" height="32"/>
+  <object id="336" type="sea" x="736" y="768" width="32" height="32"/>
+  <object id="337" type="sea" x="768" y="768" width="32" height="32"/>
+  <object id="338" type="sea" x="800" y="768" width="32" height="32"/>
+  <object id="339" type="sea" x="832" y="768" width="32" height="32"/>
+  <object id="340" type="sea" x="864" y="768" width="32" height="32"/>
+  <object id="341" type="sea" x="896" y="768" width="32" height="32"/>
+  <object id="342" type="sea" x="928" y="768" width="32" height="32"/>
+  <object id="343" type="sea" x="960" y="768" width="32" height="32"/>
+  <object id="344" type="sea" x="992" y="768" width="32" height="32"/>
+  <object id="347" type="sea" x="704" y="192" width="32" height="32"/>
+  <object id="348" type="interactive" x="-29" y="352" width="32" height="32"/>
+  <object id="354" type="block" gid="72" x="0" y="448" width="32" height="32"/>
+  <object id="355" type="block" gid="72" x="0" y="320" width="32" height="32"/>
+  <object id="356" type="block" gid="72" x="288" y="128" width="32" height="32"/>
+  <object id="357" type="block" gid="72" x="224" y="608" width="32" height="32"/>
+  <object id="358" type="block" gid="72" x="96" y="736" width="32" height="32"/>
+  <object id="360" type="block" gid="72" x="0" y="32" width="32" height="32"/>
+  <object id="361" type="block" gid="72" x="480" y="704" width="32" height="32"/>
+  <object id="363" type="block" gid="72" x="512" y="544" width="32" height="32"/>
+  <object id="364" type="block" gid="72" x="288" y="320" width="32" height="32"/>
+  <object id="369" type="sandTree" x="160" y="6.66667" width="64" height="96"/>
+  <object id="370" type="sandTree" x="350.667" y="641.333" width="64" height="96"/>
+  <object id="371" type="sandTree" x="65.3333" y="541.333" width="64" height="96"/>
+  <object id="372" type="sandTree" x="450.667" y="161.333" width="64" height="96"/>
+ </objectgroup>
+</map>

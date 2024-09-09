@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="310.0" prefWidth="281.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.controller.ItemController">
+    <children>
+        <VBox fx:id="card" alignment="CENTER" layoutX="46.0" layoutY="23.0" onMouseClicked="#onItemClicked" prefHeight="264.0" prefWidth="189.0" styleClass="box" stylesheets="@org/example/pokemon/style/item.css">
+            <children>
+                <Pane prefHeight="3.0" prefWidth="213.0" VBox.vgrow="ALWAYS" />
+                <ImageView fx:id="img" fitHeight="103.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@spirit_pic/皮卡丘.png" />
+               </image></ImageView>
+                <Label fx:id="type" alignment="CENTER" text="电" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="name" text="皮卡丘" textFill="WHITE" />
+                <Label fx:id="description" text="有积存电力的特质。在皮卡丘群居的森林里会落雷不断，十分危险。皮卡丘们把尾巴贴在一起交换电流，其实是在互相打招呼。" textFill="WHITE" />
+                <Pane prefHeight="9.0" prefWidth="189.0" VBox.vgrow="ALWAYS" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
