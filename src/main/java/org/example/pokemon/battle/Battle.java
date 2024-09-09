@@ -59,6 +59,7 @@ public class Battle {
         poke1.clonePokeData(oriPoke1);
         poke2.clonePokeData(oriPoke2);
         //showPet(poke1,poke2,ui);
+        showPokeName(poke1,poke2,ui,client);    //显示宝可梦名字
         showHp(poke1,poke2,ui,client);   //显示宝可梦状态
 
         boolean isOn = true;    //对战是否进行中
@@ -483,6 +484,19 @@ public class Battle {
     public void showNotice(String text, BattleScene ui){
         Platform.runLater(()->{
             ui.showNotice(text);
+        });
+    }
+
+    //显示宝可梦名
+    public void showPokeName(PokemonData poke1,PokemonData poke2, BattleScene ui, PokemonBattleClient client){
+        Platform.runLater(()->{
+            String name1 = poke1.getPokemonName();
+            String name2 = poke2.getPokemonName();
+            if(!client.ifIamA){
+                ui.showPokeName(name1,name2);
+            }else{
+                ui.showPokeName(name2,name1);
+            }
         });
     }
 
