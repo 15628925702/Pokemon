@@ -102,7 +102,7 @@
                         </VBox>
                         <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="使用" />
+                              <Button onMouseClicked="#onUseClicked" mnemonicParsing="false" prefHeight="38.0" prefWidth="109.0" text="使用" />
                            </children>
                         </HBox>
                      </children>

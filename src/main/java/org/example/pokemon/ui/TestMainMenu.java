@@ -13,6 +13,7 @@ import org.example.pokemon.controller.HomepageController;
 import org.example.pokemon.controller.LoginController;
 import org.example.pokemon.controller.RegisterController;
 import org.example.pokemon.map.GameApp;
+import org.example.pokemon.model.User;
 
 import java.beans.EventHandler;
 import java.io.IOException;
@@ -38,14 +39,20 @@ public class TestMainMenu extends FXGLMenu {
         if (src.equals("homepage.fxml")) {
             HomepageController homepageController = fxmlLoader.getController();
             homepageController.getPlayBtn().setOnAction(event -> FXGL.getGameController().startNewGame());
+
+            homepageController.setNickName(User.nickName);
         }
 
         if(src.equals("register.fxml")){
             RegisterController registerController = fxmlLoader.getController();
             registerController.sinUpBtn.setOnAction(event -> {
 
-//                if (registerController.verify())
-                Load("homepage.fxml");
+               if (registerController.verify()){
+                   Load("homepage.fxml");
+                   //更新数据库表
+                   registerController.updateTable();
+               }
+
             });
             registerController.cancelBtn.setOnAction(event ->
                     Load("login.fxml"));
@@ -54,10 +61,9 @@ public class TestMainMenu extends FXGLMenu {
         if(src.equals("login.fxml")){
             LoginController loginController = fxmlLoader.getController();
             loginController.getLoginBtn().setOnAction(event -> {
-//                if (loginController.verify()){
-//                    Load("homepage.fxml");
-//                }
-                Load("homepage.fxml");
+                if (loginController.verify()){
+                    Load("homepage.fxml");
+                }
             });
 
             loginController.getNoAccountLabel().setOnMouseClicked(event -> {

@@ -22,6 +22,10 @@ public class HomepageController {
     @FXML
     private ImageView header;
 
+    public void setNickName(String nickName) {
+        this.nickName.setText(nickName);
+    }
+
     @FXML
     private Label nickName;
 

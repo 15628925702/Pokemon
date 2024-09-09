@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import org.example.pokemon.model.BackPack;
 
@@ -14,6 +15,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import org.example.pokemon.model.Item;
 import org.example.pokemon.model.MyListener;
+import org.example.pokemon.model.Spirit;
 
 import java.io.IOException;
 import java.net.URL;
@@ -92,5 +94,14 @@ public class BackpackViewController implements Initializable {
          e.printStackTrace();
       }
 
+   }
+
+   private Spirit spirit = new Spirit();
+   public void onUseClicked(MouseEvent event) {
+      Spirit spirit = new Spirit();
+      spirit.addID(1);
+   }
+   public Spirit getSpirit () {
+      return this.spirit;
    }
 }

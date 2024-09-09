@@ -105,7 +105,7 @@
             </ImageView>
             <VBox alignment="CENTER" prefHeight="243.0" prefWidth="175.0">
                <children>
-                  <Button fx:id="playBtn" mnemonicParsing="false"  prefHeight="72.0" prefWidth="158.0" textFill="#fbf6f6" textOverrun="CLIP">
+                  <Button fx:id="playBtn" mnemonicParsing="false" prefHeight="72.0" prefWidth="158.0" textFill="#fbf6f6" textOverrun="CLIP">
                      <styleClass>
                         <String fx:value="play-button" />
                         <String fx:value="button" />

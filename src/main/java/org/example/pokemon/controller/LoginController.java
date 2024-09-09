@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.pokemon.HelloApplication;
 import org.example.pokemon.connection.ConnectToSQL;
+import org.example.pokemon.model.User;
 
 
 import java.sql.Connection;
@@ -63,8 +64,10 @@ public class LoginController {
         Connection connection = connectToSQL.getConnection();
 
         //执行查找
+        ResultSet resultSet = selectFromSQL(connection, inputPhone, inputPassword);
         try {
-            if(selectFromSQL(connection, inputPhone, inputPassword) != null && selectFromSQL(connection, inputPhone, inputPassword).next()){
+            if(resultSet != null && resultSet.next()){
+               User.nickName = resultSet.getString("nickName");
                 return true;
             }
         } catch (SQLException e) {
@@ -85,7 +88,7 @@ public class LoginController {
 
     public ResultSet selectFromSQL(Connection connection,String inputPhone, String inputPassword) {
 
-        String sql = String.format("SELECT * FROM users WHERE `phoneNumber` = '%s' AND `password` = '%s';", inputPhone, inputPassword);
+        String sql = String.format("SELECT * FROM users WHERE phoneNumber = '%s' AND password = '%s';", inputPhone, inputPassword);
         System.out.println(sql);
         //执行查找
         ResultSet resultSet = null;

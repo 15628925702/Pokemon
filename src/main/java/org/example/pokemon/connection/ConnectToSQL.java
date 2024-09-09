@@ -7,14 +7,11 @@ import java.sql.SQLException;
 public class ConnectToSQL {
 
     public Connection getConnection() {
+        String connectionUrl = "jdbc:sqlserver://rm-bp13y9461tc8ae4c0to.sqlserver.rds.aliyuncs.com:3433;databaseName=pokemon;user=testuser;password=Test_pw123;trustServerCertificate=true";
         Connection connection = null;
         try{
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/pokemon",
-                    "root",
-                    "root"
-            );
-            System.out.println(connection.toString());
+            connection = DriverManager.getConnection(connectionUrl);
+            System.out.println("Connection established");
         } catch (SQLException e) {
             e.printStackTrace();
         }
