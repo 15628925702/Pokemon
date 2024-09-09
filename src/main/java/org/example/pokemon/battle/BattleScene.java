@@ -7,10 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.example.pokemon.controller.BackpackViewController;
+import org.example.pokemon.model.Data;
 
 import java.io.IOException;
 
 public class BattleScene extends Scene {
+
 
     @FXML
     private BattleController controller;
@@ -30,24 +33,36 @@ public class BattleScene extends Scene {
 
     public void start(Stage primaryStage) throws IOException {
         //初始化ui
-        FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));
+
 
         //Label statusLabel = new Label("Initial Status");
         //statusLabel.setLayoutX(100);
         //statusLabel.setLayoutY(100);
         //controller.setStatusLabel(statusLabel);
 
+        FXMLLoader fxmlLoader = new FXMLLoader(Battle.class.getResource("battle-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
-        this.controller = fxmlLoader.<BattleController>getController();
+        this.controller = fxmlLoader.getController();
+
         primaryStage.setTitle("Battle");
         primaryStage.setScene(scene);
-        //primaryStage.show();
+        primaryStage.show();//controller=new BattleController();
 
-        controller.initClient();
+        String pokeMeName=" ";
+
+        System.out.println("ID：" +  Data.ID);
+        if(Data.ID == 1) {
+            pokeMeName = "皮卡丘";
+        }
+        if(Data.ID == 2){
+            pokeMeName = "小火龙";
+        }
+
+        controller.initClient(pokeMeName);
+
         while(!controller.client.ifCom){
             //System.out.println("匹配中");
         }
-        primaryStage.show();
 
         PokemonData pokemon1 = new PokemonData();
         pokemon1.getPokeDataFromDb("皮卡丘");
@@ -71,7 +86,33 @@ public class BattleScene extends Scene {
         pokemon4.setPokeSkill("种子炸弹",1);
 
         Battle battle = new Battle();
-        battle.initBattle(pokemon4,pokemon1,this,controller.client);
+
+        PokemonData pokeA = new PokemonData();
+        PokemonData pokeB = new PokemonData();
+
+        if(controller.client.PokeAName.equals("皮卡丘")){
+            pokeA.clonePokeData(pokemon1);
+            System.out.println("宝可梦A是皮卡丘——" + controller.client.PokeAName);
+        }
+
+        if(controller.client.PokeAName.equals("小火龙")){
+             pokeA.clonePokeData(pokemon2);
+             System.out.println("宝可梦A是小火龙——"  + controller.client.PokeAName);
+        }
+
+        if(controller.client.PokeBName.equals("皮卡丘")){
+            pokeB.clonePokeData(pokemon1);
+            System.out.println("宝可梦B是皮卡丘——" + controller.client.PokeBName);
+        }
+
+        if(controller.client.PokeBName.equals("小火龙")){
+            pokeB.clonePokeData(pokemon2);
+            System.out.println("宝可梦B是小火龙——"  + controller.client.PokeBName);
+        }
+
+
+        battle.initBattle(pokeA,pokeB,this,controller.client);
+
     }
 
     //改写标签文本

@@ -171,7 +171,7 @@ public class PlayerComponent extends Component {
             for(int m = 0;m<size2;m++){
                 if(entity.isColliding(activeList.get(m))){
                     FXGL.set("active",m);
-                    System.out.println(m);
+                   // System.out.println(m);
                     isActive = true;
                     break;
                 }

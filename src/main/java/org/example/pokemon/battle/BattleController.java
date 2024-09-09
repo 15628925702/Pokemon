@@ -68,10 +68,10 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     }
 
 
-    public void initClient(){
+    public void initClient(String pokeMeName){
         try {
             System.out.println("创建客户端");
-            this.client = new PokemonBattleClient(this,"小火龙"); // 创建客户端实例并传递回调
+            this.client = new PokemonBattleClient(this,pokeMeName); // 创建客户端实例并传递回调
         } catch (IOException e) {
             e.printStackTrace(); // 打印异常信息
         }

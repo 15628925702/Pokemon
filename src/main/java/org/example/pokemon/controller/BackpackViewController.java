@@ -6,12 +6,14 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import org.example.pokemon.model.BackPack;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
+import org.example.pokemon.model.Data;
 import org.example.pokemon.model.Item;
 import org.example.pokemon.model.MyListener;
 
@@ -91,6 +93,19 @@ public class BackpackViewController implements Initializable {
       } catch (IOException e) {
          e.printStackTrace();
       }
+
+   }
+
+   public void onUseClicked(MouseEvent mouseEvent) {
+      if (this.nameLabel.getText().equals("榴石果")) {
+         System.out.println("已选择榴石果");
+         Data.ID = 1;
+      }
+      if (this.nameLabel.getText().equals("大师球")) {
+         System.out.println("已选择大师球");
+         Data.ID = 2;
+      }
+
 
    }
 }

@@ -438,10 +438,10 @@ public class Battle {
                 actor_lim_hp = temp_viewer.getHp();
                 viewer_lim_hp = temp_actor.getHp();
             }
-            System.out.println("actHpCur:"+actor_cur_hp);
-            System.out.println("actHpLimit: "+actor_lim_hp);
-            System.out.println("viewHpCur:"+viewer_cur_hp);
-            System.out.println("viewHpLimit: "+viewer_lim_hp);
+            System.out.println("攻击方现在血量:"+actor_cur_hp);
+            System.out.println("攻击方血量上限: "+actor_lim_hp);
+            System.out.println("防守方现在血量:"+viewer_cur_hp);
+            System.out.println("防守方血量上限: "+viewer_lim_hp);
 
             ui.updateHpStatus(actor_cur_hp,viewer_cur_hp,actor_lim_hp,viewer_lim_hp);
         });
@@ -492,7 +492,7 @@ public class Battle {
         Platform.runLater(()->{
             String name1 = poke1.getPokemonName();
             String name2 = poke2.getPokemonName();
-            if(!client.ifIamA){
+            if(client.ifIamA){
                 ui.showPokeName(name1,name2);
             }else{
                 ui.showPokeName(name2,name1);
