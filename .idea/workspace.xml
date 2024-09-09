@@ -5,27 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/battle/background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-11.03.29.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-11.03.50.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.14.19.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.16.05.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.21.14.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.24.45.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.27.53.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.42.26.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-05-9月-2024-13.51.09.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-08.13.06.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-08.13.46.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-08.43.06.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-08.45.00.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-07-9月-2024-08.56.23.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle1p.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle1p.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle1pScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/Battle1pScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/battle/battle-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/PokemonSkill.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,10 +19,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="FxmlFile" />
         <option value="JavaFXApplication" />
       </list>
     </option>
@@ -58,6 +42,7 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="localRepository" value="D:\JAVA IDE WORKPLACE\localRepo" />
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
         <option name="userSettingsFile" value="D:\JAVA IDE WORKPLACE\apache-maven-3.8.8\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -86,10 +71,10 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Liu1.5&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Liu1.6&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.5/Pokemon&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Pokemon_Liu1.6/Pokemon/src/main/lib/mysql-connector-j-9.0.0.jar&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -102,6 +87,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
     &quot;应用程序.Battle1.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.Battle1pTest.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.BattleApplication.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.BattleTest.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.Map1.executor&quot;: &quot;Run&quot;,
@@ -122,7 +108,20 @@
       <recent name="D:\Repo\Pokemon\src\main\resources\org\example\pokemon" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.battle2">
+  <component name="RunManager" selected="应用程序.Battle1pTest">
+    <configuration name="Battle1pTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.pokemon.battle.Battle1pTest" />
+      <module name="Pokemon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.pokemon.battle.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Map1" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.pokemon.map.GameApp" />
       <module name="Pokemon" />
@@ -178,10 +177,12 @@
       <item itemvalue="应用程序.battle2" />
       <item itemvalue="应用程序.Map1" />
       <item itemvalue="应用程序.Map2" />
+      <item itemvalue="应用程序.Battle1pTest" />
       <item itemvalue="应用程序.PokemonBattleServer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Battle1pTest" />
         <item itemvalue="应用程序.PokemonBattleServer" />
         <item itemvalue="JUnit.Pokemon中的所有" />
       </list>
@@ -223,6 +224,8 @@
       <workItem from="1725785164721" duration="2297000" />
       <workItem from="1725841711598" duration="5000" />
       <workItem from="1725841725908" duration="131000" />
+      <workItem from="1725848538950" duration="4018000" />
+      <workItem from="1725860775549" duration="6106000" />
     </task>
     <servers />
   </component>

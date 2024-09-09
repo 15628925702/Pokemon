@@ -1,31 +1,21 @@
 package org.example.pokemon.battle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import org.example.pokemon.BattleNet.PokemonBattleClient;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.application.Platform;
-import org.example.pokemon.BattleNet.PokemonBattleClient;
-import javafx.event.ActionEvent;
-import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.io.PrintWriter;
 
-
-
-public class BattleController implements PokemonBattleClient.ClientCallback  {
+public class Battle1pController {
     public Button buttonSkill1;
     public Button buttonSkill2;
     public Button buttonSkill3;
@@ -33,7 +23,6 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public Button toolButton;
     public Button runButton;
     public Label statusLabel;
-    public Label effectLabel;
     public Pane opStatusPane;
     public Label opHpTextLabel;
     public Label opHpStatusLimit;
@@ -59,63 +48,67 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public Label opHpTextLabel1;
     public Label myHpTextLabel1;
 
-    public PokemonBattleClient client; // 客户端对象，用于与服务器通信
-
     // 构造函数：初始化客户端
-    public BattleController() {
+    public Battle1pController() {
     }
 
-
-    public void initClient(String pokeMeName){
+    /*
+    public void initClient(){
         try {
             System.out.println("创建客户端");
-            this.client = new PokemonBattleClient(this,pokeMeName); // 创建客户端实例并传递回调
+            this.client = new PokemonBattleClient(this,"小火龙"); // 创建客户端实例并传递回调
         } catch (IOException e) {
             e.printStackTrace(); // 打印异常信息
         }
     }
+     */
 
     public void skill1Click(ActionEvent actionEvent) throws FileNotFoundException {
-        System.out.println("skill1Clicked  "+client.isMyTurn);
-        if(client.isMyTurn){
-            setBattleInfo(0);
-            handleActionClick(0); // 发送技能指令
-        }
+        System.out.println("skill1Clicked  ");
+        setBattleInfo(0);
+        //handleActionClick(0); // 发送技能指令
     }
     public void skill2Click(ActionEvent actionEvent) throws FileNotFoundException {
-        if(client.isMyTurn) {
-            System.out.println("skill2Clicked");
-            setBattleInfo(1);
-            handleActionClick(1); // 发送技能指令
-        }
+        System.out.println("skill2Clicked");
+        setBattleInfo(1);
+        //handleActionClick(1); // 发送技能指令
     }
     public void skill3Click(ActionEvent actionEvent) throws FileNotFoundException {
+        System.out.println("skill2Clicked");
+        setBattleInfo(2);
+        /*
         if(client.isMyTurn) {
-            System.out.println("skill2Clicked");
-            setBattleInfo(2);
             handleActionClick(2); // 发送技能指令
         }
+         */
     }
     public void skill4Click(ActionEvent actionEvent) throws FileNotFoundException {
+        System.out.println("skill2Clicked");
+        setBattleInfo(3);
+        /*
         if(client.isMyTurn) {
-            System.out.println("skill2Clicked");
-            setBattleInfo(3);
+
             handleActionClick(3); // 发送技能指令
         }
+         */
     }
     public void toolClick(ActionEvent actionEvent) throws FileNotFoundException {
+        System.out.println("skill2Clicked");
+        setBattleInfo(4);
+        /*
         if(client.isMyTurn) {
-            System.out.println("skill2Clicked");
-            setBattleInfo(4);
             handleActionClick(4); // 发送技能指令
         }
+         */
     }
     public void runClick(ActionEvent actionEvent) throws FileNotFoundException {
+        System.out.println("skill2Clicked");
+        setBattleInfo(5);
+        /*
         if(client.isMyTurn) {
-            System.out.println("skill2Clicked");
-            setBattleInfo(5);
             handleActionClick(5); // 发送技能指令
         }
+         */
     }
 
     //改写记录文件
@@ -136,9 +129,6 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     //改写Label内容
     public void setStatusLabelText(String status) {
         statusLabel.setText(status);
-    }
-    public void setEffectLabelText(String effect) {
-        effectLabel.setText(effect);
     }
     //增加Label内容
     public void addStatusLabelText(String status) {
@@ -226,6 +216,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
         PPContent4.setText(pp4);
     }
 
+    /*
     // 处理按钮点击并发送动作到服务器
     private void handleActionClick(int action) {
 
@@ -239,9 +230,9 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
             });
         }
     }
+     */
 
     // 客户端回调实现
-    @Override
     public void onYourTurn() {
         Platform.runLater(() -> {
             // 更新 UI 状态，提示玩家可以操作
@@ -249,7 +240,6 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
         });
     }
 
-    @Override
     public void onGameOver() {
         Platform.runLater(() -> {
             // 更新 UI 状态，提示游戏结束
@@ -265,6 +255,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
         });
     }
 
+    /*
     // 确保在应用程序退出时关闭客户端连接
     public void closeClient() {
         if (client != null) {
@@ -275,6 +266,7 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
             }
         }
     }
+     */
 
     //点击了反馈款2
     public void returnButtonClick(ActionEvent actionEvent) {
@@ -330,5 +322,4 @@ public class BattleController implements PokemonBattleClient.ClientCallback  {
     public void noticeButtonExit(MouseEvent mouseEvent) {
         noticeButton.setStyle("-fx-background-color: white;");
     }
-
 }
