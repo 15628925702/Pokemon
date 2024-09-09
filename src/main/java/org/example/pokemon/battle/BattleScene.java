@@ -117,5 +117,10 @@ public class BattleScene extends Scene {
         controller.noticeLabel.setText(notice);
         controller.noticeButton.setDisable(false);
     }
+    //显示宝可梦名
+    public void showPokeName(String myName,String opName){
+        controller.myHpTextLabel1.setText(myName);
+        controller.opHpTextLabel1.setText(opName);
+    }
 
 }
