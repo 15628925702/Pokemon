@@ -17,8 +17,6 @@ public class BattleScene extends Scene {
 
     public BattleScene(Parent parent, double v, double v1) {
         super(parent, v, v1);
-        //this.controller = controller;
-        //this.stage = stage;
     }
 
     /*

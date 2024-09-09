@@ -148,4 +148,62 @@ public class PokemonSkill {
         this.skillTimes -= 1;
     }
 
+    //通过加权模型算法计算技能分数
+    public double getSkillScore(PokemonData poke1, PokemonData poke2) {
+        if(this.skillType==1){
+            return getPhySkillScore(poke1, poke2);
+        }
+        else if(this.skillType==2){
+            return getSpSkillScore(poke1, poke2);
+        }else {
+            System.out.println("ERROR IN SCORE");
+            return -1;
+        }
+    }
+
+    //分类获得技能加权
+    public double getPhySkillScore(PokemonData poke1, PokemonData poke2) {
+        int poke2Attack = poke2.getPhysical_attack();
+        int poke1Defence = poke1.getPhysical_defense();
+        int defenceDiffer = poke2Attack - poke1Defence;
+
+        if(defenceDiffer<poke1Defence*0.05){
+            defenceDiffer = (int)(poke1Defence*0.05);
+        }
+
+        //定义权重
+        double weightHitRate = 0.2;
+        double weightPower = 0.3;
+        double weightTimes = 0.1;
+        double weightDiffer = 0.4;
+
+        return calculateScore(weightHitRate,weightPower,weightTimes,defenceDiffer,weightDiffer);
+    }
+    public double getSpSkillScore(PokemonData poke1, PokemonData poke2) {
+        int poke2Attack = poke2.getSpecial_attack();
+        int poke1Defence = poke1.getSpecial_defense();
+        int defenceDiffer = poke2Attack - poke1Defence;
+
+        if(defenceDiffer<poke1Defence*0.05){
+            defenceDiffer = (int)(poke1Defence*0.05);
+        }
+
+        //定义权重
+        double weightHitRate = 0.2;
+        double weightPower = 0.3;
+        double weightTimes = 0.1;
+        double weightDiffer = 0.4;
+
+        return calculateScore(weightHitRate,weightPower,weightTimes,defenceDiffer,weightDiffer);
+    }
+
+    //计算加权
+    public double calculateScore(double weightHitRate, double weightPower, double weightTimes,
+                                 double defenceDiffer,double weightDiffer) {
+        if(skillTimes==0){
+            return 0;
+        }else {
+            return weightHitRate * skillHitRate + weightPower * skillPower - weightTimes * skillTimes + defenceDiffer * weightDiffer;
+        }
+    }
 }

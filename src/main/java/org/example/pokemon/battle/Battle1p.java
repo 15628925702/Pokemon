@@ -178,14 +178,42 @@ public class Battle1p {
         }
     }
 
+    //ai行动
     public int aiAct(PokemonData poke1, PokemonData poke2, Battle1pScene ui) throws IOException, InterruptedException {
         showPokeStatus(poke1,poke2,ui);   //显示宝可梦状态
         showPet(poke1,poke2,ui);
 
         Thread.sleep(1000);
 
-        return useSkill(poke2,poke1,0,ui);
+        System.out.println("调用ai计算");
+        //获得技能加权评分
+        PokemonSkill[] skills = new PokemonSkill[4];
+        double[] score = new double[4];
+        skills = poke2.getSkillsOfPokes();
+
+        for(int i=0;i<skills.length;i++){
+            //System.out.println(i+"进入循环");
+            if(skills[i]==null){
+                //System.out.println(i+"为空,退出循环");
+                break;
+            }
+            score[i] = skills[i].getSkillScore(poke1, poke2);
+            System.out.println("技能"+skills[i].getSkillName()+"分数为"+score[i]);
+        }
+
+        double record = 0;
+        int flag = 0;
+        //获得评分最大值的技能
+        for(int i=0;i<skills.length;i++){
+            if(score[i]>record){
+                record = score[i];
+                flag = i;
+            }
+        }
+
+        return useSkill(poke2,poke1,flag,ui);
     }
+
 
     //发动技能
     public int useSkill(PokemonData actor, PokemonData viewer, int flag, Battle1pScene ui) throws IOException {

@@ -64,7 +64,7 @@ public class Battle1pScene extends Scene{
         pokemon4.setPokeSkill("种子炸弹",1);
 
         Battle1p battle = new Battle1p();
-        battle.initBattle(pokemon1,pokemon4,this);
+        battle.initBattle(pokemon2,pokemon3,this);
     }
 
     //改写标签文本
