@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/alert-style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-08-9月-2024-16.48.47.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-08-9月-2024-16.48.48.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-08-9月-2024-17.02.28.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-08-9月-2024-17.02.29.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-08-9月-2024-17.05.03.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-09-9月-2024-10.23.56.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-09-9月-2024-16.04.35.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-09-9月-2024-16.04.38.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-09-9月-2024-16.08.04.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-09-9月-2024-16.33.17.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/battle/BattleScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/BackpackViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/controller/BackpackViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pokemon/map/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pokemon/map/GameApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/backpack-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/backpack-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/style/backpack-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/style/backpack-page.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +73,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/19871/Desktop/Pokemon",
@@ -244,7 +228,7 @@
       <workItem from="1725841725908" duration="131000" />
       <workItem from="1725848538950" duration="4018000" />
       <workItem from="1725860775549" duration="6106000" />
-      <workItem from="1725875844291" duration="6158000" />
+      <workItem from="1725875844291" duration="6403000" />
     </task>
     <servers />
   </component>
