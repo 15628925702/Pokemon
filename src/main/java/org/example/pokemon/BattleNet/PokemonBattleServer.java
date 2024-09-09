@@ -185,6 +185,7 @@ public class PokemonBattleServer {
         outB.println(healthMessage.toString());  // 更新客户端B的宝可梦血量
         System.out.println("血量更新: " + healthInfo);
         System.out.println("====================================================================");
+        
     }
 
     // 主函数：启动服务器
