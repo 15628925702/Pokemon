@@ -17,6 +17,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.example.pokemon.battle.Battle;
+import org.example.pokemon.battle.Battle1pScene;
 import org.example.pokemon.battle.BattleScene;
 import org.example.pokemon.map.Components.PlayerComponent;
 import org.example.pokemon.ui.TestMainMenu;

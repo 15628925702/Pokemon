@@ -19,3 +19,11 @@
 .scroll-bar {
     -fx-font-size: 20px;
 }
+
+.button {
+   -fx-background-color:  linear-gradient(to right bottom, #f6d365 0%, #fda085 100%);
+}
+
+.button:hover{
+    -fx-background-color:  linear-gradient(to left top, #f6d365 0%, #fda085 100%);
+}

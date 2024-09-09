@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1024.0" stylesheets="@org/example/pokemon/style/backpack-page.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.controller.BackpackViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="945.0" stylesheets="@org/example/pokemon/style/backpack-page.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pokemon.controller.BackpackViewController">
    <left>
       <VBox prefHeight="585.0" prefWidth="247.0" BorderPane.alignment="CENTER">
          <children>
@@ -108,7 +108,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane fx:id="scroll" prefHeight="624.0" prefWidth="860.0" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="scroll" prefHeight="782.0" prefWidth="727.0" VBox.vgrow="ALWAYS">
                <content>
                   <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                      <rowConstraints>

@@ -50,10 +50,16 @@ public class BattleScene extends Scene {
 
         System.out.println("ID：" +  Data.ID);
         if(Data.ID == 1) {
-            pokeMeName = "皮卡丘";
+            pokeMeName = "小火龙";
         }
         if(Data.ID == 2){
-            pokeMeName = "小火龙";
+            pokeMeName = "皮卡丘";
+        }
+        if(Data.ID == 3){
+            pokeMeName = "杰尼龟";
+        }
+        if(Data.ID == 4){
+            pokeMeName = "妙蛙种子";
         }
 
         controller.initClient(pokeMeName);

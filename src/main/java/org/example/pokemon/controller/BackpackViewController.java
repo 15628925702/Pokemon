@@ -1,9 +1,13 @@
 package org.example.pokemon.controller;
 
+import javafx.animation.Interpolator;
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DialogPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -94,15 +98,42 @@ public class BackpackViewController implements Initializable {
    }
 
    public void onUseClicked(MouseEvent mouseEvent) {
-      if (this.nameLabel.getText().equals("榴石果")) {
-         System.out.println("已选择榴石果");
+      if (this.nameLabel.getText().equals("小火龙")) {
+         System.out.println("已选择小火龙");
          Data.ID = 1;
+         showAlert("已选择小火龙");
+         return;
       }
-      if (this.nameLabel.getText().equals("大师球")) {
-         System.out.println("已选择大师球");
+      if (this.nameLabel.getText().equals("皮卡丘")) {
+         System.out.println("已选择皮卡丘");
          Data.ID = 2;
+         showAlert("已选择皮卡丘");
+         return;
       }
+      if (this.nameLabel.getText().equals("杰尼龟")) {
+         System.out.println("已选择杰尼龟");
+         Data.ID = 3;
+         showAlert("已选择杰尼龟");
+         return;
+      }
+      if (this.nameLabel.getText().equals("妙蛙种子")) {
+         System.out.println("已选择妙蛙种子");
+         Data.ID = 4;
+        showAlert("已选择妙蛙种子");
+      }
+   }
 
+   public void showAlert(String info) {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle(null);
+      alert.setHeaderText(null);
+      alert.setContentText(info);
 
+      DialogPane dialogPane = alert.getDialogPane();
+      String css = this.getClass().getClassLoader().getResource("alert-style.css").toExternalForm();
+      dialogPane.getStylesheets().add(css);
+      dialogPane.getStyleClass().add("alert");
+
+      alert.showAndWait();
    }
 }
