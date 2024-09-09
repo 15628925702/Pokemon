@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4b4df0d9-c033-468e-8382-5f97b5cfcf7e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/item.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/backpack-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/backpack-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/style/backpack-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pokemon/style/backpack-page.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
     &quot;Maven.Pokemon [org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Merging Four&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Four&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Repo/Pokemon/src/main/lib/mssql-jdbc-12.8.0.jre11.jar&quot;,
@@ -203,7 +204,9 @@
       <workItem from="1725721457027" duration="2384000" />
       <workItem from="1725725168643" duration="398000" />
       <workItem from="1725752550624" duration="4112000" />
-      <workItem from="1725758835628" duration="1608000" />
+      <workItem from="1725758835628" duration="3349000" />
+      <workItem from="1725841495295" duration="74000" />
+      <workItem from="1725842962406" duration="649000" />
     </task>
     <servers />
   </component>

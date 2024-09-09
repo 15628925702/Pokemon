@@ -12,9 +12,9 @@
     -fx-background-color: #ffbd33;
 }
 
-/*.scroll-pane {*/
-/*    -fx-background: linear-gradient(to right top, #f6d365 0%, #fda085 100%);*/
-/*}*/
+.scroll-pane {
+    -fx-background: #ffbd33;
+}
 
 .scroll-bar {
     -fx-font-size: 20px;
